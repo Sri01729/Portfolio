@@ -3,7 +3,7 @@ import React from 'react'
 
 const Experience = () => {
   return (
-    <div>
+    <>
        <motion.div
                   initial={{ y: 100, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
@@ -58,7 +58,7 @@ const Experience = () => {
 
                   </div>
                 </motion.div>
-    </div>
+    </>
   )
 }
 
