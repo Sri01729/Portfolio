@@ -21,7 +21,7 @@ const Projects = () => {
       { icon: BiLogoPostgresql, color: "#00A4EF" },
 
     ],
-    video: "/metared.mp4"
+    video: "/RedinAI.mp4"
   },
   {
     title: "Browzio",
