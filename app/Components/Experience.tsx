@@ -48,7 +48,7 @@ const Experience = () => {
                             <h3 className="text-4xl font-medium text-[#fefeff]">Software Developer</h3>
                             <p className="text-sm text-[#fefeff]">2020 - 2022</p>
                             <p className="text-sm text-[#969696]">
-                             As a Software Developer at Cognizant, I developed and maintained scalable web applications using modern frameworks like <span className="text-sky-500"> React, Node.js, and Spring Boot</span>. I collaborated with cross-functional teams to deliver seamless user experiences, implemented efficient APIs, and optimized database solutions. By streamlining development workflows with CI/CD pipelines and mentoring junior developers, I contributed to fostering a collaborative and innovative environment while ensuring high-quality deliverables.
+                             As a Software Developer at Cognizant, I developed and maintained scalable web applications using modern frameworks like <span className="text-sky-500"> React, Next.js, Node.js and Spring Boot</span>. I collaborated with cross-functional teams to deliver seamless user experiences, implemented efficient APIs, and optimized database solutions. By streamlining development workflows with CI/CD pipelines and mentoring junior developers, I contributed to fostering a collaborative and innovative environment while ensuring high-quality deliverables.
                             </p>
 
                           </div>
