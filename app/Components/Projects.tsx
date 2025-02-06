@@ -13,7 +13,7 @@ const Projects = () => {
       title: "RedinAI",
       description: "RedinAI is an AI assistant where you can input a Reddit post link and a prompt, and the AI analyzes the post and comments to provide insightful answers based on your questions. I created this app to address the challenge of absorbing knowledge from lengthy Reddit threads. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers (Deployment in progress).",
       tags: ["Nextjs", "SpringBoot", "PostgreSql", "OpenAI"],
-      link: "",
+      link: "https://github.com/Sri01729/RedinAI",
       platforms: [
         { icon: PiOpenAiLogo, color: "#00A4EF" },
         { icon: RiNextjsFill, color: "#00A4EF" },
