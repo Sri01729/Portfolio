@@ -301,8 +301,8 @@ export default function Home() {
             </nav>
 
             {/* Main Content */}
-            <main className="flex-grow">
-              <section id="intro" className=" px-4 md:px-24">
+            <main className="flex-grow ">
+              <section id="intro" className=" px-4 md:px-24 min-h-[110vh]">
                 <div className="pt-32 pb-8 ml-8">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}

@@ -72,7 +72,7 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: "transparent",
       }}
-      className="relative flex h-[40rem] justify-center md:space-x-10 overflow-y-auto rounded-md p-10 scroll-smooth snap-y snap-mandatory"
+      className="relative flex h-[30rem] justify-center md:space-x-10 overflow-y-auto rounded-md p-10 scroll-smooth snap-y snap-mandatory"
       ref={ref}
       style={{
         scrollSnapType: "y mandatory",

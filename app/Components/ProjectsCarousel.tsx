@@ -133,9 +133,9 @@ export default function StickyScrollRevealProjects() {
           ),
         }))}
         contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
-      />
-            </div>
-             <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
+                />
+                <div className="flex justify-center">
+                 <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
                 find more on my{" "}
                 <a
                   href="https://github.com/Sri01729"
@@ -147,6 +147,9 @@ export default function StickyScrollRevealProjects() {
                   GitHub &#x2197;
                 </a>
               </p>
+              </div>
+            </div>
+
         </motion.div>
 
   )
