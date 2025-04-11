@@ -18,10 +18,10 @@ const Contact = () => {
                     <div className="md:col-span-2 md:col-start-2">
                       <div className="space-y-8 max-w-2xl">
                         <Image
-                          src="/srinivas_alahari.jpg"
+                          src="/srinivas_alahari.png"
                           alt="Sai Srinivas Alahari"
-                          width={500}
-                          height={300}
+                          width={300}
+                          height={200}
                           className="mb-8 rounded-xl"
                         />
                         <p className="text-xl md:text-xl text-[#fefeff] underline">saialahariedu@gmail.com</p>

@@ -9,6 +9,7 @@ import Projects from "./Components/Projects";
 import Experience from "./Components/Experience";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
+import ProjectsCarousel from "./Components/ProjectsCarousel"; // Import the missing component
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -301,7 +302,7 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="min-h-screen px-4 md:px-24">
+              <section id="intro" className=" px-4 md:px-24">
                 <div className="pt-32 pb-8 ml-8">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
@@ -335,7 +336,7 @@ export default function Home() {
 
               {/* Work Section */}
               <section id="work" className="min-h-screen px-4 md:px-24 py-8 md:py-32 md:ml-16"> {/* Adjusted padding-top to 8 */}
-               <Projects />
+               <ProjectsCarousel />
               </section>
 
               {/* Background Section */}
