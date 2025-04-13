@@ -5,7 +5,6 @@ import { Space_Grotesk } from "next/font/google";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
-import Projects from "./Components/Projects";
 import Experience from "./Components/Experience";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
