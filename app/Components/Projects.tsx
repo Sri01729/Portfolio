@@ -56,7 +56,7 @@ const Projects = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="max-w-7xl">
-        <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">projects.</h2>
+        <h2 className="text-4xl font-medium mb-8 max-w-2xl">projects.</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2 md:col-start-2">
             <div className="grid gap-8 md:gap-16 max-w-2xl">
@@ -70,7 +70,7 @@ const Projects = () => {
                   whileHover={{ y: -10 }}
                 >
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="block p-4 md:p-8 border border-[#969696] rounded-lg hover:border-[#969696] transition-colors relative">
-                    <h3 className="text-xl md:text-2xl font-medium mb-4"><span className="text-sky-500">{project.title}</span></h3>
+                    <h3 className="text-xl font-medium mb-4"><span className="text-sky-500">{project.title}</span></h3>
                     <p className="text-sm text-[#fefeff] mb-6">{project.description}</p>
                     {project.video ? (
                       <div className="mb-6">

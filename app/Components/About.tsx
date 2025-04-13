@@ -9,7 +9,7 @@ const About = () => {
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="max-w-5xl"
+                className="max-w-7xl"
             >
                 <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">about.</h2>
                 <div className="grid md:grid-cols-3 gap-8">
@@ -34,15 +34,12 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <br />
-                <br />
-
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-8 mt-8">
                     <div className="md:col-span-1 md:col-start-2">
                         <div className="space-y-8">
                             <p className="text-sm text-[#fefeff]">
                                 In my free time, I challenge myself with new projects, explore advancements in AI, and delve into innovative technologies
-                                to keep my skills sharp and curiosity alive. Over the past 2 years, I’ve focused on staying updated with AI advancements to
+                                to keep my skills sharp and curiosity alive. Over the past 2 years, I've focused on staying updated with AI advancements to
                                 adapt to the rapid pace of innovation in the field.
                             </p>
                         </div>

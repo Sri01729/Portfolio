@@ -10,6 +10,8 @@ import Experience from "./Components/Experience";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import ProjectsCarousel from "./Components/ProjectsCarousel"; // Import the missing component
+import Blogs from "./Components/Blogs";
+import VisitCounter from "./Components/VisitCounter";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -21,6 +23,7 @@ const sections = [
   { id: "intro", title: "Intro" },
   { id: "work", title: "Work" },
   { id: "background", title: "Background" },
+  { id: "blogs", title: "Blogs" },
   { id: "about", title: "About" },
   { id: "contact", title: "Contact" }
 ];
@@ -175,7 +178,7 @@ export default function Home() {
           >
             {/* Logo */}
             <motion.div
-              className="fixed top-8 left-4 md:left-8 z-50 cursor-pointer"
+              className="absolute md:fixed top-8 left-4 md:left-8 z-50 cursor-pointer"
               onHoverStart={() => setIsNameExpanded(true)}
               onHoverEnd={() => setIsNameExpanded(false)}
               onClick={handleLogoClick}
@@ -209,7 +212,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="fixed top-8 right-4 z-50 md:hidden"
+              className="absolute md:fixed top-8 right-4 z-50 md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="space-y-2">
@@ -301,9 +304,9 @@ export default function Home() {
             </nav>
 
             {/* Main Content */}
-            <main className="flex-grow ">
-              <section id="intro" className=" px-4 md:px-24 min-h-[110vh]">
-                <div className="pt-32 pb-8 ml-8">
+            <main className="flex-grow">
+              <section id="intro" className=" px-4 md:px-24 py-12">
+                <div className="pt-32 pb-12 mb-12 ml-8">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -335,23 +338,27 @@ export default function Home() {
               </section>
 
               {/* Work Section */}
-              <section id="work" className="min-h-screen px-4 md:px-24 py-8 md:py-32 md:ml-16"> {/* Adjusted padding-top to 8 */}
+              <section id="work" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
                <ProjectsCarousel />
               </section>
 
               {/* Background Section */}
-              <section id="background" className="min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16">
+              <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
                <Experience />
               </section>
 
+              {/* Blogs Section */}
+              <section id="blogs" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+               <Blogs />
+              </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16">
+              <section id="about" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
                <About />
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16">
+              <section id="contact" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
                <Contact />
               </section>
             </main>
@@ -360,6 +367,7 @@ export default function Home() {
             <footer className="px-4 md:px-24 py-8 text-[#969696] md:ml-16">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <span className="text-sm text-center md:text-left">© 2025 Srinivas Alahari. All rights reserved.</span>
+                <VisitCounter />
               </div>
             </footer>
           </motion.div>
