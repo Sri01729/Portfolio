@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import fs from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
@@ -18,30 +18,11 @@ export async function GET(
   { params }: RouteSegmentProps
 ) {
   try {
-    const fullPath = path.join(blogsDirectory, `${params.slug}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-    const { data, content } = matter(fileContents)
-
-    const processedContent = await remark()
-      .use(html)
-      .use(rehypePrism)
-      .process(content)
-    const contentHtml = processedContent.toString()
-
-    return Response.json({
-      slug: params.slug,
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      readTime: data.readTime,
-      category: data.category,
-      tags: data.tags,
-      thumbnail: data.thumbnail,
-      content: contentHtml,
-    })
+    const filePath = path.join(process.cwd(), 'content/blogs', `${params.slug}.mdx`)
+    const content = await fs.readFile(filePath, 'utf8')
+    return Response.json({ content })
   } catch (error) {
-    console.error('Error loading blog post:', error)
+    console.error('Error reading blog post:', error)
     return Response.json({ error: 'Blog post not found' }, { status: 404 })
   }
 }
