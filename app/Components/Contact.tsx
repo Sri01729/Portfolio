@@ -1,13 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-
-// Import EmailJS
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -20,12 +17,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-
-  useEffect(() => {
-    // Initialize EmailJS with your Public Key
-    // Ensure you replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -41,31 +32,24 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      if (!formRef.current) {
-        console.error('Form ref is not attached.');
-        setSubmitStatus('error');
-        setErrorMessage('An internal error occurred. Please try again.');
-        setIsSubmitting(false);
-        return;
-      }
+      // Send the form data to our server-side API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Ensure you replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+      const data = await response.json();
 
-      const result = await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current
-      );
-
-      if (result.text === 'OK') {
+      if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' }); // Reset form
       } else {
-        console.error('EmailJS send failed:', result);
+        console.error('API error:', data);
         setSubmitStatus('error');
-        setErrorMessage('Failed to send message. Please check your input and try again.');
+        setErrorMessage(data.error || 'Failed to send message. Please try again.');
       }
     } catch (error: any) {
       console.error('Failed to send email:', error);

@@ -12,6 +12,7 @@
     "@ai-sdk/openai": "^1.1.0",
     "@assistant-ui/react": "^0.7.44",
     "@emailjs/browser": "^4.4.1",
+    "@emailjs/nodejs": "^5.0.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@splinetool/react-spline": "^4.0.0",
     "@supabase/supabase-js": "^2.49.4",
