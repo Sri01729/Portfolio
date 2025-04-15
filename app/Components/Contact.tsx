@@ -56,8 +56,7 @@ const Contact = () => {
       const result = await emailjs.sendForm(
         serviceId,
         templateId,
-        formRef.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        formRef.current
       );
 
       if (result.text === 'OK') {
