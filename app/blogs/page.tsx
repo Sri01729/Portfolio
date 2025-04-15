@@ -3,13 +3,67 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import Link from "next/link"
-import StarField from "../Components/Starfield"
-import { BlogPost, getAllBlogPosts, getAllCategories, getAllTags } from "@/lib/blog"
+
 
 // Sample blog data
 const blogPosts = [
   {
-    id: 1,
+    id: "intui-cell-luna",
+    title: "A New Dawn for AI: IntuiCell Introduces a Paradigm Shift in Intelligence",
+    description: "Discover how IntuiCell is challenging the foundations of current Artificial Intelligence with a novel approach inspired by neuroscience, culminating in Luna, a robot that learns autonomously in real-time.",
+    date: "2024-05-20",
+    readTime: "7 min read",
+    category: "Artificial Intelligence",
+    tags: ["AI", "Machine Learning", "Neuroscience", "Robotics", "Autonomous Learning"],
+    thumbnail: "/blog-thumbnails/intui-cell-luna.jpg",
+    content: `
+# A New Dawn for AI: IntuiCell Introduces a Paradigm Shift in Intelligence
+
+Have you ever considered why, despite the remarkable progress in fields like image recognition and natural language processing, today's Artificial Intelligence often feels limited in its ability to truly reason and learn in dynamic real-world environments? According to Udia Inel from IntuiCell, the core issue lies within the very methodology underpinning current AI, which he describes as being "shackled to back propagation, limited to pre-trained information, and incapable of that self-driven on-the-fly learning of humans and animals". But what if a fundamentally different approach was not only possible but had already arrived?
+
+## The Fundamental Shift in Learning
+
+IntuiCell claims to have "fixed all this". They argue that while traditional machine learning has yielded "amazing demos from traditional ml in low stake applications," it doesn't represent genuine intelligence. Instead, it relies on "feeding millions of data points into a large statistical model and leaving it without any capacity to reason or learn". This reliance on vast datasets and pre-training leads to failures when these systems encounter the complexities and novelties of the real world, where they "fail on the training data".
+
+IntuiCell isn't pursuing incremental improvements by simply scaling up data or computational power. Instead, they are "taking a fundamentally different approach to anything that's being seen in the current Paradigm". Their perspective is rooted in the observation that since the "early 50s AI technology has been inspired on how the brain works without a proper understanding of how the brain actually works".
+
+## Drawing Inspiration from Neuroscience
+
+This is where IntuiCell's innovation takes center stage. They have leveraged "30 years of contrarian Neuroscience research" which has provided them with "novel and groundbreaking insights on the mechanisms by which the brain interacts with the world and learns from such interactions". These "novel insights" have enabled IntuiCell to "Envision intelligence from ground up," focusing on "how we think of Senses actuators neurons and how the neurons are able to solve their local problems".
+
+This foundational understanding unlocks a "fundamentally new learning Paradigm that will able to learn like we do". IntuiCell describes their creation as "a real digital nervous system that learns in real world real time," something that "has never been done before".
+
+## Luna: Embodiment of a New Learning Paradigm
+
+To tangibly demonstrate this revolutionary technology, IntuiCell introduced Luna, an ordinary-looking off-the-shelf laboratory robot. Luna isn't a carefully curated demo; she serves as a "vehicle for us to intuitively demonstrate our inal capabilities in real world environment". What distinguishes Luna is her capacity for "continuous autonomous learning".
+
+- Unlike conventional AI, Luna is "not pre-trained in simulation".
+- She is "not dependent on data sets".
+- IntuiCell doesn't "fine-tune or control architectures". Instead, Luna's "indel Network architectures" empower her to learn independently by exploring her surroundings.
+
+This generic network isn't limited to this specific robot; IntuiCell believes it could be implemented on "a drone or a mobile robot or any kind of QP" or even in digital agents.
+
+## Learning to Stand: An Emergent Behavior
+
+The initial demonstration showcased Luna performing movements and learning her own mechanics, culminating in her learning to stand and balance entirely on her own. The leash visible was purely a "safety feature" to prevent physical damage during falls, as Luna lacks the "soft tissue" of animals to cushion impacts. IntuiCell draws a parallel to how "mammals" learn to understand their bodies and develop "emergent features" like walking, emphasizing that Luna was experiencing everything in "real time" and learning from it. Crucially, IntuiCell explicitly stated they "haven't told her how to stand"; they only designed the senses to propagate problems, allowing the robot to solve them autonomously. They also underscored that they did not predefine any "mathematical model" of the robot's configuration or use a "global cost function" to dictate actions.
+
+## Adapting to Novel Terrain: Real-Time Generalization
+
+Further illustrating Luna's learning prowess, IntuiCell introduced a new terrain: ice. In stark contrast to traditional machine learning, where such a change would typically necessitate going offline for extensive retraining, Luna was able to "generalize for novel scenarios" and adapt in real-time. She utilized her prior understanding of balance to navigate the more challenging surface. This demonstrated "intrinsic learning similar to how we learn with real world interactions, continuous learning and adaptation".
+
+## The Dawn of Genuine Intelligence
+
+IntuiCell boldly proclaims that their technology isn't merely the "Next Generation in AI"; it represents the "first generation of genuine intelligence". They believe they have made "intelligence a starting point rather than the end goal," opening the "Gateway of autonomous systems that can learn in real time in the chaos of reality".
+
+## The Journey Ahead: Newborn to Childhood
+
+Looking forward, Luna is currently in her "newborn era," having gained control over her body. The next significant phase is the "child era," where she will learn to take "small steps" – initially shaky but profoundly important for the evolution of her intelligence and this novel technological paradigm. During this "child era," IntuiCell envisions being able to teach Luna new skills through instructions in "real world real time" interactions, mirroring how humans and animals learn.
+
+IntuiCell's unveiling of their technology, embodied by Luna's autonomous learning, offers a compelling glimpse into the future of AI. By grounding their approach in a deeper understanding of neuroscience, they are pioneering a new era of truly autonomous learning systems with the potential to revolutionize countless applications. The initial steps have been taken, and the world watches with anticipation as Luna embarks on her "childhood," promising a future where intelligent systems can learn and adapt with the fluidity and resilience of living beings.
+    `
+  },
+  {
+    id: "Building-Responsive-UIs-with-Tailwind-CSS",
     title: "Building Responsive UIs with Tailwind CSS",
     description: "Learn how to create beautiful, responsive user interfaces using Tailwind CSS. This guide covers the fundamentals and advanced techniques for building modern web applications.",
     date: "April 15, 2025",
@@ -118,7 +172,7 @@ Remember to check out the [Tailwind CSS documentation](https://tailwindcss.com/d
     `
   },
   {
-    id: 2,
+    id: "The-Power-of-AI-in-Modern-Web-Applications",
     title: "The Power of AI in Modern Web Applications",
     description: "Explore how artificial intelligence is transforming web development and user experiences. Discover practical applications and implementation strategies for integrating AI into your projects.",
     date: "April 10, 2025",
@@ -187,186 +241,100 @@ Remember to start small, focus on user value, and ensure privacy and transparenc
   }
 ]
 
+const categories = [
+  "All Categories",
+  ...Array.from(new Set(blogPosts.map((post) => post.category))),
+]
+
 export default function BlogsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
-  const [allCategories, setAllCategories] = useState<string[]>([])
-  const [allTags, setAllTags] = useState<string[]>([])
+  const [search, setSearch] = useState("")
+  const [category, setCategory] = useState("All Categories")
 
-  useEffect(() => {
-    const loadBlogs = async () => {
-      const posts = await getAllBlogPosts()
-      setFilteredPosts(posts)
-      setAllCategories(await getAllCategories())
-      setAllTags(await getAllTags())
-    }
-    loadBlogs()
-  }, [])
-
-  // Filter posts based on search query, category, and tags
-  useEffect(() => {
-    const filterPosts = async () => {
-      const posts = await getAllBlogPosts()
-      let filtered = posts
-
-      // Filter by search query
-      if (searchQuery) {
-        filtered = filtered.filter(post =>
-          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.description.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      }
-
-      // Filter by category
-      if (selectedCategory !== "All") {
-        filtered = filtered.filter(post => post.category === selectedCategory)
-      }
-
-      // Filter by tags
-      if (selectedTags.length > 0) {
-        filtered = filtered.filter(post =>
-          selectedTags.some(tag => post.tags.includes(tag))
-        )
-      }
-
-      setFilteredPosts(filtered)
-    }
-    filterPosts()
-  }, [searchQuery, selectedCategory, selectedTags])
-
-  // Toggle tag selection
-  const toggleTag = (tag: string) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter(t => t !== tag))
-    } else {
-      setSelectedTags([...selectedTags, tag])
-    }
-  }
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(search.toLowerCase()) ||
+      post.description.toLowerCase().includes(search.toLowerCase())
+    const matchesCategory =
+      category === "All Categories" || post.category === category
+    return matchesSearch && matchesCategory
+  })
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <StarField />
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <Link
-          href="/"
-          className="inline-flex items-center text-gray-400 hover:text-[#fefeff] transition-colors mb-8"
-        >
-          <FaArrowLeft className="mr-2" /> Back to Home
-        </Link>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4"
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:gap-16 px-4 md:px-0">
+        {/* Left column: Heading and description at the top */}
+        <div className="w-full md:w-[40%] flex flex-col justify-start items-start pt-12 md:pt-20">
+          <Link href="/" className="inline-flex items-center text-[#969696] hover:text-white mb-8">
+            <FaArrowLeft className="mr-2" /> Back to Home
+          </Link>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">Thoughts & Writings</h1>
+          <p className="text-xl text-gray-400 mb-2 max-w-lg">
+            Insights, tutorials, and reflections on tech, development, and creative problem-solving.
+          </p>
+        </div>
+        {/* Right column: Search, filter, and blog list */}
+        <div className="w-full md:w-[60%] max-w-2xl mx-auto py-12 md:py-20 flex flex-col">
+          <div className="flex flex-col md:flex-row gap-4 mb-10 items-center justify-end">
+            <input
+              type="text"
+              placeholder="Search articles..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full md:w-72 px-4 py-2 rounded-lg bg-[#18181b] border border-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-700"
+            />
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full md:w-48 px-4 py-2 rounded-lg bg-[#18181b] border border-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-700"
             >
-              <h1 className="text-4xl md:text-7xl font-medium text-[#fefeff]">
-                Thoughts & Writings
-              </h1>
-              <p className="text-xl text-[#969696]">
-                Insights, tutorials, and reflections on tech, development, and creative problem-solving.
-              </p>
-            </motion.div>
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
           </div>
-
-          <div className="md:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-8"
-            >
-              {/* Search and Filter Section */}
-              <div className="flex flex-col md:flex-row gap-4 mb-8">
-                <div className="relative flex-grow">
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 pl-10 text-[#fefeff] focus:outline-none focus:border-white/20"
-                  />
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#969696]" />
-                </div>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20"
-                >
-                  <option value="All">All Categories</option>
-                  {allCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Tags Filter */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {allTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                      selectedTags.includes(tag)
-                        ? "bg-blue-500 text-white"
-                        : "bg-black/40 border border-white/10 text-[#969696] hover:border-white/20"
-                    }`}
-                  >
-                    #{tag}
-                  </button>
-                ))}
-              </div>
-
-              {/* Blog Posts Grid */}
-              <div className="grid grid-cols-1 gap-8">
-                {filteredPosts.map((blog, index) => (
-                  <motion.div
-                    key={blog.slug}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
-                    className="bg-[#0A0A0A] border border-white/10 rounded-lg hover:border-white/20 transition-colors"
-                  >
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-[#969696] mb-2">
-                        <span>{blog.date}</span>
-                        <span>•</span>
-                        <span>{blog.readTime}</span>
-                        <span>•</span>
-                        <span className="bg-black/40 px-2 py-1 rounded-full text-xs border border-white/10">
-                          {blog.category}
-                        </span>
-                      </div>
-                      <h2 className="text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
-                      <p className="text-[#969696] mb-4">{blog.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {blog.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-sm text-[#969696]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link
-                        href={`/blogs/${blog.slug}`}
-                        className="inline-flex items-center text-[#fefeff] hover:text-[#969696] transition-colors"
+          <div>
+            {filteredPosts.map((blog, index) => (
+              <motion.div
+                key={blog.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+                className="bg-[#0A0A0A] border border-white/10 rounded-lg hover:border-white/20 transition-colors mb-6"
+              >
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-[#969696] mb-2">
+                    <span>{blog.date}</span>
+                    <span>•</span>
+                    <span>{blog.readTime}</span>
+                    <span>•</span>
+                    <span className="bg-black/40 px-2 py-1 rounded-full text-xs border border-white/10">
+                      {blog.category}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
+                  <p className="text-[#969696] mb-4">{blog.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {blog.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-sm text-[#969696]"
                       >
-                        Read More <FaArrowRight className="ml-2" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/blogs/${blog.id}`}
+                    className="inline-flex items-center text-[#fefeff] hover:text-[#969696] transition-colors"
+                  >
+                    Read More <FaArrowRight className="ml-2" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

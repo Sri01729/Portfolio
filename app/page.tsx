@@ -75,6 +75,39 @@ const audienceContent = {
   }
 };
 
+const featuredBlogs = [
+  {
+    id: "intui-cell-luna",
+    title: "A New Dawn for AI: IntuiCell Introduces a Paradigm Shift in Intelligence",
+    description: "Discover how IntuiCell is challenging the foundations of current Artificial Intelligence with a novel approach inspired by neuroscience, culminating in Luna, a robot that learns autonomously in real-time.",
+    date: "2024-05-20",
+    readTime: "7 min read",
+    category: "Artificial Intelligence",
+    tags: ["AI", "Machine Learning", "Neuroscience", "Robotics", "Autonomous Learning"],
+    thumbnail: "/blog-thumbnails/intui-cell-luna.jpg"
+  },
+  {
+    id: "Building-Responsive-UIs-with-Tailwind-CSS",
+    title: "Building Responsive UIs with Tailwind CSS",
+    description: "Learn how to create beautiful, responsive user interfaces using Tailwind CSS. This guide covers the fundamentals and advanced techniques for building modern web applications.",
+    date: "April 15, 2025",
+    readTime: "8 min read",
+    category: "Frontend",
+    tags: ["Tailwind CSS", "Responsive Design", "Web Development"],
+    thumbnail: "/blog-thumbnails/tailwind-css.jpg"
+  },
+  {
+    id: "The-Power-of-AI-in-Modern-Web-Applications",
+    title: "The Power of AI in Modern Web Applications",
+    description: "Explore how artificial intelligence is transforming web development and user experiences. Discover practical applications and implementation strategies for integrating AI into your projects.",
+    date: "April 10, 2025",
+    readTime: "10 min read",
+    category: "AI",
+    tags: ["Artificial Intelligence", "Web Development", "Machine Learning"],
+    thumbnail: "/blog-thumbnails/ai-web-apps.jpg"
+  }
+];
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("intro");

@@ -124,7 +124,7 @@ const Blogs = () => {
           <div className="md:col-span-2">
             <div className="grid grid-cols-1 gap-8 mt-0 md:mt-48 md:pt-4">
               {featuredBlogs.map((blog, index) => (
-                <TiltCard key={blog.slug} index={index}>
+                <TiltCard key={blog.id} index={index}>
                   <div className="p-6">
                     <div className="flex items-center gap-4 text-xs text-[#969696] mb-2">
                       <span>{blog.date}</span>
@@ -148,7 +148,7 @@ const Blogs = () => {
                       ))}
                     </div>
                     <Link
-                      href={`/blogs/${blog.slug}`}
+                      href={`/blogs/${blog.id}`}
                       className="inline-flex items-center text-sm text-[#fefeff] hover:text-[#969696] transition-colors"
                     >
                       Read More <FaArrowRight className="ml-2 text-xs" />
