@@ -52,6 +52,7 @@ const About = () => {
                     </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                         {/* Third section - second column */}
                         <div className="max-w-md">
                             <h3 className="text-2xl font-medium mb-4">My Approach</h3>
@@ -88,6 +89,8 @@ const About = () => {
                                 endeavours. This passion is the cornerstone of my
                                 professional journey.
 =======
+=======
+>>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
                     <div className="md:col-span-1 md:col-start-3 md:mt-32">
                         <div className="space-y-8">
                             <p className="text-sm text-[#fefeff]">
@@ -95,6 +98,9 @@ const About = () => {
                                 work. The art of creation is the one I admire the most, and it is the driving force behind my daily endeavours. This
                                 passion is the cornerstone of my professional
                                 journey.
+<<<<<<< HEAD
+>>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
+=======
 >>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
                             </p>
                         </div>
