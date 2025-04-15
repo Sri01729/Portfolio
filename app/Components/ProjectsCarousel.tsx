@@ -409,14 +409,14 @@ export default function StickyScrollRevealProjects() {
                             }}
                             className="space-y-4 px-4"
                         >
-                            <h3 className="text-2xl font-medium text-[#fefeff]">{currentProject.title}</h3>
-                            <p className="text-sm text-[#969696]">{currentProject.description}</p>
+                            <h3 className="text-2xl font-medium text-slate-100">{currentProject.title}</h3>
+                            <p className="text-slate-300">{currentProject.description}</p>
 
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {currentProject.tags.map((tag, index) => (
                                     <span
                                         key={index}
-                                        className="bg-black/40 text-[#969696] text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
+                                        className="bg-black/40 text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
                                     >
                                         {tag}
                                     </span>
@@ -426,7 +426,7 @@ export default function StickyScrollRevealProjects() {
                             <div className="flex items-center gap-4 mt-4">
                                 <Link
                                     href={`/projects/${currentProject.slug}`}
-                                    className="text-[#fefeff] hover:text-[#969696] transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
+                                    className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
                                 >
                                     View Details
                                 </Link>
@@ -483,92 +483,83 @@ export default function StickyScrollRevealProjects() {
 
             {/* Desktop View - Sticky Scroll */}
             <div className="hidden md:block w-full py-8 bg-transparent overflow-hidden">
-                <div className="relative">
-                    <div className="absolute top-2 left-2 z-10 bg-black/60 text-[#969696] text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                        <span>Scroll to explore</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 19V5"></path>
-                            <path d="m5 12 7-7 7 7"></path>
-                        </svg>
-                    </div>
-                    <StickyScroll
-                        content={projects.map((project) => ({
-                            title: project.title,
-                            description: (
-                                <div className="space-y-4">
-                                    <p className="text-sm text-[#969696]">{project.description}</p>
+      <StickyScroll
+        content={projects.map((project) => ({
+          title: project.title,
+          description: (
+            <div className="space-y-4">
+              <p className="text-slate-300">{project.description}</p>
 
-                                    <div className="flex flex-wrap gap-2 mt-4">
-                                        {project.tags.map((tag, index) => (
-                                            <span
-                                                key={index}
-                                                className="bg-black/40 text-[#969696] text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-slate-800/70 text-slate-200 text-xs font-medium px-2.5 py-1 rounded-full border border-slate-700/50"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-                                    <div className="flex items-center gap-4 mt-4">
-                                        <Link
-                                            href={`/projects/${project.slug}`}
-                                            className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
-                                        >
-                                            View Details
-                                        </Link>
-                                        <div className="flex items-center gap-3 ml-2">
-                                            {project.platforms.map((Platform, index) => (
-                                                <Platform.icon
-                                                    key={index}
-                                                    className="text-xl"
-                                                    style={{ color: Platform.color }}
-                                                    title={project.tags[index]}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ),
-                            content: (
-                                <div className="w-full h-full overflow-hidden rounded-lg">
-                                    {project.video && (
-                                        <video
-                                            key={project.video}
-                                            width="100%"
-                                            height="100%"
-                                            autoPlay
-                                            loop
-                                            muted
-                                            controls
-                                            playsInline
-                                            className="object-cover w-full h-full"
-                                        >
-                                            <source src={project.video} type="video/mp4" />
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    )}
-                                </div>
-                            ),
-                        }))}
-                        contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
+              <div className="flex items-center gap-4 mt-4">
+                                    <Link
+                                        href={`/projects/${project.slug}`}
+                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
+                >
+                                        View Details
+                                    </Link>
+                <div className="flex items-center gap-3 ml-2">
+                  {project.platforms.map((Platform, index) => (
+                    <Platform.icon
+                      key={index}
+                      className="text-xl"
+                      style={{ color: Platform.color }}
+                      title={project.tags[index]}
                     />
+                  ))}
                 </div>
+              </div>
+            </div>
+          ),
+          content: (
+            <div className="w-full h-full overflow-hidden rounded-lg">
+              {project.video && (
+                <video
+                  key={project.video}
+                  width="100%"
+                  height="100%"
+                  autoPlay
+                  loop
+                  muted
+                  controls
+                  playsInline
+                  className="object-cover w-full h-full"
+                >
+                  <source src={project.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+          ),
+        }))}
+        contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
+                />
             </div>
 
-            <div className="flex justify-center">
-                <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto">
-                    find more on my{" "}
-                    <a
-                        href="https://github.com/Sri01729"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-[#969696]"
-                        style={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                        GitHub &#x2197;
-                    </a>
-                </p>
-            </div>
+                <div className="flex justify-center">
+                 <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
+                find more on my{" "}
+                <a
+                  href="https://github.com/Sri01729"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-sky-500"
+                  style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  GitHub &#x2197;
+                </a>
+              </p>
+              </div>
         </motion.div>
-    )
+  )
 }

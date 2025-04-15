@@ -3,8 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
-import { useState, useRef, ReactNode, useEffect } from 'react';
-import { BlogPost, getAllBlogPosts } from '@/lib/blog';
+import { useState, useRef, ReactNode } from 'react';
 
 interface TiltCardProps {
   children: ReactNode;
@@ -90,15 +89,28 @@ const TiltCard = ({ children, index }: TiltCardProps) => {
 };
 
 const Blogs = () => {
-  const [featuredBlogs, setFeaturedBlogs] = useState<BlogPost[]>([]);
-
-  useEffect(() => {
-    const loadBlogs = async () => {
-      const blogs = await getAllBlogPosts();
-      setFeaturedBlogs(blogs.slice(0, 2)); // Show only first 2 blogs
-    };
-    loadBlogs();
-  }, []);
+  const featuredBlogs = [
+    {
+      title: "Building Scalable Web Applications",
+      description: "Learn about the best practices and architecture patterns for building scalable web applications.",
+      date: "2024-03-15",
+      readTime: "5 min read",
+      category: "Development",
+      tags: ["Web Development", "Architecture", "Scalability"],
+      slug: "building-scalable-web-applications",
+      thumbnail: "/blog1.jpg"
+    },
+    {
+      title: "The Future of AI in Web Development",
+      description: "Exploring how artificial intelligence is transforming the way we build and interact with web applications.",
+      date: "2024-03-10",
+      readTime: "4 min read",
+      category: "AI",
+      tags: ["Artificial Intelligence", "Web Development", "Future Tech"],
+      slug: "future-of-ai-web-development",
+      thumbnail: "/blog2.jpg"
+    }
+  ];
 
   return (
     <div className="max-w-7xl">
@@ -111,14 +123,20 @@ const Blogs = () => {
       >
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
-            <div className="sticky top-8">
-              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
-                thoughts & writing.
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <h2 className="text-3xl md:text-5xl font-medium mb-8 max-w-2xl group relative">
+                Thoughts & Writings.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                  A collection of my thoughts, insights, and experiences in software development, design, and technology.
+                  A collection of insights, tutorials, and reflections on software development and technology. Here, I share my experiences, lessons learned, and thoughts on the ever-evolving tech landscape.
                 </span>
               </h2>
-            </div>
+            </motion.div>
           </div>
 
           <div className="md:col-span-2">
