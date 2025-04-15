@@ -63,7 +63,7 @@ module.exports = {
         >
           <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden">
             <Image
-              src="/blog-thumbnails/tailwind-css.jpg"
+              src="/tailwind.png"
               alt="Tailwind CSS"
               fill
               className="object-cover"

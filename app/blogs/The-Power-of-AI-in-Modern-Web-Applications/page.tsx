@@ -151,7 +151,7 @@ export default RecommendationEngine;`;
         >
           <div className="relative w-full h-64 md:h-80 mb-8 rounded-lg overflow-hidden">
             <Image
-              src="/blog-thumbnails/ai-web-apps.jpg"
+              src="/ai-web.png"
               alt="AI in Web Applications"
               fill
               className="object-cover"
