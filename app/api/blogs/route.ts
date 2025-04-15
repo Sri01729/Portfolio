@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -7,7 +7,7 @@ import html from 'remark-html'
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs')
 
-export async function GET() {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const fileNames = fs.readdirSync(blogsDirectory)
     const allPostsData = await Promise.all(
