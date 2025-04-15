@@ -41,15 +41,6 @@
     "react-simple-typewriter": "^5.0.1",
     "react-type-animation": "^3.2.0",
     "react-typed": "^2.0.12",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "rehype-prism-plus": "^2.0.1",
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-=======
->>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
-=======
->>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
     "svg-path-commander": "^2.1.10",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"

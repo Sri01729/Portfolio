@@ -19,6 +19,7 @@ const About = () => {
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8">
+
                     <div className="md:col-span-1 md:col-start-2">
                         <div className="space-y-8">
                             <p className="text-sm text-[#fefeff]">
@@ -55,7 +56,8 @@ const About = () => {
                             <p className="text-sm text-[#fefeff]">
                                 The urge to create something new and fresh from my hands is the one thing that always motivates me to
                                 work. The art of creation is the one I admire the most, and it is the driving force behind my daily endeavours. This
-                                passion is the cornerstone of my professional journey.
+                                passion is the cornerstone of my professional
+                                journey.
                             </p>
                         </div>
                     </div>
