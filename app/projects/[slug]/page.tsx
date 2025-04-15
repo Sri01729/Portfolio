@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
-import StarField from "@/app/Components/StarField";
 
 // Project data with detailed information
 const projectDetails = {
@@ -337,7 +336,6 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <StarField />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Link
           href="/"
