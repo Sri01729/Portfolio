@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
-const projects = [
+export const projects = [
     {
     "title": "QuizScraper",
     "description": "QuizScraper is a Chrome extension that dynamically generates quizzes from any webpage content. It transforms articles, documentation, and PDFs into interactive learning experiences with multiple question types including code snippets, conceptual questions, and visual diagram challenges. I built this to solve the problem of passive reading by creating instant knowledge tests tailored to the content users are actively engaging with.",
@@ -24,6 +24,68 @@ const projects = [
       { "icon": PiOpenAiLogo, "color": "#00A4EF" }
     ],
     "video": "/QuizScraper-demo.mp4",
+    "details": {
+      "overview": "QuizScraper is a Chrome extension that dynamically generates quizzes from any webpage content. It transforms articles, documentation, and PDFs into interactive learning experiences with multiple question types including code snippets, conceptual questions, and visual diagram challenges.\n\nTo solve the problem of passive reading by creating instant knowledge tests tailored to the content users are actively engaging with.",
+      "role": "Full Stack Developer",
+      "responsibilities": [
+        "Designed and implemented the Chrome extension architecture",
+        "Developed the quiz generation algorithm using OpenAI's API",
+        "Created the user interface for quiz display and interaction",
+        "Implemented Mermaid.js integration for diagram-based questions",
+        "Built the backend API for processing webpage content"
+      ],
+      "technologies": {
+        "frontend": ["JavaScript", "React", "Chrome Extension API", "Mermaid.js"],
+        "backend": ["Node.js", "Express", "OpenAI API"],
+        "database": ["MongoDB"],
+        "tools": ["Git", "VS Code", "Chrome DevTools"]
+      },
+      "process": [
+        "Agile Development with 2-week sprints",
+        "Requirements gathering and planning",
+        "Prototype development",
+        "Core functionality implementation",
+        "Testing and refinement",
+        "Deployment and monitoring"
+      ],
+      "challenges": [
+        {
+          "challenge": "Processing complex webpage content",
+          "solution": "Implemented a robust HTML parser with custom filtering for different content types"
+        },
+        {
+          "challenge": "Generating relevant questions",
+          "solution": "Created a sophisticated prompt engineering system for OpenAI API"
+        },
+        {
+          "challenge": "Performance optimization",
+          "solution": "Implemented caching and lazy loading for better extension performance"
+        }
+      ],
+      "outcomes": {
+        "metrics": [
+          "Successfully deployed to Chrome Web Store",
+          "Achieved 4.5/5 user rating",
+          "Processed over 10,000 webpages",
+          "Generated 50,000+ questions"
+        ],
+        "feedback": [
+          "Users reported improved learning retention",
+          "Positive feedback on question quality",
+          "Appreciation for the intuitive interface"
+        ]
+      },
+      "learnings": [
+        "Deep understanding of Chrome Extension development",
+        "Advanced prompt engineering techniques",
+        "Performance optimization for browser extensions",
+        "User experience design for educational tools"
+      ],
+      "links": {
+        "github": "https://github.com/yourusername/QuizScraper",
+        "demo": "https://chrome.google.com/webstore/detail/quizscraper"
+      }
+    }
 },
   {
     title: "RedinAI",
@@ -39,6 +101,68 @@ const projects = [
       { icon: BiLogoPostgresql, color: "#336791" },
     ],
     video: "/RedinAI.mp4",
+    details: {
+      overview: "RedinAI is an AI assistant that analyzes Reddit posts and comments to provide insightful answers based on user questions. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers.\n\nTo address the challenge of absorbing knowledge from lengthy Reddit threads by providing AI-powered analysis and insights.",
+      role: "Full Stack Developer",
+      responsibilities: [
+        "Architected the full-stack application",
+        "Developed the frontend using Next.js",
+        "Built the backend with Spring Boot",
+        "Integrated OpenAI API for content analysis",
+        "Implemented PostgreSQL database design"
+      ],
+      technologies: {
+        frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        backend: ["Spring Boot", "Java", "OpenAI API"],
+        database: ["PostgreSQL"],
+        tools: ["Git", "IntelliJ IDEA", "VS Code"]
+      },
+      process: [
+        "Scrum with weekly sprints",
+        "System architecture design",
+        "Database schema development",
+        "API implementation",
+        "Frontend development",
+        "Integration and testing",
+        "Deployment and monitoring"
+      ],
+      challenges: [
+        {
+          challenge: "Handling Reddit API rate limits",
+          solution: "Implemented efficient caching and request queuing"
+        },
+        {
+          challenge: "Processing large Reddit threads",
+          solution: "Developed a smart content summarization algorithm"
+        },
+        {
+          challenge: "Real-time response generation",
+          solution: "Optimized OpenAI API calls with streaming responses"
+        }
+      ],
+      outcomes: {
+        metrics: [
+          "Processed over 5,000 Reddit threads",
+          "Generated 20,000+ AI responses",
+          "Achieved 90% user satisfaction rate"
+        ],
+        feedback: [
+          "Users found the AI responses highly relevant",
+          "Positive feedback on response time",
+          "Appreciation for the intuitive interface"
+        ]
+      },
+      learnings: [
+        "Advanced Spring Boot application development",
+        "Next.js and React best practices",
+        "Database optimization techniques",
+        "AI integration patterns"
+      ],
+      links: {
+        github: "https://github.com/yourusername/RedinAI",
+        demo: "https://redinai-demo.com"
+      }
+    }
   },
   {
     title: "Browzio",
@@ -49,6 +173,66 @@ const projects = [
     slug: "browzio",
     platforms: [{ icon: FaFirefox, color: "#FF7139" }],
     video: "/Browzio.mp4",
+    details: {
+      overview: "Browzio is a powerful and fun browser extension designed to help users track and analyze their online activity effortlessly. Whether you're a developer, student, or professional, Browzio provides you with insightful metrics about your browsing habits.\n\nTo help users understand and optimize their browsing habits through data-driven insights.",
+      role: "Solo Developer",
+      responsibilities: [
+        "Designed and implemented the Firefox extension",
+        "Developed the activity tracking system",
+        "Created the analytics dashboard",
+        "Implemented data visualization features",
+        "Built the settings and configuration system"
+      ],
+      technologies: {
+        frontend: ["JavaScript", "Firefox Web Extension API", "Chart.js"],
+        storage: ["Local Storage", "IndexedDB"],
+        tools: ["Git", "VS Code", "Firefox Developer Tools"]
+      },
+      process: [
+        "Iterative Development",
+        "Extension architecture design",
+        "Core functionality implementation",
+        "UI/UX development",
+        "Testing and refinement",
+        "Firefox Add-ons submission"
+      ],
+      challenges: [
+        {
+          challenge: "Accurate activity tracking",
+          solution: "Implemented robust event listeners and data validation"
+        },
+        {
+          challenge: "Data privacy concerns",
+          solution: "Developed local-only storage with encryption"
+        },
+        {
+          challenge: "Performance impact",
+          solution: "Optimized tracking algorithms and storage patterns"
+        }
+      ],
+      outcomes: {
+        metrics: [
+          "Successfully published on Firefox Add-ons",
+          "Achieved 4.3/5 user rating",
+          "Processed over 1 million browsing events"
+        ],
+        feedback: [
+          "Users appreciated the privacy-focused approach",
+          "Positive feedback on the intuitive interface",
+          "Valuable insights into browsing patterns"
+        ]
+      },
+      learnings: [
+        "Firefox Web Extension development",
+        "Data visualization techniques",
+        "Privacy-focused development practices",
+        "Performance optimization for browser extensions"
+      ],
+      links: {
+        github: "https://github.com/yourusername/Browzio",
+        demo: "https://addons.mozilla.org/en-US/firefox/addon/browzio/"
+      }
+    }
   },
   {
     title: "Apple Website Replica",
@@ -63,6 +247,66 @@ const projects = [
       { icon: TbBrandVite, color: "#b45ee3" },
     ],
     video: "/apple.mp4",
+    details: {
+      overview: "A responsive replica of the Apple website homepage, built with modern web technologies to create a seamless and interactive user experience. The project showcases advanced animations, 3D visual effects, and smooth transitions.\n\nTo demonstrate proficiency in creating high-end, interactive web experiences with modern web technologies.",
+      role: "Frontend Developer",
+      responsibilities: [
+        "Implemented 3D animations and effects",
+        "Developed responsive layouts",
+        "Created interactive components",
+        "Optimized performance",
+        "Implemented smooth transitions"
+      ],
+      technologies: {
+        frontend: ["React", "Three.js", "React Three Fiber", "React Three Drei", "GSAP"],
+        build: ["Vite"],
+        tools: ["Git", "VS Code", "Chrome DevTools"]
+      },
+      process: [
+        "Component-Driven Development",
+        "UI/UX analysis",
+        "Component architecture",
+        "3D implementation",
+        "Animation development",
+        "Performance optimization"
+      ],
+      challenges: [
+        {
+          challenge: "Complex 3D animations",
+          solution: "Leveraged React Three Fiber for efficient 3D rendering"
+        },
+        {
+          challenge: "Performance optimization",
+          solution: "Implemented code splitting and lazy loading"
+        },
+        {
+          challenge: "Responsive design",
+          solution: "Created adaptive layouts with CSS Grid and Flexbox"
+        }
+      ],
+      outcomes: {
+        metrics: [
+          "Achieved 95% Lighthouse performance score",
+          "Successfully replicated key Apple website features",
+          "Received positive feedback on animations"
+        ],
+        feedback: [
+          "Users were impressed by the smooth animations",
+          "Positive feedback on the responsive design",
+          "Appreciation for attention to detail"
+        ]
+      },
+      learnings: [
+        "Advanced 3D web development",
+        "Performance optimization techniques",
+        "Animation best practices",
+        "Responsive design patterns"
+      ],
+      links: {
+        github: "https://github.com/sri01729/apple-website-homepage-mimic",
+        demo: "https://apple-website-replica-demo.com"
+      }
+    }
   },
 ]
 

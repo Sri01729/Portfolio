@@ -4,6 +4,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
+import rehypePrism from 'rehype-prism-plus'
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs')
 
@@ -19,6 +20,7 @@ export async function GET(
 
     const processedContent = await remark()
       .use(html)
+      .use(rehypePrism)
       .process(content)
     const contentHtml = processedContent.toString()
 

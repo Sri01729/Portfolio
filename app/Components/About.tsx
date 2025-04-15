@@ -75,6 +75,7 @@ const About = () => {
 
                         {/* Fifth section - second column */}
                         <div className="max-w-md">
+                             <h3 className="text-2xl font-medium mb-4">Motivation</h3>
                             <p className="text-sm text-[#969696]">
                                 The urge to create something new and fresh from my
                                 hands is the one thing that always motivates me to
