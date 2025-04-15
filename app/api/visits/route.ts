@@ -1,45 +1,85 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { supabase } from '@/lib/supabase';
 
-// Path to the JSON file that will store the visit count
-const dataFilePath = path.join(process.cwd(), 'data', 'visits.json');
+// Table name for storing the visit count
+const VISITS_TABLE = 'visits';
 
-// Ensure the data directory exists
-const ensureDataDir = () => {
-  const dataDir = path.join(process.cwd(), 'data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-};
-
-// Initialize the visits file if it doesn't exist
-const initializeVisitsFile = () => {
-  ensureDataDir();
-  if (!fs.existsSync(dataFilePath)) {
-    fs.writeFileSync(dataFilePath, JSON.stringify({ count: 0 }), 'utf8');
-  }
+// Type for the visits table row
+type VisitRow = {
+  id: number;
+  count: number;
 };
 
 // Get the current visit count
-const getVisitCount = () => {
-  initializeVisitsFile();
-  const data = fs.readFileSync(dataFilePath, 'utf8');
-  return JSON.parse(data).count;
+const getVisitCount = async () => {
+  try {
+    const { data, error } = await supabase
+      .from(VISITS_TABLE)
+      .select('count')
+      .single();
+
+    if (error) {
+      console.error('Error getting visit count from Supabase:', error);
+      return 0;
+    }
+
+    return data?.count || 0;
+  } catch (error) {
+    console.error('Error getting visit count from Supabase:', error);
+    return 0;
+  }
 };
 
 // Increment the visit count
-const incrementVisitCount = () => {
-  initializeVisitsFile();
-  const data = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
-  data.count += 1;
-  fs.writeFileSync(dataFilePath, JSON.stringify(data), 'utf8');
-  return data.count;
+const incrementVisitCount = async () => {
+  try {
+    // First, get the current count
+    const { data: currentData, error: getError } = await supabase
+      .from(VISITS_TABLE)
+      .select('*')
+      .single();
+
+    if (getError && getError.code !== 'PGRST116') { // PGRST116 is "no rows returned"
+      console.error('Error getting current count from Supabase:', getError);
+      return 0;
+    }
+
+    const currentCount = (currentData as VisitRow)?.count || 0;
+    const newCount = currentCount + 1;
+
+    // If no record exists, create one
+    if (!currentData) {
+      const { error: insertError } = await supabase
+        .from(VISITS_TABLE)
+        .insert([{ count: newCount }]);
+
+      if (insertError) {
+        console.error('Error inserting new count to Supabase:', insertError);
+        return 0;
+      }
+    } else {
+      // Update the existing record
+      const { error: updateError } = await supabase
+        .from(VISITS_TABLE)
+        .update({ count: newCount })
+        .eq('id', (currentData as VisitRow).id);
+
+      if (updateError) {
+        console.error('Error updating count in Supabase:', updateError);
+        return 0;
+      }
+    }
+
+    return newCount;
+  } catch (error) {
+    console.error('Error incrementing visit count in Supabase:', error);
+    return 0;
+  }
 };
 
 export async function GET() {
   try {
-    const count = getVisitCount();
+    const count = await getVisitCount();
     return NextResponse.json({ count });
   } catch (error) {
     console.error('Error getting visit count:', error);
@@ -49,7 +89,7 @@ export async function GET() {
 
 export async function POST() {
   try {
-    const count = incrementVisitCount();
+    const count = await incrementVisitCount();
     return NextResponse.json({ count });
   } catch (error) {
     console.error('Error incrementing visit count:', error);

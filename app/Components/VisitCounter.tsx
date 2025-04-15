@@ -2,67 +2,49 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const VisitCounter = () => {
-  const [count, setCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+export default function VisitCounter() {
+  const [count, setCount] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchAndIncrementCount = async () => {
+    const fetchCount = async () => {
       try {
-        // First, get the current count
+        // First get the current count
         const response = await fetch('/api/visits');
         const data = await response.json();
 
         if (data.error) {
           setError(data.error);
-          setIsLoading(false);
           return;
         }
 
         setCount(data.count);
 
-        // Then, increment the count
-        const incrementResponse = await fetch('/api/visits', {
-          method: 'POST',
-        });
-
-        const incrementData = await incrementResponse.json();
-
-        if (incrementData.error) {
-          setError(incrementData.error);
-        } else {
-          setCount(incrementData.count);
-        }
-
-        setIsLoading(false);
+        // Then increment it
+        await fetch('/api/visits', { method: 'POST' });
       } catch (err) {
+        setError('Failed to fetch visit count');
         console.error('Error fetching visit count:', err);
-        setError('Failed to load visit count');
-        setIsLoading(false);
       }
     };
 
-    fetchAndIncrementCount();
+    fetchCount();
   }, []);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="text-sm text-[#969696] flex items-center gap-2"
+      className="text-xs text-[#969696]"
     >
-      <div className="w-2 h-2 bg-[#fefeff] rounded-full animate-pulse"></div>
-      <span>
-        {isLoading
-          ? 'Loading visits...'
-          : error
-            ? 'Visit counter unavailable'
-            : `Global Visits: ${count.toLocaleString()}`}
-      </span>
+      {error ? (
+        <span>Error loading visit count</span>
+      ) : count === null ? (
+        <span>Loading...</span>
+      ) : (
+        <span>Visits: {count.toLocaleString()}</span>
+      )}
     </motion.div>
   );
-};
-
-export default VisitCounter;
+}
