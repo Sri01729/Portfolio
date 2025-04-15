@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -24,7 +24,7 @@ export async function GET(
       .process(content)
     const contentHtml = processedContent.toString()
 
-    return Response.json({
+    return NextResponse.json({
       slug: params.slug,
       title: data.title,
       description: data.description,
@@ -37,6 +37,6 @@ export async function GET(
     })
   } catch (error) {
     console.error('Error loading blog post:', error)
-    return Response.json({ error: 'Blog post not found' }, { status: 404 })
+    return NextResponse.json({ error: 'Blog post not found' }, { status: 404 })
   }
 }
