@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -8,12 +8,18 @@ import rehypePrism from 'rehype-prism-plus'
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs')
 
+type Props = {
+  params: {
+    slug: string
+  }
+}
+
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { slug: string } }
-): Promise<NextResponse> {
+  req: NextRequest,
+  context: Props
+) {
   try {
-    const fullPath = path.join(blogsDirectory, `${params.slug}.md`)
+    const fullPath = path.join(blogsDirectory, `${context.params.slug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     const { data, content } = matter(fileContents)
@@ -24,8 +30,8 @@ export async function GET(
       .process(content)
     const contentHtml = processedContent.toString()
 
-    return NextResponse.json({
-      slug: params.slug,
+    return Response.json({
+      slug: context.params.slug,
       title: data.title,
       description: data.description,
       date: data.date,
@@ -37,6 +43,6 @@ export async function GET(
     })
   } catch (error) {
     console.error('Error loading blog post:', error)
-    return NextResponse.json({ error: 'Blog post not found' }, { status: 404 })
+    return Response.json({ error: 'Blog post not found' }, { status: 404 })
   }
 }

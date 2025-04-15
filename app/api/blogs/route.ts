@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -7,7 +7,7 @@ import html from 'remark-html'
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs')
 
-export async function GET(request: NextRequest): Promise<NextResponse> {
+export async function GET(req: NextRequest) {
   try {
     const fileNames = fs.readdirSync(blogsDirectory)
     const allPostsData = await Promise.all(
@@ -39,9 +39,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     // Sort posts by date
     const sortedPosts = allPostsData.sort((a: any, b: any) => (a.date < b.date ? 1 : -1))
 
-    return NextResponse.json(sortedPosts)
+    return Response.json(sortedPosts)
   } catch (error) {
     console.error('Error loading blog posts:', error)
-    return NextResponse.json({ error: 'Failed to load blog posts' }, { status: 500 })
+    return Response.json({ error: 'Failed to load blog posts' }, { status: 500 })
   }
 }
