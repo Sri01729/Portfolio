@@ -13,6 +13,7 @@ import ProjectsCarousel from "./Components/ProjectsCarousel"; // Import the miss
 import Blogs from "./Components/Blogs";
 import VisitCounter from "./Components/VisitCounter";
 import TechStack from "./Components/TechStack";
+import Link from "next/link";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -58,7 +59,7 @@ const audienceContent = {
           href="https://github.com/Sri01729"
           target="_blank"
           rel="noopener noreferrer"
-          className="transition-colors hover:text-sky-500"
+          className="transition-colors hover:text-[#969696]"
           style={{ display: "inline-flex", alignItems: "center" }}
         >
           GitHub &#x2197;
@@ -236,14 +237,16 @@ export default function Home() {
                 >
                   {sections.map(({ id, title }) => (
                     <div key={id} className="mb-6">
-                      <button
-                        onClick={() => scrollToSection(id)}
-                        className="text-2xl font-medium"
+                      <Link
+                        href={`#${id}`}
+                        className={`text-2xl font-medium ${
+                          activeSection === id
+                            ? 'text-[#fefeff]'
+                            : 'text-[#969696] hover:text-[#fefeff]'
+                        }`}
                       >
-                        <span className={`${activeSection === id ? 'text-[#fefeff]' : 'text-[#969696]'}`}>
-                          {title}
-                        </span>
-                      </button>
+                        {title}
+                      </Link>
                     </div>
                   ))}
                 </motion.div>
@@ -292,15 +295,18 @@ export default function Home() {
             <nav className="hidden md:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
               {sections.map(({ id, title }) => (
                 <div key={id} className="mb-4 text-left">
-                  <button
-                    onClick={() => scrollToSection(id)}
-                    className="group flex items-center gap-2 text-sm"
+                  <Link
+                    href={`#${id}`}
+                    className={`group flex items-center gap-2 text-sm ${
+                      activeSection === id
+                        ? 'text-[#fefeff]'
+                        : 'text-[#969696] hover:text-[#fefeff]'
+                    }`}
                   >
-                    <span className={`transition-all duration-300 ${activeSection === id ? 'text-[#fefeff]' : 'text-[#969696]'
-                      }`}>
+                    <span className={`transition-all duration-300`}>
                       {title}
                     </span>
-                  </button>
+                  </Link>
                 </div>
               ))}
             </nav>

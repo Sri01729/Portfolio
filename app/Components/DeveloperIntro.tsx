@@ -13,7 +13,8 @@ const DeveloperIntro = () => {
       wrapper="span"
       cursor={true}
       repeat={Infinity}
-      style={{ fontSize: '1em', display: 'inline-block', color: 'rgb(14 165 233'}}
+      style={{ fontSize: '1em', display: 'inline-block', color: '#969696' }}
+      className="hover:text-[#fefeff] transition-colors"
     />
   );
 };
