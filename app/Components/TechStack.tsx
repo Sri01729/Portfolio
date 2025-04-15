@@ -102,7 +102,6 @@ const TechStack = () => {
                         restitution: 0.4,
                         density: 0.002,
                         isStatic: false,
-                        chamfer: { radius: 10 },
                         collisionFilter: {
                           group: 0,
                           category: 0x0001,
