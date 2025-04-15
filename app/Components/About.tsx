@@ -11,7 +11,13 @@ const About = () => {
                 viewport={{ once: true }}
                 className="max-w-7xl"
             >
-                <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">about.</h2>
+                <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+                  about.
+                  <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                    Get to know the person behind the code. Beyond technical skills, I bring creativity, passion, and a continuous learning mindset to every project and collaboration.
+                  </span>
+                </h2>
+                
                 <div className="grid md:grid-cols-3 gap-8">
 
                     <div className="md:col-span-1 md:col-start-2">

@@ -1,27 +1,49 @@
 "use client";
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaEye } from 'react-icons/fa';
 
-export default function VisitCounter() {
-  const [visits, setVisits] = useState({ total: 0, unique: 0 });
-  const [loading, setLoading] = useState(true);
+const VisitCounter = () => {
+  const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchVisits = async () => {
+    const fetchAndIncrementCount = async () => {
       try {
+        // First, get the current count
         const response = await fetch('/api/visits');
         const data = await response.json();
-        setVisits(data);
-      } catch (error) {
-        console.error('Error fetching visit count:', error);
-      } finally {
-        setLoading(false);
+
+        if (data.error) {
+          setError(data.error);
+          setIsLoading(false);
+          return;
+        }
+
+        setCount(data.count);
+
+        // Then, increment the count
+        const incrementResponse = await fetch('/api/visits', {
+          method: 'POST',
+        });
+
+        const incrementData = await incrementResponse.json();
+
+        if (incrementData.error) {
+          setError(incrementData.error);
+        } else {
+          setCount(incrementData.count);
+        }
+
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error fetching visit count:', err);
+        setError('Failed to load visit count');
+        setIsLoading(false);
       }
     };
 
-    fetchVisits();
+    fetchAndIncrementCount();
   }, []);
 
   return (
@@ -29,17 +51,18 @@ export default function VisitCounter() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center gap-2 text-sm text-[#969696]"
+      className="text-sm text-[#969696] flex items-center gap-2"
     >
-      <FaEye className="text-[#fefeff]" />
+      <div className="w-2 h-2 bg-[#fefeff] rounded-full animate-pulse"></div>
       <span>
-        {loading ? (
-          <span className="inline-block w-4 h-4 border-2 border-[#969696] border-t-transparent rounded-full animate-spin"></span>
-        ) : (
-          <span className="text-[#fefeff]">{visits.total.toLocaleString()}</span>
-        )}
-        {" "}visits
+        {isLoading
+          ? 'Loading visits...'
+          : error
+            ? 'Visit counter unavailable'
+            : `Global Visits: ${count.toLocaleString()}`}
       </span>
     </motion.div>
   );
-}
+};
+
+export default VisitCounter;

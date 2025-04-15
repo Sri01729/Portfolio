@@ -89,7 +89,12 @@ export default function StickyScrollRevealProjects() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="max-w-7xl">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">projects.</h2>
+            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+                projects.
+                <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                    A showcase of my creative endeavors and technical solutions. Each project represents a unique challenge tackled with innovation and attention to detail, demonstrating my passion for building impactful applications.
+                </span>
+            </h2>
 
             {/* Mobile View - Normal Carousel */}
             <div className="md:hidden w-full py-8 bg-transparent overflow-hidden">
@@ -167,7 +172,7 @@ export default function StickyScrollRevealProjects() {
                                 {currentProject.tags.map((tag, index) => (
                                     <span
                                         key={index}
-                                        className="bg-slate-800/70 text-slate-200 text-xs font-medium px-2.5 py-1 rounded-full border border-slate-700/50"
+                                        className="bg-black/40 text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
                                     >
                                         {tag}
                                     </span>
@@ -177,7 +182,7 @@ export default function StickyScrollRevealProjects() {
                             <div className="flex items-center gap-4 mt-4">
                                 <Link
                                     href={`/projects/${currentProject.slug}`}
-                                    className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
+                                    className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
                                 >
                                     View Details
                                 </Link>
@@ -234,83 +239,83 @@ export default function StickyScrollRevealProjects() {
 
             {/* Desktop View - Sticky Scroll */}
             <div className="hidden md:block w-full py-8 bg-transparent overflow-hidden">
-                <StickyScroll
-                    content={projects.map((project) => ({
-                        title: project.title,
-                        description: (
-                            <div className="space-y-4">
-                                <p className="text-slate-300">{project.description}</p>
+      <StickyScroll
+        content={projects.map((project) => ({
+          title: project.title,
+          description: (
+            <div className="space-y-4">
+              <p className="text-slate-300">{project.description}</p>
 
-                                <div className="flex flex-wrap gap-2 mt-4">
-                                    {project.tags.map((tag, index) => (
-                                        <span
-                                            key={index}
-                                            className="bg-slate-800/70 text-slate-200 text-xs font-medium px-2.5 py-1 rounded-full border border-slate-700/50"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-slate-800/70 text-slate-200 text-xs font-medium px-2.5 py-1 rounded-full border border-slate-700/50"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-                                <div className="flex items-center gap-4 mt-4">
+              <div className="flex items-center gap-4 mt-4">
                                     <Link
                                         href={`/projects/${project.slug}`}
-                                        className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
-                                    >
+                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
+                >
                                         View Details
                                     </Link>
-                                    <div className="flex items-center gap-3 ml-2">
-                                        {project.platforms.map((Platform, index) => (
-                                            <Platform.icon
-                                                key={index}
-                                                className="text-xl"
-                                                style={{ color: Platform.color }}
-                                                title={project.tags[index]}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ),
-                        content: (
-                            <div className="w-full h-full overflow-hidden rounded-lg">
-                                {project.video && (
-                                    <video
-                                        key={project.video}
-                                        width="100%"
-                                        height="100%"
-                                        autoPlay
-                                        loop
-                                        muted
-                                        controls
-                                        playsInline
-                                        className="object-cover w-full h-full"
-                                    >
-                                        <source src={project.video} type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                )}
-                            </div>
-                        ),
-                    }))}
-                    contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
+                <div className="flex items-center gap-3 ml-2">
+                  {project.platforms.map((Platform, index) => (
+                    <Platform.icon
+                      key={index}
+                      className="text-xl"
+                      style={{ color: Platform.color }}
+                      title={project.tags[index]}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ),
+          content: (
+            <div className="w-full h-full overflow-hidden rounded-lg">
+              {project.video && (
+                <video
+                  key={project.video}
+                  width="100%"
+                  height="100%"
+                  autoPlay
+                  loop
+                  muted
+                  controls
+                  playsInline
+                  className="object-cover w-full h-full"
+                >
+                  <source src={project.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+          ),
+        }))}
+        contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
                 />
             </div>
 
-            <div className="flex justify-center">
-                <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
-                    find more on my{" "}
-                    <a
-                        href="https://github.com/Sri01729"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-sky-500"
-                        style={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                        GitHub &#x2197;
-                    </a>
-                </p>
-            </div>
+                <div className="flex justify-center">
+                 <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
+                find more on my{" "}
+                <a
+                  href="https://github.com/Sri01729"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-sky-500"
+                  style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  GitHub &#x2197;
+                </a>
+              </p>
+              </div>
         </motion.div>
-    )
+  )
 }

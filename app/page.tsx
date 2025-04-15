@@ -5,12 +5,14 @@ import { Space_Grotesk } from "next/font/google";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
+import Projects from "./Components/Projects";
 import Experience from "./Components/Experience";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import ProjectsCarousel from "./Components/ProjectsCarousel"; // Import the missing component
 import Blogs from "./Components/Blogs";
 import VisitCounter from "./Components/VisitCounter";
+import TechStack from "./Components/TechStack";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -21,6 +23,7 @@ const spaceGrotesk = Space_Grotesk({
 const sections = [
   { id: "intro", title: "Intro" },
   { id: "work", title: "Work" },
+  { id: "tech", title: "Tech" },
   { id: "background", title: "Background" },
   { id: "blogs", title: "Blogs" },
   { id: "about", title: "About" },
@@ -341,6 +344,11 @@ export default function Home() {
                <ProjectsCarousel />
               </section>
 
+              {/* Tech Stack Section */}
+              <section id="tech" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+               <TechStack />
+              </section>
+
               {/* Background Section */}
               <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
                <Experience />
@@ -365,7 +373,7 @@ export default function Home() {
             {/* Footer */}
             <footer className="px-4 md:px-24 py-8 text-[#969696] md:ml-16">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <span className="text-sm text-center md:text-left">© 2025 Srinivas Alahari. All rights reserved.</span>
+                <span className="text-sm text-center md:text-left">© 2025 Sai Srinivas Alahari. All rights reserved.</span>
                 <VisitCounter />
               </div>
             </footer>

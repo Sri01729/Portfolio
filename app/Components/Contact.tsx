@@ -1,86 +1,263 @@
-import React from 'react'
-import Image from "next/image";
+'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
+// Import EmailJS
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    // Initialize EmailJS with your Public Key
+    // Ensure you replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY');
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      if (!formRef.current) {
+        console.error('Form ref is not attached.');
+        setSubmitStatus('error');
+        setErrorMessage('An internal error occurred. Please try again.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Ensure you replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS IDs
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' }); // Reset form
+      } else {
+        console.error('EmailJS send failed:', result);
+        setSubmitStatus('error');
+        setErrorMessage('Failed to send message. Please check your input and try again.');
+      }
+    } catch (error: any) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+      setErrorMessage(`An unexpected error occurred: ${error.message}. Please try again later or email me directly.`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <>
-       <motion.div
-                  initial={{ y: 100, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="max-w-7xl"
-                >
+    <div className="max-w-7xl">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="max-w-7xl"
+      >
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-4"
-          >
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl">
-             Contact.
-            </h2>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <h2 className="text-3xl md:text-5xl font-medium mb-8 max-w-2xl group relative">
+                Contact.
+                <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                  Let's connect and explore potential collaborations. Whether you have a project in mind, a question about my work, or just want to say hello, I'm always open to new conversations and opportunities.
+                </span>
+              </h2>
+            </motion.div>
+          </div>
 
-          </motion.div>
-        </div>
-                    <div className="md:col-span-2 md:col-start-2">
-                      <div className="space-y-8 max-w-2xl mt-0 md:mt-32 md:pt-4 text-center md:text-left">
-                        <Image
-                          src="/srinivas_alahari.png"
-                          alt="Sai Srinivas Alahari"
-                          width={300}
-                          height={200}
-                          className="mb-8 rounded-xl mx-auto md:mx-0"
-                        />
-                        <p className="text-xl md:text-xl text-[#fefeff] underline">saialahariedu@gmail.com</p>
-                        <div className="flex items-center gap-2 justify-center md:justify-start">
-                          <div className="relative">
-                            <div className="w-2 h-2 bg-[#fefeff] rounded-full animate-pulse"></div>
-                            <div className="absolute top-0 left-0 w-2 h-2 bg-[#fefeff] rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
-                          </div>
-                          <p className="text-l text-[#969696]">Looking for new opportunities.</p>
+          <div className="md:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-8 mt-0 md:mt-48 md:pt-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-white/5 to-white/10 rounded-xl blur opacity-20"></div>
+                <div className="relative bg-transparent border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors">
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-full overflow-hidden border-2 border-white/10">
+                      <Image
+                        src="/srinivas_alahari.png"
+                        alt="Sai Srinivas Alahari"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl font-medium text-[#fefeff] mb-2">Sai Srinivas Alahari</h3>
+                      <p className="text-[#969696] mb-4">Software Developer</p>
+                      <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                        <div className="relative">
+                          <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse"></div>
+                          <div className="absolute top-0 left-0 w-2 h-2 bg-white/50 rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
                         </div>
-                        <div className="flex gap-8 md:gap-20 pt-8 justify-center md:justify-start">
-
-
-                          <a
-                            href="https://www.linkedin.com/in/sai-srinivas-alahari-924303252/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm flex flex-row"
-                          >
-                            <FaLinkedin size={16} /> LinkedIn
-                          </a>
-
-                          <a
-                            href="https://github.com/Sri01729/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm flex flex-row"
-                          >
-
-                            <FaGithub size={16} />GitHub
-                          </a>
-                          <a
-                            href="mailto:saialahariedu@gmail.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#969696] hover:text-[#fefeff] transition-colors text-sm flex flex-row"
-                          >
-                            <Mail size={16} />Mail
-                          </a>
-                        </div>
+                        <p className="text-sm text-[#969696]">Looking for new opportunities</p>
                       </div>
+                      <a
+                        href="mailto:saialahariedu@gmail.com"
+                        className="text-[#fefeff] hover:text-[#969696] transition-colors text-sm flex items-center gap-1 justify-center md:justify-start"
+                      >
+                        <Mail size={16} /> saialahariedu@gmail.com
+                      </a>
                     </div>
                   </div>
-                </motion.div>
-    </>
-  )
-}
+                </div>
+              </motion.div>
 
-export default Contact
+              {/* Contact Form */}
+              <motion.form
+                ref={formRef}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                onSubmit={handleSubmit}
+                className="space-y-6 bg-transparent border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors"
+              >
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm text-[#969696] mb-2">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm text-[#969696] mb-2">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm text-[#969696] mb-2">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={4}
+                      className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20 resize-none"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-6 py-3 text-sm text-[#fefeff] font-medium hover:border-white/20 hover:text-[#969696] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-sm text-green-400">Message sent successfully! I'll get back to you soon.</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-sm text-red-400">
+                    {errorMessage || 'Failed to send message. Please try again or email me directly.'}
+                  </p>
+                )}
+              </motion.form>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex flex-wrap gap-4 justify-center md:justify-start"
+              >
+                <a
+                  href="https://www.linkedin.com/in/sai-srinivas-alahari-924303252/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-[#fefeff] hover:border-white/20 hover:text-[#969696] transition-colors flex items-center gap-2"
+                >
+                  <FaLinkedin size={18} /> LinkedIn
+                </a>
+
+                <a
+                  href="https://github.com/Sri01729/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-[#fefeff] hover:border-white/20 hover:text-[#969696] transition-colors flex items-center gap-2"
+                >
+                  <FaGithub size={18} /> GitHub
+                </a>
+
+                <a
+                  href="mailto:saialahariedu@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-[#fefeff] hover:border-white/20 hover:text-[#969696] transition-colors flex items-center gap-2"
+                >
+                  <Mail size={18} /> Email
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default Contact;

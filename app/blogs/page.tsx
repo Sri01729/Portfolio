@@ -140,10 +140,10 @@ export default function BlogsPage() {
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-[#60A5FA]">
+              <h1 className="text-4xl md:text-7xl font-medium text-[#fefeff]">
                 Thoughts & Writings
               </h1>
-              <p className="text-xl text-gray-300">
+              <p className="text-xl text-[#969696]">
                 Insights, tutorials, and reflections on tech, development, and creative problem-solving.
               </p>
             </motion.div>
@@ -164,16 +164,16 @@ export default function BlogsPage() {
                     placeholder="Search articles..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 pl-10 text-white focus:outline-none focus:ring-2 focus:ring-[#60A5FA]"
+                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 pl-10 text-[#fefeff] focus:outline-none focus:border-white/20"
                   />
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#969696]" />
                 </div>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#60A5FA]"
+                  className="bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20"
                 >
-                  <option value="">All Categories</option>
+                  <option value="All">All Categories</option>
                   {allCategories.map((category) => (
                     <option key={category} value={category}>
                       {category}
@@ -187,28 +187,29 @@ export default function BlogsPage() {
                 {filteredPosts.map((blog, index) => (
                   <motion.div
                     key={blog.slug}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gray-800/50 rounded-lg overflow-hidden hover:bg-gray-800/70 transition-colors"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
+                    className="bg-[#0A0A0A] border border-white/10 rounded-lg hover:border-white/20 transition-colors"
                   >
                     <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                      <div className="flex items-center gap-4 text-sm text-[#969696] mb-2">
                         <span>{blog.date}</span>
                         <span>•</span>
                         <span>{blog.readTime}</span>
                         <span>•</span>
-                        <span className="bg-gray-700/50 px-2 py-1 rounded-full text-xs">
+                        <span className="bg-black/40 px-2 py-1 rounded-full text-xs border border-white/10">
                           {blog.category}
                         </span>
                       </div>
-                      <h2 className="text-2xl font-semibold text-white mb-3">{blog.title}</h2>
-                      <p className="text-gray-300 mb-4">{blog.description}</p>
+                      <h2 className="text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
+                      <p className="text-[#969696] mb-4">{blog.description}</p>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {blog.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 bg-gray-700/50 rounded-full text-sm text-gray-300"
+                            className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-sm text-[#969696]"
                           >
                             {tag}
                           </span>
@@ -216,9 +217,9 @@ export default function BlogsPage() {
                       </div>
                       <Link
                         href={`/blogs/${blog.slug}`}
-                        className="inline-flex items-center text-[#60A5FA] hover:text-[#3B82F6] transition-colors"
+                        className="inline-flex items-center text-[#fefeff] hover:text-[#969696] transition-colors"
                       >
-                        Read More
+                        Read More <FaArrowRight className="ml-2" />
                       </Link>
                     </div>
                   </motion.div>

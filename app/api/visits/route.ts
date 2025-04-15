@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-// Path to the visits data file
+// Path to the JSON file that will store the visit count
 const dataFilePath = path.join(process.cwd(), 'data', 'visits.json');
 
 // Ensure the data directory exists
@@ -13,57 +13,46 @@ const ensureDataDir = () => {
   }
 };
 
-// Initialize or load visits data
-const loadVisitsData = () => {
+// Initialize the visits file if it doesn't exist
+const initializeVisitsFile = () => {
   ensureDataDir();
-
   if (!fs.existsSync(dataFilePath)) {
-    const initialData = { total: 0, unique: 0, ips: {} };
-    fs.writeFileSync(dataFilePath, JSON.stringify(initialData, null, 2));
-    return initialData;
+    fs.writeFileSync(dataFilePath, JSON.stringify({ count: 0 }), 'utf8');
   }
+};
 
+// Get the current visit count
+const getVisitCount = () => {
+  initializeVisitsFile();
+  const data = fs.readFileSync(dataFilePath, 'utf8');
+  return JSON.parse(data).count;
+};
+
+// Increment the visit count
+const incrementVisitCount = () => {
+  initializeVisitsFile();
+  const data = JSON.parse(fs.readFileSync(dataFilePath, 'utf8'));
+  data.count += 1;
+  fs.writeFileSync(dataFilePath, JSON.stringify(data), 'utf8');
+  return data.count;
+};
+
+export async function GET() {
   try {
-    const data = fs.readFileSync(dataFilePath, 'utf-8');
-    return JSON.parse(data);
+    const count = getVisitCount();
+    return NextResponse.json({ count });
   } catch (error) {
-    console.error('Error reading visits data:', error);
-    return { total: 0, unique: 0, ips: {} };
+    console.error('Error getting visit count:', error);
+    return NextResponse.json({ count: 0, error: 'Failed to get visit count' }, { status: 500 });
   }
-};
+}
 
-// Save visits data
-const saveVisitsData = (data: any) => {
-  ensureDataDir();
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-};
-
-export async function GET(request: NextRequest) {
-  const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
-  const visitsData = loadVisitsData();
-
-  // Update total visits
-  visitsData.total += 1;
-
-  // Check if this is a unique IP
-  const isUniqueIP = !visitsData.ips[ip];
-  if (isUniqueIP) {
-    visitsData.unique += 1;
-    visitsData.ips[ip] = {
-      count: 1,
-      lastVisit: new Date().toISOString()
-    };
-  } else {
-    visitsData.ips[ip].count += 1;
-    visitsData.ips[ip].lastVisit = new Date().toISOString();
+export async function POST() {
+  try {
+    const count = incrementVisitCount();
+    return NextResponse.json({ count });
+  } catch (error) {
+    console.error('Error incrementing visit count:', error);
+    return NextResponse.json({ count: 0, error: 'Failed to increment visit count' }, { status: 500 });
   }
-
-  // Save updated data
-  saveVisitsData(visitsData);
-
-  // Return visit counts
-  return NextResponse.json({
-    total: visitsData.total,
-    unique: visitsData.unique
-  });
 }
