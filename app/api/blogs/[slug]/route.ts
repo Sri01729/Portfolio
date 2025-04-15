@@ -8,18 +8,17 @@ import rehypePrism from 'rehype-prism-plus'
 
 const blogsDirectory = path.join(process.cwd(), 'content/blogs')
 
-type Props = {
-  params: {
-    slug: string
-  }
+interface RouteSegmentProps {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function GET(
-  req: NextRequest,
-  context: Props
+  request: NextRequest,
+  { params }: RouteSegmentProps
 ) {
   try {
-    const fullPath = path.join(blogsDirectory, `${context.params.slug}.md`)
+    const fullPath = path.join(blogsDirectory, `${params.slug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     const { data, content } = matter(fileContents)
@@ -31,7 +30,7 @@ export async function GET(
     const contentHtml = processedContent.toString()
 
     return Response.json({
-      slug: context.params.slug,
+      slug: params.slug,
       title: data.title,
       description: data.description,
       date: data.date,
