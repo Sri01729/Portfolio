@@ -9,12 +9,21 @@ const EMAILJS_TEMPLATE_ID = 'template_gq0x5rm';
 
 export async function POST(request: Request) {
   try {
+    // Check if private key is available
+    if (!EMAILJS_PRIVATE_KEY) {
+      console.error('EmailJS private key is missing');
+      return NextResponse.json(
+        { success: false, error: 'Email service configuration error' },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, message } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { success: false, error: 'Name, email, and message are required' },
         { status: 400 }
       );
     }
@@ -37,18 +46,18 @@ export async function POST(request: Request) {
     console.log('EmailJS result:', result);
 
     if (result.status === 200) {
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ success: true, message: 'Email sent successfully' });
     } else {
       console.error('EmailJS send failed:', result);
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { success: false, error: 'Failed to send email' },
         { status: 500 }
       );
     }
   } catch (error: any) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: error.message || 'An unexpected error occurred' },
+      { success: false, error: error.message || 'An unexpected error occurred' },
       { status: 500 }
     );
   }

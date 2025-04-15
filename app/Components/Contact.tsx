@@ -1,10 +1,18 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
+// Import EmailJS as a fallback
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration
+const EMAILJS_PUBLIC_KEY = 'gwtVlxJ6xemuxk19i';
+const EMAILJS_SERVICE_ID = 'service_8i10mcu';
+const EMAILJS_TEMPLATE_ID = 'template_gq0x5rm';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -17,6 +25,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    // Initialize EmailJS with your Public Key as a fallback
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -32,7 +45,7 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      // Send the form data to our server-side API
+      // First try the server-side API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -42,19 +55,44 @@ const Contact = () => {
       });
 
       const data = await response.json();
+      console.log('API response:', data);
 
-      if (response.ok) {
+      if (data.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' }); // Reset form
       } else {
-        console.error('API error:', data);
-        setSubmitStatus('error');
-        setErrorMessage(data.error || 'Failed to send message. Please try again.');
+        console.error('API error:', data.error);
+
+        // If server-side API fails, try the client-side EmailJS as a fallback
+        if (formRef.current) {
+          try {
+            console.log('Trying client-side EmailJS as fallback');
+            const result = await emailjs.sendForm(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_TEMPLATE_ID,
+              formRef.current
+            );
+
+            if (result.text === 'OK') {
+              setSubmitStatus('success');
+              setFormData({ name: '', email: '', message: '' }); // Reset form
+            } else {
+              throw new Error('Client-side EmailJS failed');
+            }
+          } catch (fallbackError) {
+            console.error('Fallback EmailJS error:', fallbackError);
+            setSubmitStatus('error');
+            setErrorMessage(data.error || 'Failed to send message. Please try again.');
+          }
+        } else {
+          setSubmitStatus('error');
+          setErrorMessage(data.error || 'Failed to send message. Please try again.');
+        }
       }
     } catch (error: any) {
       console.error('Failed to send email:', error);
       setSubmitStatus('error');
-      setErrorMessage(`An unexpected error occurred: ${error.message}. Please try again later or email me directly.`);
+      setErrorMessage(`An unexpected error occurred. Please try again later or email me directly.`);
     } finally {
       setIsSubmitting(false);
     }
