@@ -17,9 +17,8 @@ const About = () => {
                     Get to know the person behind the code. Beyond technical skills, I bring creativity, passion, and a continuous learning mindset to every project and collaboration.
                   </span>
                 </h2>
-                
-                <div className="grid md:grid-cols-3 gap-8">
 
+                <div className="grid md:grid-cols-3 gap-8">
                     <div className="md:col-span-1 md:col-start-2">
                         <div className="space-y-8">
                             <p className="text-sm text-[#fefeff]">
@@ -51,57 +50,12 @@ const About = () => {
                         </div>
                     </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        {/* Third section - second column */}
-                        <div className="max-w-md">
-                            <h3 className="text-2xl font-medium mb-4">My Approach</h3>
-                            <p className="text-sm text-[#969696]">
-                                I believe in clean, maintainable code and user-centered
-                                design. Every project is an opportunity to solve
-                                problems creatively while ensuring scalability and
-                                performance. I'm constantly learning and adapting to
-                                new technologies to stay at the forefront of web
-                                development.
-                            </p>
-                        </div>
-
-                        {/* Fourth section - third column */}
-                        <div className="max-w-md ml-auto">
-                            <h3 className="text-2xl font-medium mb-4">Beyond Code</h3>
-                            <p className="text-sm text-[#969696]">
-                                When I'm not coding, I enjoy exploring new technologies,
-                                contributing to open-source projects, and sharing my
-                                knowledge through technical writing. I'm passionate
-                                about creating technology that makes a positive impact
-                                on people's lives.
-                            </p>
-                        </div>
-
-                        {/* Fifth section - second column */}
-                        <div className="max-w-md">
-                             <h3 className="text-2xl font-medium mb-4">Motivation</h3>
-                            <p className="text-sm text-[#969696]">
-                                The urge to create something new and fresh from my
-                                hands is the one thing that always motivates me to
-                                work. The art of creation is the one I admire the
-                                most, and it is the driving force behind my daily
-                                endeavours. This passion is the cornerstone of my
-                                professional journey.
-=======
-=======
->>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
                     <div className="md:col-span-1 md:col-start-3 md:mt-32">
                         <div className="space-y-8">
                             <p className="text-sm text-[#fefeff]">
                                 The urge to create something new and fresh from my hands is the one thing that always motivates me to
                                 work. The art of creation is the one I admire the most, and it is the driving force behind my daily endeavours. This
-                                passion is the cornerstone of my professional
-                                journey.
-<<<<<<< HEAD
->>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
-=======
->>>>>>> parent of 34acdaa (feat: implement sticky headings and improve layout)
+                                passion is the cornerstone of my professional journey.
                             </p>
                         </div>
                     </div>
