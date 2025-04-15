@@ -11,10 +11,10 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ): Promise<NextResponse> {
   try {
-    const fullPath = path.join(blogsDirectory, `${params.slug}.md`)
+    const fullPath = path.join(blogsDirectory, `${context.params.slug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     const { data, content } = matter(fileContents)
@@ -28,7 +28,7 @@ export async function GET(
 
     // Return the blog post data
     return new NextResponse(JSON.stringify({
-      slug: params.slug,
+      slug: context.params.slug,
       title: data.title,
       description: data.description,
       date: data.date,
