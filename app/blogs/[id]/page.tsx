@@ -1,12 +1,12 @@
 "use client"
 import { useState, useEffect } from "react"
+import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
-import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"
+import { FaArrowLeft, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa"
 import Link from "next/link"
-import StarField from "../Components/Starfield"
-import { BlogPost, getAllBlogPosts, getAllCategories, getAllTags } from "@/lib/blog"
+import StarField from "../../Components/Starfield"
 
-// Sample blog data
+// Sample blog data - same as in blogs/page.tsx
 const blogPosts = [
   {
     id: 1,
@@ -187,188 +187,134 @@ Remember to start small, focus on user value, and ensure privacy and transparenc
   }
 ]
 
-export default function BlogsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
-  const [allCategories, setAllCategories] = useState<string[]>([])
-  const [allTags, setAllTags] = useState<string[]>([])
+export default function BlogPostPage() {
+  const params = useParams()
+  const [loading, setLoading] = useState(true)
+  const [post, setPost] = useState<any>(null)
 
   useEffect(() => {
-    const loadBlogs = async () => {
-      const posts = await getAllBlogPosts()
-      setFilteredPosts(posts)
-      setAllCategories(await getAllCategories())
-      setAllTags(await getAllTags())
-    }
-    loadBlogs()
-  }, [])
+    // Find the blog post based on the id
+    const foundPost = blogPosts.find(p => p.id === Number(params.id))
+    setPost(foundPost || null)
+    setLoading(false)
+  }, [params.id])
 
-  // Filter posts based on search query, category, and tags
-  useEffect(() => {
-    const filterPosts = async () => {
-      const posts = await getAllBlogPosts()
-      let filtered = posts
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    )
+  }
 
-      // Filter by search query
-      if (searchQuery) {
-        filtered = filtered.filter(post =>
-          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          post.description.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      }
-
-      // Filter by category
-      if (selectedCategory !== "All") {
-        filtered = filtered.filter(post => post.category === selectedCategory)
-      }
-
-      // Filter by tags
-      if (selectedTags.length > 0) {
-        filtered = filtered.filter(post =>
-          selectedTags.some(tag => post.tags.includes(tag))
-        )
-      }
-
-      setFilteredPosts(filtered)
-    }
-    filterPosts()
-  }, [searchQuery, selectedCategory, selectedTags])
-
-  // Toggle tag selection
-  const toggleTag = (tag: string) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter(t => t !== tag))
-    } else {
-      setSelectedTags([...selectedTags, tag])
-    }
+  if (!post) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">Blog Post Not Found</h1>
+          <Link href="/blogs" className="text-blue-500 hover:text-blue-400">
+            Return to Blogs
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
       <StarField />
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-4xl mx-auto px-4 py-12">
         <Link
-          href="/"
-          className="inline-flex items-center text-gray-400 hover:text-[#fefeff] transition-colors mb-8"
+          href="/blogs"
+          className="inline-flex items-center text-blue-400 hover:text-blue-300 mb-8"
         >
-          <FaArrowLeft className="mr-2" /> Back to Home
+          <FaArrowLeft className="mr-2" /> Back to Blogs
         </Link>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4"
-            >
-              <h1 className="text-4xl md:text-7xl font-medium text-[#fefeff]">
-                Thoughts & Writings
-              </h1>
-              <p className="text-xl text-[#969696]">
-                Insights, tutorials, and reflections on tech, development, and creative problem-solving.
-              </p>
-            </motion.div>
-          </div>
+        <motion.article
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="prose prose-invert max-w-none"
+        >
+          {/* Blog Header */}
+          <header className="mb-12">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-sm bg-blue-900/50 text-blue-300 px-2 py-1 rounded-full">
+                {post.category}
+              </span>
+              <span className="text-sm text-gray-400">
+                {post.date} · {post.readTime}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{post.title}</h1>
+            <p className="text-xl text-gray-300 mb-8">{post.description}</p>
 
-          <div className="md:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-8"
-            >
-              {/* Search and Filter Section */}
-              <div className="flex flex-col md:flex-row gap-4 mb-8">
-                <div className="relative flex-grow">
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2 pl-10 text-[#fefeff] focus:outline-none focus:border-white/20"
-                  />
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#969696]" />
+            {/* Featured Image */}
+            <div className="aspect-video bg-gray-800 rounded-lg overflow-hidden mb-8">
+              {post.thumbnail ? (
+                <img
+                  src={post.thumbnail}
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-600">
+                  <span className="text-4xl">🖼️</span>
                 </div>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="bg-black/40 border border-white/10 rounded-lg px-4 py-2 text-[#fefeff] focus:outline-none focus:border-white/20"
-                >
-                  <option value="All">All Categories</option>
-                  {allCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              )}
+            </div>
+          </header>
 
-              {/* Tags Filter */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {allTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                      selectedTags.includes(tag)
-                        ? "bg-blue-500 text-white"
-                        : "bg-black/40 border border-white/10 text-[#969696] hover:border-white/20"
-                    }`}
-                  >
-                    #{tag}
-                  </button>
-                ))}
-              </div>
+          {/* Blog Content */}
+          <div
+            className="blog-content text-gray-300 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-              {/* Blog Posts Grid */}
-              <div className="grid grid-cols-1 gap-8">
-                {filteredPosts.map((blog, index) => (
-                  <motion.div
-                    key={blog.slug}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
-                    className="bg-[#0A0A0A] border border-white/10 rounded-lg hover:border-white/20 transition-colors"
-                  >
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-[#969696] mb-2">
-                        <span>{blog.date}</span>
-                        <span>•</span>
-                        <span>{blog.readTime}</span>
-                        <span>•</span>
-                        <span className="bg-black/40 px-2 py-1 rounded-full text-xs border border-white/10">
-                          {blog.category}
-                        </span>
-                      </div>
-                      <h2 className="text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
-                      <p className="text-[#969696] mb-4">{blog.description}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {blog.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-sm text-[#969696]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <Link
-                        href={`/blogs/${blog.slug}`}
-                        className="inline-flex items-center text-[#fefeff] hover:text-[#969696] transition-colors"
-                      >
-                        Read More <FaArrowRight className="ml-2" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          {/* Tags */}
+          <div className="mt-12 pt-8 border-t border-gray-800">
+            <h3 className="text-lg font-semibold mb-4">Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag: string) => (
+                <span key={tag} className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+
+          {/* Social Sharing */}
+          <div className="mt-12 pt-8 border-t border-gray-800">
+            <h3 className="text-lg font-semibold mb-4">Share this article</h3>
+            <div className="flex gap-4">
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://yourdomain.com/blogs/${post.id}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                <FaTwitter size={24} />
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://yourdomain.com/blogs/${post.id}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                <FaLinkedin size={24} />
+              </a>
+              <a
+                href={`https://github.com/yourusername`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                <FaGithub size={24} />
+              </a>
+            </div>
+          </div>
+        </motion.article>
       </div>
     </div>
   )

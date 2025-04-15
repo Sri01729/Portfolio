@@ -139,7 +139,7 @@ const Contact = () => {
                   <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-full overflow-hidden border-2 border-white/10">
                       <Image
-                        src="/srinivas_ghibli.jpg"
+                        src="/srinivas_ghibli.png"
                         alt="Sai Srinivas Alahari"
                         fill
                         className="object-cover"
