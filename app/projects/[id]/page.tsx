@@ -21,7 +21,7 @@ const projects = [
     },
     media: {
       type: "video",
-      url: "/quizscraper-demo.mp4",
+      url: "/QuizScraper-demo.mp4",
       thumbnail: "/project-thumbnails/quizscraper.jpg"
     },
     overview: "QuizScraper is a comprehensive web application designed to help students prepare for exams more effectively. It automatically scrapes quiz questions from various educational websites and organizes them into a user-friendly interface.",
