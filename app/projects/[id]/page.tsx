@@ -9,218 +9,225 @@ import StarField from "../../Components/Starfield"
 // Sample project data
 const projects = [
   {
-    id: "quizscraper",
-    title: "QuizScraper",
-    description: "A web application that helps students prepare for exams by scraping and organizing quiz questions from various sources.",
-    category: "Web Development",
-    technologies: {
-      frontend: ["React", "TypeScript", "Tailwind CSS"],
-      backend: ["Node.js", "Express"],
-      database: ["MongoDB"],
-      tools: ["Git", "Docker", "AWS"]
-    },
-    media: {
-      type: "video",
-      url: "/QuizScraper-demo.mp4",
-      thumbnail: "/project-thumbnails/quizscraper.jpg"
-    },
-    overview: "QuizScraper is a comprehensive web application designed to help students prepare for exams more effectively. It automatically scrapes quiz questions from various educational websites and organizes them into a user-friendly interface.",
-    role: "Full Stack Developer",
-    responsibilities: [
-      "Designed and implemented the frontend using React and TypeScript",
-      "Developed the backend API using Node.js and Express",
-      "Implemented web scraping functionality using Puppeteer",
-      "Set up MongoDB database and designed the data schema",
-      "Deployed the application on AWS using Docker containers"
-    ],
-    process: [
-      "Conducted user research to understand student needs",
-      "Designed the application architecture and database schema",
-      "Implemented core features iteratively with regular testing",
-      "Optimized performance and user experience",
-      "Deployed and monitored the application"
-    ],
-    challenges: [
-      {
-        problem: "Handling different website structures for scraping",
-        solution: "Implemented a flexible scraping system with multiple parsers"
-      },
-      {
-        problem: "Managing large amounts of data efficiently",
-        solution: "Used MongoDB aggregation pipeline for optimized queries"
-      },
-      {
-        problem: "Ensuring real-time updates for users",
-        solution: "Implemented WebSocket connections for live data updates"
-      }
-    ],
-    outcomes: {
-      metrics: [
-        "50% reduction in study time for users",
-        "10,000+ active users within first month",
-        "4.8/5 average user satisfaction rating"
-      ],
-      feedback: [
-        "This app has completely changed how I prepare for exams",
-        "The interface is intuitive and the content is well-organized",
-        "I love how it automatically updates with new questions"
-      ]
-    },
-    learnings: [
-      "Importance of modular architecture for scalability",
-      "Best practices for web scraping and data management",
-      "Effective strategies for real-time data updates"
-    ],
-    links: {
-      github: "https://github.com/yourusername/quizscraper",
-      demo: "https://quizscraper.demo"
-    }
+  "id": "quizscraper",
+  "title": "Quiz Scraper",
+  "description": "A Chrome extension that generates quiz questions from webpage content using AI to help users prepare for exams and interviews.",
+  "category": "AI-powered Chrome Extension",
+  "technologies": {
+    "frontend": ["HTML5", "CSS3", "JavaScript"],
+    "backend": ["Chrome Extension API"],
+    "ai": ["OpenAI API"],
+    "tools": ["Git", "Chrome Developer Tools"]
   },
+  "media": {
+    "type": "video",
+    "url": "/QuizScraper-demo.mp4",
+    "thumbnail": "/project-thumbnails/quizscraper.jpg"
+  },
+  "overview": "Quiz Scraper is a Chrome extension that instantly generates quiz questions from any webpage content, providing an interactive way to study and prepare for technical interviews.",
+  "role": "Solo Developer",
+  "responsibilities": [
+    "Designed and implemented the extension UI with clean HTML/CSS",
+    "Developed the content parsing and question generation system",
+    "Integrated OpenAI API for intelligent question generation",
+    "Implemented Chrome storage for saving quizzes",
+    "Added multiple question types (MCQ, scenario-based, etc.)"
+  ],
+  "process": [
+    "Identified pain points in technical interview preparation",
+    "Designed the minimal viable extension interface",
+    "Implemented core question generation functionality",
+    "Added progressive enhancements like different question types"
+  ],
+  "challenges": [
+    {
+      "problem": "Generating relevant questions from diverse webpage content",
+      "solution": "Implemented smart content parsing and tailored AI prompts"
+    },
+    {
+      "problem": "Handling different question formats in the UI",
+      "solution": "Created a flexible rendering system for various question types"
+    },
+    {
+      "problem": "Maintaining extension performance",
+      "solution": "Optimized API calls and implemented local caching"
+    }
+  ],
+  "outcomes": {
+    "metrics": [
+      "Generates 10-50 questions in under 10 seconds",
+      "Supports 4+ different question types",
+      "4.9/5 average user satisfaction in testing"
+    ],
+    "feedback": [
+      "This has become my go-to tool for interview prep",
+      "Love how it creates scenario-based questions from documentation",
+      "The different difficulty levels make it perfect for all skill levels"
+    ]
+  },
+  "learnings": [
+    "Effective use of Chrome Extension APIs",
+    "Prompt engineering for better AI outputs",
+    "Designing intuitive browser extension UIs"
+  ],
+  "links": {
+    "github": "https://github.com/yourusername/quizscraper",
+    "chrome-store": "https://chrome.google.com/webstore/quizscraper"
+  },
+  "features": [
+    "Generates questions from any webpage content",
+    "Multiple question types (MCQ, scenario-based, conceptual)",
+    "Adjustable difficulty levels",
+    "Save and export quiz functionality",
+    "Clean, distraction-free interface"
+  ]
+},
   {
-    id: "redinai",
-    title: "RedinAI",
-    description: "An AI-powered reading assistant that helps users understand and retain information from text more effectively.",
-    category: "AI/ML",
-    technologies: {
-      frontend: ["React", "TypeScript", "Tailwind CSS"],
-      backend: ["Python", "FastAPI"],
-      database: ["PostgreSQL"],
-      tools: ["Git", "Docker", "Google Cloud"]
+    "id": "redinai",
+    "title": "RedinAI",
+    "description": "RedinAI is an AI-powered web application designed to extract and analyze Reddit posts and their comments. It functions like an interactive chat board, allowing users to engage with the post content and comments to gain insights. The app features three main windows: a chat window for discussing post content and comments, a comment window displaying comments in a tree structure, and an input window for entering Reddit post links and prompts. Users can select built-in starter prompts, create custom prompts, and save them with a name. Posts can also be saved and organized on a Kanban board for easy drag-and-drop management. RedinAI simplifies the process of understanding complex Reddit discussions by providing actionable insights and organized content.",
+    "category": "AI-powered Web Application",
+    "technologies": {
+      "frontend": ["React", "TypeScript", "Tailwind CSS"],
+      "backend": ["Spring Boot", "Spring Security", "Spring AI"],
+      "database": ["PostgreSQL"],
+      "ai_model": ["OpenAI GPT-4o-mini"],
+      "tools": ["Git", "Docker"]
     },
-    media: {
-      type: "video",
-      url: "/RedinAI.mp4",
-      thumbnail: "/project-thumbnails/redinai.jpg"
+    "media": {
+      "type": "video",
+      "url": "/RedinAI.mp4",
+      "thumbnail": "/project-thumbnails/RedinAI.jpg"
     },
-    overview: "RedinAI is an intelligent reading assistant that uses natural language processing to help users better understand and remember what they read. It provides summaries, key points, and interactive quizzes based on the content.",
-    role: "AI Engineer & Full Stack Developer",
-    responsibilities: [
-      "Developed the NLP models for text analysis",
-      "Implemented the frontend interface",
-      "Created the backend API using FastAPI",
-      "Designed and managed the database schema",
-      "Deployed and monitored the AI models"
+    "overview": "RedinAI is an intelligent platform for analyzing and interacting with Reddit posts and comments.",
+    "role": "AI Engineer & Full Stack Developer",
+    "responsibilities": [
+      "Integrated OpenAI GPT-4o-mini for comment and post analysis",
+      "Developed the frontend interface with React and TypeScript",
+      "Implemented the backend API using Spring Boot",
+      "Designed the PostgreSQL database schema",
+      "Created the Kanban board and comment tree structure features"
     ],
-    process: [
-      "Researched and selected appropriate NLP models",
-      "Developed and trained custom models for specific tasks",
-      "Built the web application interface",
-      "Integrated AI models with the application",
-      "Conducted extensive testing and optimization"
+    "process": [
+      "Researched and selected OpenAI GPT-4o-mini for cost-effective AI analysis",
+      "Developed the chat, comment, and input window interfaces",
+      "Built and integrated backend APIs for post and comment processing",
+      "Designed the Kanban board for post organization",
+      "Tested and optimized the application for performance"
     ],
-    challenges: [
+    "challenges": [
       {
-        problem: "Achieving accurate text summarization",
-        solution: "Combined multiple NLP models for better results"
+        "problem": "Efficiently processing large comment threads",
+        "solution": "Implemented tree structure for comment display and optimized API calls"
       },
       {
-        problem: "Handling different types of content",
-        solution: "Implemented content-specific processing pipelines"
+        "problem": "Managing prompt creation and storage",
+        "solution": "Developed a prompt management system with save and reuse functionality"
       },
       {
-        problem: "Maintaining model performance at scale",
-        solution: "Used model quantization and efficient inference"
+        "problem": "Ensuring cost-effective AI model usage",
+        "solution": "Utilized OpenAI GPT-4 Mini for affordable yet powerful analysis"
       }
     ],
-    outcomes: {
-      metrics: [
-        "40% improvement in reading comprehension",
-        "5,000+ active users in first month",
-        "4.7/5 average user satisfaction rating"
+    "outcomes": {
+      "metrics": [
+        "50% faster analysis of Reddit threads",
+        "Excellent insights from the comments using AI",
+        "4.8/5 average test-user satisfaction rating"
       ],
-      feedback: [
-        "This tool has completely changed how I read and learn",
-        "The summaries are incredibly accurate and helpful",
-        "I love how it adapts to different types of content"
+      "feedback": [
+        "The chat window makes understanding Reddit posts so easy",
+        "Love the Kanban board for organizing my favorite posts",
+        "The comment tree structure is super intuitive"
       ]
     },
-    learnings: [
-      "Advanced techniques in NLP and machine learning",
-      "Best practices for AI model deployment",
-      "Strategies for improving model accuracy"
+    "learnings": [
+      "Effective integration of cost-efficient AI models",
+      "Best practices for interactive web application design",
+      "Strategies for managing and displaying large datasets"
     ],
-    links: {
-      github: "https://github.com/yourusername/redinai",
-      demo: "https://redinai.demo"
+    "links": {
+      "github": "https://github.com/yourusername/RedinAI",
+      "demo": "https://RedinAI.demo"
     }
-  },
+},
   {
-    id: "browzio",
-    title: "Browzio",
-    description: "A browser extension that helps users manage their tabs and browsing sessions more efficiently.",
-    category: "Browser Extension",
-    technologies: {
-      frontend: ["JavaScript", "React", "Chrome Extension API"],
-      backend: ["Node.js", "Express"],
-      database: ["IndexedDB"],
-      tools: ["Git", "Webpack", "Chrome Web Store"]
-    },
-    media: {
-      type: "video",
-      url: "/browzio.mp4",
-      thumbnail: "/project-thumbnails/browzio.jpg"
-    },
-    overview: "Browzio is a powerful browser extension that helps users organize their tabs, save browsing sessions, and improve their productivity while browsing the web.",
-    role: "Full Stack Developer",
-    responsibilities: [
-      "Designed and implemented the extension architecture",
-      "Developed the user interface using React",
-      "Implemented tab management functionality",
-      "Created session saving and restoration features",
-      "Published and maintained the extension on Chrome Web Store"
-    ],
-    process: [
-      "Conducted user research to identify pain points",
-      "Designed the extension architecture and data flow",
-      "Implemented core features iteratively",
-      "Conducted user testing and gathered feedback",
-      "Published and iterated based on user reviews"
-    ],
-    challenges: [
-      {
-        problem: "Managing memory usage with many open tabs",
-        solution: "Implemented efficient tab data structures and lazy loading"
-      },
-      {
-        problem: "Ensuring cross-browser compatibility",
-        solution: "Used WebExtensions API and polyfills for broader support"
-      },
-      {
-        problem: "Providing a seamless user experience",
-        solution: "Designed an intuitive UI with keyboard shortcuts"
-      }
-    ],
-    outcomes: {
-      metrics: [
-        "10,000+ active users",
-        "4.5/5 average rating on Chrome Web Store",
-        "30% reduction in tab clutter for users"
-      ],
-      feedback: [
-        "This extension has completely changed how I browse",
-        "I can't imagine browsing without Browzio now",
-        "The session management is a game-changer"
-      ]
-    },
-    learnings: [
-      "Browser extension development best practices",
-      "Performance optimization for browser extensions",
-      "User experience design for productivity tools"
-    ],
-    links: {
-      github: "https://github.com/yourusername/browzio",
-      demo: "https://chrome.google.com/webstore/detail/browzio"
-    }
+  id: "browzio",
+  title: "Browzio",
+  description: "A privacy-first browser extension that visualizes your browsing behavior—like scroll mileage and tab usage—to help you understand and optimize your digital habits.",
+  category: "Browser Extension",
+  technologies: {
+    frontend: ["JavaScript", "HTML5", "CSS3", "Chrome Extension API"],
+    backend: ["Node.js", "Express"],
+    database: ["IndexedDB"],
+    tools: ["Git", "Webpack", "Firefox Add-ons"]
   },
+  media: {
+    type: "video",
+    url: "/browzio.mp4",
+    thumbnail: "/project-thumbnails/browzio.jpg"
+  },
+  overview: "Browzio is a lightweight browser extension that passively tracks your browsing activity—such as scroll and hover mileage, active tabs, and session time—without compromising privacy. All data is stored locally and presented through a sleek dashboard, helping users gain insights into their digital behavior.",
+  role: "Full Stack Developer",
+  responsibilities: [
+    "Architected the entire extension and dashboard ecosystem",
+    "Built a popup and dashboard interface for visualizing user metrics",
+    "Captured real-time scroll and hover activity using DOM listeners",
+    "Implemented tab tracking and time-on-page analytics",
+    "Ensured all user data remains 100% local and secure"
+  ],
+  process: [
+    "Identified common productivity issues around tab overload and passive browsing",
+    "Sketched and validated core use cases like scroll tracking and session snapshots",
+    "Developed the tracking engine and visual dashboard iteratively",
+    "Tested performance impact and memory usage across various sites",
+    "Launched MVP and incorporated feedback from early testers"
+  ],
+  challenges: [
+    {
+      problem: "Accurately capturing user behavior without harming performance",
+      solution: "Used debounced and throttled DOM listeners, and persisted minimal data in IndexedDB"
+    },
+    {
+      problem: "Keeping all data local with no backend storage",
+      solution: "Leveraged Chrome’s local storage APIs and structured everything client-side"
+    },
+    {
+      problem: "Making raw data (like scroll distance) meaningful to users",
+      solution: "Introduced visualizations like daily mileage, comparison to Earth’s circumference, and most active tabs"
+    }
+  ],
+  outcomes: {
+    metrics: [
+      "100% local-first tracking with zero data sent externally",
+      "Reponsive dashboard with mouse animation",
+      "Positive feedback from productivity communities on Reddit"
+    ],
+    feedback: [
+      "I had no idea I scrolled over a kilometer every day until Browzio!",
+      "Love how clean and useful the dashboard is—super fun stats without being invasive.",
+      "Exactly the kind of digital mindfulness tool I didn’t know I needed"
+    ]
+  },
+  learnings: [
+    "Advanced Chrome Extension APIs and client-side architecture",
+    "Optimizing browser performance when working with passive tracking",
+    "Designing data visualizations that communicate personal insights clearly"
+  ],
+  links: {
+    github: "https://github.com/yourusername/browzio",
+    chrome: "https://chrome.google.com/webstore/detail/browzio/your-extension-id",
+    demo: "https://yourdemo.com/browzio"
+  }
+}
+,
   {
     id: "apple-website-replica",
     title: "Apple Website Clone",
     description: "A responsive clone of the Apple website homepage with modern design and animations.",
     category: "Web Development",
     technologies: {
-      frontend: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      backend: ["Node.js", "Express"],
-      database: ["MongoDB"],
+      frontend: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP"],
       tools: ["Git", "Vercel"]
     },
     media: {
