@@ -82,74 +82,122 @@ const projects = [
     "Clean, distraction-free interface"
   ]
 },
-  {
-    "id": "redinai",
-    "title": "RedinAI",
-    "description": "RedinAI is an AI-powered web application designed to extract and analyze Reddit posts and their comments. It functions like an interactive chat board, allowing users to engage with the post content and comments to gain insights. The app features three main windows: a chat window for discussing post content and comments, a comment window displaying comments in a tree structure, and an input window for entering Reddit post links and prompts. Users can select built-in starter prompts, create custom prompts, and save them with a name. Posts can also be saved and organized on a Kanban board for easy drag-and-drop management. RedinAI simplifies the process of understanding complex Reddit discussions by providing actionable insights and organized content.",
-    "category": "AI-powered Web Application",
-    "technologies": {
-      "frontend": ["React", "TypeScript", "Tailwind CSS"],
-      "backend": ["Spring Boot", "Spring Security", "Spring AI"],
-      "database": ["PostgreSQL"],
-      "ai_model": ["OpenAI GPT-4o-mini"],
-      "tools": ["Git", "Docker"]
+{
+  "id": "redinai",
+  "title": "RedinAI",
+  "description": "RedinAI is an AI-powered web application designed to extract and analyze Reddit posts and their comments. It functions like an interactive chat board, allowing users to engage with the post content and comments to gain insights. The app features three main windows: a chat window for discussing post content and comments, a comment window displaying comments in a tree structure, and an input window for entering Reddit post links and prompts. Users can select built-in starter prompts, create custom prompts, and save them with a name. Posts can also be saved and organized on a Kanban board for easy drag-and-drop management. RedinAI simplifies the process of understanding complex Reddit discussions by providing actionable insights and organized content.",
+  "category": "AI-powered Web Application",
+  "technologies": {
+    "frontend": ["React", "TypeScript", "Tailwind CSS", "Next.js", "Radix UI", "Framer Motion", "TailwindCSS Animate", "Embla Carousel"],
+    "backend": ["Spring Boot", "Spring Security", "Spring AI", "Java", "Spring Data JPA", "JWT Authentication", "JSoup"],
+    "database": ["PostgreSQL"],
+    "ai_model": ["OpenAI GPT-4o-mini", "Spring AI OpenAI Integration"],
+    "tools": ["Git", "Docker", "Maven"]
+  },
+  "media": {
+    "type": "video",
+    "url": "/RedinAI.mp4",
+    "thumbnail": "/project-thumbnails/RedinAI.jpg"
+  },
+  "overview": "RedinAI is an intelligent platform for analyzing and interacting with Reddit posts and comments using AI technology. The application fetches Reddit content via URLs, processes it with AI, stores it in a database, and presents it in an organized interface for easy interaction and insight extraction.",
+  "role": "AI Engineer & Full Stack Developer",
+  "responsibilities": [
+    "Integrated OpenAI GPT-4o-mini for comment and post analysis",
+    "Developed the frontend interface with React, TypeScript and Next.js",
+    "Implemented the backend API using Spring Boot and Java",
+    "Designed the PostgreSQL database schema for posts and comments",
+    "Created the Kanban board and comment tree structure features",
+    "Implemented JWT authentication system for user management",
+    "Built the Reddit post scraping functionality using JSoup",
+    "Designed responsive UI components with Tailwind CSS and Radix UI"
+  ],
+  "process": [
+    "Researched and selected OpenAI GPT-4o-mini for cost-effective AI analysis",
+    "Developed the chat, comment, and input window interfaces with React components",
+    "Built and integrated backend APIs for post and comment processing with Spring Boot",
+    "Created the Reddit post and comment fetching functionality using JSoup",
+    "Designed the tree structure for hierarchical comment display",
+    "Implemented the PostIdContext for state management across components",
+    "Created the Kanban board for post organization and management",
+    "Implemented user authentication with JWT token system",
+    "Designed saved prompt functionality and prompt management system",
+    "Tested and optimized the application for performance with large Reddit threads"
+  ],
+  "challenges": [
+    {
+      "problem": "Efficiently processing large comment threads",
+      "solution": "Implemented tree structure for comment display and optimized API calls with progressive loading"
     },
-    "media": {
-      "type": "video",
-      "url": "/RedinAI.mp4",
-      "thumbnail": "/project-thumbnails/RedinAI.jpg"
+    {
+      "problem": "Managing prompt creation and storage",
+      "solution": "Developed a prompt management system with save and reuse functionality using PostgreSQL for persistence"
     },
-    "overview": "RedinAI is an intelligent platform for analyzing and interacting with Reddit posts and comments.",
-    "role": "AI Engineer & Full Stack Developer",
-    "responsibilities": [
-      "Integrated OpenAI GPT-4o-mini for comment and post analysis",
-      "Developed the frontend interface with React and TypeScript",
-      "Implemented the backend API using Spring Boot",
-      "Designed the PostgreSQL database schema",
-      "Created the Kanban board and comment tree structure features"
-    ],
-    "process": [
-      "Researched and selected OpenAI GPT-4o-mini for cost-effective AI analysis",
-      "Developed the chat, comment, and input window interfaces",
-      "Built and integrated backend APIs for post and comment processing",
-      "Designed the Kanban board for post organization",
-      "Tested and optimized the application for performance"
-    ],
-    "challenges": [
-      {
-        "problem": "Efficiently processing large comment threads",
-        "solution": "Implemented tree structure for comment display and optimized API calls"
-      },
-      {
-        "problem": "Managing prompt creation and storage",
-        "solution": "Developed a prompt management system with save and reuse functionality"
-      },
-      {
-        "problem": "Ensuring cost-effective AI model usage",
-        "solution": "Utilized OpenAI GPT-4 Mini for affordable yet powerful analysis"
-      }
-    ],
-    "outcomes": {
-      "metrics": [
-        "50% faster analysis of Reddit threads",
-        "Excellent insights from the comments using AI",
-        "4.8/5 average test-user satisfaction rating"
-      ],
-      "feedback": [
-        "The chat window makes understanding Reddit posts so easy",
-        "Love the Kanban board for organizing my favorite posts",
-        "The comment tree structure is super intuitive"
-      ]
+    {
+      "problem": "Ensuring cost-effective AI model usage",
+      "solution": "Utilized OpenAI GPT-4o-mini for affordable yet powerful analysis with strategic tokenization and caching"
     },
-    "learnings": [
-      "Effective integration of cost-efficient AI models",
-      "Best practices for interactive web application design",
-      "Strategies for managing and displaying large datasets"
-    ],
-    "links": {
-      "github": "https://github.com/yourusername/RedinAI",
-      "demo": "https://RedinAI.demo"
+    {
+      "problem": "Creating an intuitive user interface for complex data",
+      "solution": "Designed a three-window interface with Tailwind CSS and Next.js components for seamless interaction"
+    },
+    {
+      "problem": "Securing user data and API endpoints",
+      "solution": "Implemented Spring Security with JWT authentication and proper CORS configuration"
+    },
+    {
+      "problem": "Extracting structured data from Reddit",
+      "solution": "Built a custom scraping solution with JSoup to reliably parse Reddit content"
     }
+  ],
+  "outcomes": {
+    "metrics": [
+      "50% faster analysis of Reddit threads compared to manual reading",
+      "Excellent insights from the comments using AI-powered analysis",
+      "4.8/5 average test-user satisfaction rating",
+      "Significant reduction in time spent searching through comment threads",
+      "Efficiently processes and analyzes posts with hundreds of comments"
+    ],
+    "feedback": [
+      "The chat window makes understanding Reddit posts so easy",
+      "Love the Kanban board for organizing my favorite posts",
+      "The comment tree structure is super intuitive",
+      "Built-in prompts help me analyze content in ways I hadn't thought of",
+      "The AI responses provide insights I would have missed when reading manually"
+    ]
+  },
+  "learnings": [
+    "Effective integration of cost-efficient AI models with web applications",
+    "Best practices for interactive web application design with React and Next.js",
+    "Strategies for managing and displaying large hierarchical datasets",
+    "Optimizing Spring Boot backend for AI processing tasks",
+    "Creating intuitive user interfaces for complex data visualization",
+    "Implementing secure JWT authentication for web applications",
+    "Building and optimizing database schemas for hierarchical comment data",
+    "Web scraping techniques for extracting content from dynamic websites"
+  ],
+  "architecture": {
+    "frontend": {
+      "components": ["CommentsCard", "AiResponseCard", "AgentSelection", "CollapsibleCard", "WhyCards", "VideoCard", "Faq"],
+      "context": ["PostIdContext"],
+      "pages": ["Landing Page", "Dashboard", "Chat Interface"]
+    },
+    "backend": {
+      "controllers": ["RedditStoryController", "UserController"],
+      "services": ["RedditStoryService", "CommentProcessingService"],
+      "repositories": ["CommentRepository", "PostRepository"],
+      "domain": ["Comment", "Post"]
+    }
+  },
+  "apis": [
+    "/api/reddit/fetch-post-comments",
+    "/api/reddit/process-comments",
+    "/api/reddit/fetch-database-comments",
+    "/api/reddit/fetch-database-post-title-and-content"
+  ],
+  "links": {
+    "github": "https://github.com/yourusername/RedinAI",
+    "demo": "https://RedinAI.demo"
+  }
 },
   {
   id: "browzio",
