@@ -174,10 +174,8 @@ export default function StickyScrollRevealProjects() {
                                 y: -20
                             }}
                             transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30,
-                                delay: 0.1
+                                type: "tween",
+                                duration: 0.3,
                             }}
                             className="space-y-4 px-4"
                         >
