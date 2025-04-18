@@ -159,12 +159,12 @@ const Blogs = () => {
                         </span>
                       ))}
                     </div>
-                    <Link
+                    {/* <Link
                       href={`/blogs/${blog.id}`}
                       className="inline-flex items-center text-sm text-[#fefeff] hover:text-[#969696] transition-colors"
                     >
                       Read More <FaArrowRight className="ml-2 text-xs" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </TiltCard>
               ))}
