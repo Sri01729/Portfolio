@@ -272,8 +272,12 @@ export default function Home() {
                     <div key={id} className="mb-6">
                       <Link
                         href={`#${id}`}
-                        className={`text-2xl font-medium ${
-                          activeSection === id
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToSection(id);
+                          setIsMenuOpen(false);
+                        }}
+                        className={`text-2xl font-medium transition-colors duration-300 ${activeSection === id
                             ? 'text-[#fefeff]'
                             : 'text-[#969696] hover:text-[#fefeff]'
                         }`}
@@ -370,7 +374,7 @@ export default function Home() {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.5 }}
                       >
-                        <p className="text-3xl md:text-5xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
+                        <p className="text-3xl md:text-5xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto text-center">
                           {audienceContent[selectedAudience].description}
                         </p>
                         <div className="flex gap-4 flex-wrap justify-center">
@@ -387,7 +391,7 @@ export default function Home() {
               </section>
 
               {/* Work Section */}
-              <section id="work" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="work" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -399,7 +403,7 @@ export default function Home() {
               </section>
 
               {/* Tech Stack Section */}
-              <section id="tech" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="tech" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -411,7 +415,7 @@ export default function Home() {
               </section>
 
               {/* Background Section */}
-              <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -423,7 +427,7 @@ export default function Home() {
               </section>
 
               {/* Blogs Section */}
-              <section id="blogs" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="blogs" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -435,7 +439,7 @@ export default function Home() {
               </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="about" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -447,7 +451,7 @@ export default function Home() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
+              <section id="contact" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
