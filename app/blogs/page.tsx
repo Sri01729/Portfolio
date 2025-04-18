@@ -18,14 +18,14 @@ const blogPosts = [
     thumbnail: "/intuicell.png",
   },
   {
-  "id": "langchain-rag-ai-optimization",
-  "title": "LangChain RAG: Enhancing AI Model Accuracy with Retrieval-Augmented Generation",
-  "description": "Explore how LangChain's Retrieval-Augmented Generation (RAG) boosts language model accuracy by integrating real-time external data into the response generation process.",
-  "date": "February 26, 2024",
-  "readTime": "5 min read",
-  "category": "AI ",
-  "tags": ["LangChain", "RAG", "LLM", "AI Tools", "Web Development"],
-  "thumbnail": "/langchain.png"
+  id: "langchain-rag-ai-optimization",
+  title: "LangChain RAG: Enhancing AI Model Accuracy with Retrieval-Augmented Generation",
+  description: "Explore how LangChain's Retrieval-Augmented Generation (RAG) boosts language model accuracy by integrating real-time external data into the response generation process.",
+  date: "February 26, 2025",
+  readTime: "5 min read",
+  category: "AI",
+  tags: ["LangChain", "RAG", "LLM", "AI Tools", "Web Development"],
+  thumbnail: "/langchain.png"
 }
 ,
   {
