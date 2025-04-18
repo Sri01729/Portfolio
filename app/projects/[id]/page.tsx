@@ -198,6 +198,82 @@ const projects = [
     "github": "https://github.com/yourusername/RedinAI",
     "demo": "https://RedinAI.demo"
   }
+  },
+  {
+  "id": "sketchvision",
+  "title": "SketchVision",
+  "description": "A web application that transforms hand-drawn sketches and text annotations into stunning AI-generated images using OpenAI's DALL-E 3.",
+  "category": "AI-powered Web Application",
+  "technologies": {
+    "frontend": ["React 19", "TypeScript", "Tailwind CSS", "Radix UI", "HTML5 Canvas"],
+    "backend": ["Node.js"],
+    "ai": ["OpenAI API", "DALL-E 3", "GPT-4.1-nano"],
+    "tools": ["Git", "Vite", "NPM"]
+  },
+  "media": {
+    "type": "video",
+    "url": "/SketchVision.mp4",
+    "thumbnail": "/project-thumbnails/sketchvision.jpg"
+  },
+  "overview": "SketchVision bridges the gap between simple sketches and professionally rendered digital art, allowing users to transform their drawings and annotations into high-quality AI-generated images.",
+  "role": "Full-Stack Developer",
+  "responsibilities": [
+    "Implemented the interactive drawing canvas with annotation capabilities",
+    "Developed the prompt generation system using OpenAI",
+    "Integrated DALL-E 3 for image synthesis",
+    "Built the user gallery and sketch management system",
+    "Ensured responsive design for both desktop and mobile devices"
+  ],
+  "process": [
+    "Researched effective UI patterns for digital sketching applications",
+    "Designed the core drawing and annotation interfaces",
+    "Implemented OpenAI integration for intelligent prompt generation",
+    "Created the image generation pipeline with DALL-E 3",
+    "Built storage and retrieval systems for user creations"
+  ],
+  "challenges": [
+    {
+      "problem": "AI model accuracy varies significantly for sketch-to-image generation",
+      "solution": "Benchmarked three models (HiDream-I1-Dev, Sana-Sprint, DALL-E-3) using identical prompts. HiDream has a superior accuracy & quality (95% intent matching) and used DALL-E-3 for now."
+    },
+    {
+      "problem": "Generating meaningful prompts from sketches and annotations",
+      "solution": "Developed specialized AI prompt templates for optimal sketch analysis"
+    },
+    {
+      "problem": "Ensuring data persistence across sessions",
+      "solution": "Used local storage"
+    }
+  ],
+  "outcomes": {
+    "metrics": [
+      "Transforms sketches to high-quality images in under 15 seconds",
+      "Supports both simple and complex drawing scenarios",
+      "Decent accuracy in interpreting user intent from sketch and annotations"
+    ],
+    "feedback": [
+      "A game-changer for quickly visualizing concepts without artistic skill",
+      "The annotation system makes it easy to guide the AI exactly where needed",
+      "I love being able to iterate on my ideas so quickly with this tool"
+    ]
+  },
+  "learnings": [
+    "Effective integration of AI services in creative applications",
+    "Canvas manipulation techniques for smooth drawing experiences",
+    "Prompt engineering for optimal AI image generation"
+  ],
+  "links": {
+    "github": "https://github.com/username/sketchvision",
+  },
+  "features": [
+    "Intuitive drawing canvas with adjustable brush sizes and colors",
+    "Text annotation system for guiding AI interpretation",
+    "Intelligent prompt generation from sketches",
+    "High-quality image generation with DALL-E 3",
+    "Personal gallery of saved creations",
+    "Responsive design for desktop and mobile",
+    "Dark mode support"
+  ]
 },
   {
   id: "browzio",
@@ -238,11 +314,11 @@ const projects = [
     },
     {
       problem: "Keeping all data local with no backend storage",
-      solution: "Leveraged Chrome’s local storage APIs and structured everything client-side"
+      solution: "Leveraged Chrome's local storage APIs and structured everything client-side"
     },
     {
       problem: "Making raw data (like scroll distance) meaningful to users",
-      solution: "Introduced visualizations like daily mileage, comparison to Earth’s circumference, and most active tabs"
+      solution: "Introduced visualizations like daily mileage."
     }
   ],
   outcomes: {
@@ -254,7 +330,7 @@ const projects = [
     feedback: [
       "I had no idea I scrolled over a kilometer every day until Browzio!",
       "Love how clean and useful the dashboard is—super fun stats without being invasive.",
-      "Exactly the kind of digital mindfulness tool I didn’t know I needed"
+      "Exactly the kind of digital mindfulness tool I didn't know I needed"
     ]
   },
   learnings: [
@@ -263,12 +339,11 @@ const projects = [
     "Designing data visualizations that communicate personal insights clearly"
   ],
   links: {
-    github: "https://github.com/yourusername/browzio",
-    chrome: "https://chrome.google.com/webstore/detail/browzio/your-extension-id",
-    demo: "https://yourdemo.com/browzio"
+    github: "https://github.com/Sri01729/Browzio",
+    demo: "https://addons.mozilla.org/en-US/firefox/addon/browzio/"
   }
 }
-,
+  ,
   {
     id: "apple-website-replica",
     title: "Apple Website Clone",
@@ -331,8 +406,8 @@ const projects = [
       "Performance optimization for image-heavy websites"
     ],
     links: {
-      github: "https://github.com/yourusername/apple-clone",
-      demo: "https://apple-clone-demo.vercel.app"
+      github: "https://github.com/Sri01729/apple-website-homepage-mimic",
+      demo: "https://apple-website-homepage-mimic-oc47tr4nw-sai-sriniva-alahari.vercel.app/"
     }
   }
 ]
@@ -431,7 +506,17 @@ export default function ProjectPage() {
                 <h2 className="text-2xl font-bold mb-4 text-[#fefeff]">Overview</h2>
                 <p className="text-gray-300">{project.overview}</p>
               </section>
-
+              {/* Features (new code) */}
+  {project.features && project.features.length > 0 && (
+    <section>
+      <h2 className="text-2xl font-bold mb-4 text-[#fefeff]">Key Features</h2>
+      <ul className="list-disc list-inside space-y-2 text-gray-300">
+        {project.features.map((feature: string, index: number) => (
+          <li key={index}>{feature}</li>
+        ))}
+      </ul>
+    </section>
+  )}
               <section>
                 <h2 className="text-2xl font-bold mb-4 text-[#fefeff]">Role & Responsibilities</h2>
                 <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -525,22 +610,38 @@ export default function ProjectPage() {
           </div>
 
           <div className="flex gap-4 pt-8 border-t border-gray-800">
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-gray-400 hover:text-gray-300 transition-colors"
-            >
-              <FaGithub className="mr-2" size={20} /> View on GitHub
-            </a>
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-gray-400 hover:text-gray-300 transition-colors"
-            >
-              <FaExternalLinkAlt className="mr-2" size={20} /> Live Demo
-            </a>
+            {project.id === 'redinai' || project.id === 'quizscraper' ? (
+              <>
+                <span className="inline-flex items-center text-gray-500">
+                  <FaGithub className="mr-2" size={20} /> Private Repository
+                </span>
+                <span className="inline-flex items-center text-gray-500">
+                  <FaExternalLinkAlt className="mr-2" size={20} /> Soon to be Deployed
+                </span>
+              </>
+            ) : (
+              <>
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-gray-400 hover:text-gray-300 transition-colors"
+                >
+                  <FaGithub className="mr-2" size={20} /> View on GitHub
+                </a>
+                {/* Live Demo Link */}
+                {project.links.demo && (
+                  <a
+                    href={project.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-gray-400 hover:text-gray-300 transition-colors"
+                  >
+                    <FaExternalLinkAlt className="mr-2" size={20} /> Live Demo
+                  </a>
+                )}
+              </>
+            )}
           </div>
         </motion.div>
       </div>

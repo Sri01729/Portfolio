@@ -13,10 +13,21 @@ const blogPosts = [
     description: "Discover how IntuiCell is challenging the foundations of current Artificial Intelligence with a novel approach inspired by neuroscience, culminating in Luna, a robot that learns autonomously in real-time.",
     date: "April 02, 2025",
     readTime: "7 min read",
-    category: "Artificial Intelligence",
+    category: "AI",
     tags: ["AI", "Machine Learning", "Neuroscience", "Robotics", "Autonomous Learning"],
-    thumbnail: "intuicell.png",
+    thumbnail: "/intuicell.png",
   },
+  {
+  "id": "langchain-rag-ai-optimization",
+  "title": "LangChain RAG: Enhancing AI Model Accuracy with Retrieval-Augmented Generation",
+  "description": "Explore how LangChain's Retrieval-Augmented Generation (RAG) boosts language model accuracy by integrating real-time external data into the response generation process.",
+  "date": "February 26, 2024",
+  "readTime": "5 min read",
+  "category": "AI ",
+  "tags": ["LangChain", "RAG", "LLM", "AI Tools", "Web Development"],
+  "thumbnail": "/langchain.png"
+}
+,
   {
     id: "Building-Responsive-UIs-with-Tailwind-CSS",
     title: "Building Responsive UIs with Tailwind CSS",
@@ -31,7 +42,7 @@ const blogPosts = [
     id: "The-Power-of-AI-in-Modern-Web-Applications",
     title: "The Power of AI in Modern Web Applications",
     description: "Explore how artificial intelligence is transforming web development and user experiences. Discover practical applications and implementation strategies for integrating AI into your projects.",
-    date: "April 10, 2025",
+    date: "September 10, 2025",
     readTime: "10 min read",
     category: "AI",
     tags: ["Artificial Intelligence", "Web Development", "Machine Learning"],

@@ -37,7 +37,7 @@ type AudienceType = 'anyone' | 'recruiters' | 'engineers' | 'product-managers';
 const audienceContent = {
   anyone: {
     title: "For Anyone",
-    description: (<>I'm a <DeveloperIntro /> who thrives on solving real-world challenges by creating impactful and practical digital solutions that make a difference in people's lives.</>),
+    description: (<>I'm a <DeveloperIntro /> solving real-world challenges by creating impactful and practical digital solutions that make a difference in people's lives, currently diving into AI for innovation.</>),
     skills: []
   },
   recruiters: {
@@ -330,15 +330,23 @@ export default function Home() {
                 <div key={id} className="mb-4 text-left">
                   <Link
                     href={`#${id}`}
-                    className={`group flex items-center gap-2 text-sm ${
-                      activeSection === id
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(id);
+                    }}
+                    className={`group flex items-center gap-2 text-sm transition-colors duration-300 ${activeSection === id
                         ? 'text-[#fefeff]'
                         : 'text-[#969696] hover:text-[#fefeff]'
                     }`}
                   >
-                    <span className={`transition-all duration-300`}>
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 5 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className={`transition-all duration-300 ${activeSection === id ? 'font-medium' : ''}`}
+                    >
                       {title}
-                    </span>
+                    </motion.span>
                   </Link>
                 </div>
               ))}
@@ -380,32 +388,74 @@ export default function Home() {
 
               {/* Work Section */}
               <section id="work" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <ProjectsCarousel />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <ProjectsCarousel />
+               </motion.div>
               </section>
 
               {/* Tech Stack Section */}
               <section id="tech" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <TechStack />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <TechStack />
+               </motion.div>
               </section>
 
               {/* Background Section */}
               <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <Experience />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <Experience />
+               </motion.div>
               </section>
 
               {/* Blogs Section */}
               <section id="blogs" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <Blogs />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <Blogs />
+               </motion.div>
               </section>
 
               {/* About Section */}
               <section id="about" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <About />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <About />
+               </motion.div>
               </section>
 
               {/* Contact Section */}
               <section id="contact" className="min-h-screen px-4 md:px-24 py-12 md:py-32 md:ml-16">
-               <Contact />
+               <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+               >
+                 <Contact />
+               </motion.div>
               </section>
             </main>
 

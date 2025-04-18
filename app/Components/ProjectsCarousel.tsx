@@ -21,7 +21,8 @@ const projects = [
       { "icon": FaChrome, "color": "#4285F4" },
       { "icon": FaJsSquare, "color": "#F7DF1E" },
       { "icon": SiMermaid, "color": "#FF6B6B" },
-      { "icon": PiOpenAiLogo, "color": "#00A4EF" }
+        { "icon": PiOpenAiLogo, "color": "#00A4EF" },
+      { icon: FaNodeJs, color: "#68A063" },
     ],
     "video": "/QuizScraper-demo.mp4",
 },
@@ -29,7 +30,7 @@ const projects = [
     title: "RedinAI",
     description:
       "RedinAI is an AI assistant where you can input a Reddit post link and a prompt, and the AI analyzes the post and comments to provide insightful answers based on your questions. I created this app to address the challenge of absorbing knowledge from lengthy Reddit threads. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers.",
-    tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI"],
+    tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI", "AI-Powered"],
     link: "https://github.com/yourusername/RedinAI",
     slug: "redinai",
     platforms: [
@@ -39,7 +40,22 @@ const projects = [
       { icon: BiLogoPostgresql, color: "#336791" },
     ],
     video: "/RedinAI.mp4",
-  },
+    },
+  {
+  "title": "SketchVision",
+  "description": "SketchVision is an innovative web application that transforms simple sketches and text annotations into stunning AI-generated artwork. With an intuitive drawing interface and powerful AI integration, users can quickly bring their visual ideas to life without advanced artistic skills. Perfect for designers, content creators, and anyone looking to visualize concepts rapidly.",
+  "tags": ["React", "TypeScript", "Nodejs", "OpenAI", "Canvas API", "DALL-E 3", "AI-Powered"],
+  "link": "https://sketchvision.app",
+  "slug": "sketchvision",
+  "platforms": [
+     { icon: PiOpenAiLogo, color: "#00A4EF" },
+      { icon: RiNextjsFill, color: "#ffffff" },
+      { icon: FaReact, color: "#61DAFB" },
+      { icon: FaNodeJs, color: "#68A063" },
+      { icon: TbBrandVite, color: "#b45ee3" },
+  ],
+  "video": "/SketchVision.mp4"
+},
   {
     title: "Browzio",
     description:
@@ -54,7 +70,7 @@ const projects = [
     title: "Apple Website Replica",
     description:
       "A responsive replica of the Apple website homepage, built with modern web technologies to create a seamless and interactive user experience. The project showcases advanced animations, 3D visual effects, and smooth transitions. This project highlights the ability to combine 3D animations and interactive elements, providing an immersive experience similar to that of a high-quality tech website like Apple's.",
-    tags: ["Three.js", "React Three Fiber", "React Three Drei", "GSAP", "Vite"],
+    tags: ["Three.js", "React","GSAP", "Vite"],
     link: "https://github.com/sri01729/apple-website-homepage-mimic",
     slug: "apple-website-replica",
     platforms: [
