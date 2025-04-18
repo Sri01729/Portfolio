@@ -214,7 +214,7 @@ export default function Home() {
           >
             {/* Logo */}
             <motion.div
-              className="absolute md:fixed top-8 left-4 md:left-8 z-50 cursor-pointer"
+              className="absolute md:fixed top-8 left-8 md:left-8 z-50 cursor-pointer"
               onHoverStart={() => setIsNameExpanded(true)}
               onHoverEnd={() => setIsNameExpanded(false)}
               onClick={handleLogoClick}
@@ -248,7 +248,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="absolute md:fixed top-8 right-4 z-50 md:hidden"
+              className="absolute md:fixed top-8 right-8 z-50 md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="space-y-2">
@@ -303,13 +303,13 @@ export default function Home() {
                 <div className="absolute right-0 z-10 w-12 h-full bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
                 <div
                   ref={scrollContainerRef}
-                  className="flex gap-4 md:gap-8 justify-center md:justify-center text-sm overflow-x-auto scrollbar-hide"
+                  className="flex gap-4 md:gap-8 justify-start md:justify-center text-sm overflow-x-auto scrollbar-hide"
                   style={{
                     scrollbarWidth: 'none',
                     msOverflowStyle: 'none',
                     WebkitOverflowScrolling: 'touch',
-                    paddingLeft: '1rem',
-                    paddingRight: '1rem'
+                    paddingLeft: '2rem',
+                    paddingRight: '2rem'
                   }}
                 >
                   {(['anyone', 'recruiters', 'engineers', 'product-managers'] as AudienceType[]).map((audience) => (
@@ -358,13 +358,13 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className=" px-4 md:px-24 py-12">
-                <div className="pt-32 pb-12 mb-12 ml-8">
+              <section id="intro" className="px-4 md:px-24 py-12">
+                <div className="pt-32 pb-12 mb-12 md:ml-8">
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="text-center max-w-7xl mx-auto"
+                    className="max-w-7xl mx-auto px-4 md:px-0"
                   >
                     <AnimatePresence mode="wait">
                       <motion.div
