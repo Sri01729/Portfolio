@@ -78,7 +78,7 @@ module.exports = {
           <div className="flex flex-wrap items-center gap-4 text-sm text-[#969696] mb-8">
             <div className="flex items-center">
               <FaCalendarAlt className="mr-2" />
-              <span>April 15, 2025</span>
+              <span>October 15, 2024</span>
             </div>
             <div className="flex items-center">
               <FaClock className="mr-2" />

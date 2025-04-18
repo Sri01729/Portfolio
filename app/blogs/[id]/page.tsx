@@ -276,7 +276,7 @@ export default function BlogPostPage() {
           </div>
 
           {/* Social Sharing */}
-          <div className="mt-12 pt-8 border-t border-gray-800">
+          {/* <div className="mt-12 pt-8 border-t border-gray-800">
             <h3 className="text-lg font-semibold mb-4">Share this article</h3>
             <div className="flex gap-4">
               <a
@@ -304,7 +304,7 @@ export default function BlogPostPage() {
                 <FaGithub size={24} />
               </a>
             </div>
-          </div>
+          </div> */}
         </motion.article>
       </div>
     </div>
