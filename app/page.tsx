@@ -48,7 +48,7 @@ const audienceContent = {
       </>
 
     ),
-    skills: [<a href="/saisrinivasalahariresume.docx" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
+    skills: [<a href="/Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
   },
   engineers: {
     title: "Engineers",
@@ -66,12 +66,12 @@ const audienceContent = {
         </a>
       </>
     ),
-    skills: [<a href="/saisrinivasalahariresume.docx" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
+    skills: [<a href="//Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
   },
   'product-managers': {
     title: "Product Managers",
     description: "I bring technical expertise to product development, bridging the gap between business objectives and technical execution.",
-    skills: [<a href="/saisrinivasalahariresume.docx" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
+    skills: [<a href="//Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
   }
 };
 

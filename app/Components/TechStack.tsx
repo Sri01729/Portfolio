@@ -9,7 +9,9 @@ import {
   SiTailwindcss, SiFramer, SiGit, SiGithub,
   SiHtml5, SiCss3, SiSass, SiWebpack, SiBabel, SiDocker,
   SiAmazon, SiVercel, SiFirebase, SiOpenai, SiSpring,
-  SiWordpress
+  SiWordpress,
+  SiFigma,
+  SiAdobexd
 } from 'react-icons/si';
 import { VscCode } from 'react-icons/vsc';
 import { MdOutlineMouse } from 'react-icons/md';
@@ -45,7 +47,9 @@ const TechStack = () => {
     { icon: FaJava, name: 'Java', color: '#007396' },
     { icon: SiSpring, name: 'Spring Boot', color: '#6DB33F' },
     { icon: SiSpring, name: 'Spring AI', color: '#6DB33F' },
-    { icon: SiWordpress, name: 'WordPress', color: '#21759B' }
+    { icon: SiWordpress, name: 'WordPress', color: '#21759B' },
+    { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
+    { icon: SiAdobexd, name: 'Adobe XD', color: '#FF61F6' }
   ];
 
   return (
