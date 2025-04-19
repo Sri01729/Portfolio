@@ -44,7 +44,7 @@ const audienceContent = {
     title: "Recruiters",
     description: (
       <>
-        Software Developer with 2 years of professional experience complemented by P.G Diploma in Web Development. My expertise includes <SkillsIntro />
+        Full Stack Developer with 2 years of professional experience complemented by P.G Diploma in Web Development. My expertise includes <SkillsIntro />
       </>
 
     ),

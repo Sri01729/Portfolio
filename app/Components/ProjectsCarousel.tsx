@@ -13,8 +13,8 @@ import { useState } from "react";
 const projects = [
     {
     "title": "QuizScraper",
-    "description": "QuizScraper is a Chrome extension that dynamically generates quizzes from any webpage content. It transforms articles, documentation, and PDFs into interactive learning experiences with multiple question types including code snippets, conceptual questions, and visual diagram challenges. I built this to solve the problem of passive reading by creating instant knowledge tests tailored to the content users are actively engaging with.",
-    "tags": ["Chrome Extension", "JavaScript", "nodejs","Quiz Generation", "Mermaid.js", "AI-Powered"],
+    "description": "QuizScraper transforms articles, documentation, and any webpage content into interactive quizzes using the power of OpenAI's LLM, GPT-4.1-nano. Specially designed for students and learners, it helps turn passive reading into active learning by dynamically generating multiple question types, including code snippets, conceptual challenges, and visual diagrams, tailored directly to the content you're engaging with.",
+    "tags": ["Chrome Extension", "JavaScript", "nodejs","Quiz Generation", "Mermaid.js", "AI-Powered", "GPT-4.1-nano"],
     "link": "https://github.com/yourusername/QuizScraper",
     "slug": "quizscraper",
     "platforms": [
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "RedinAI",
     description:
-      "RedinAI is an AI assistant where you can input a Reddit post link and a prompt, and the AI analyzes the post and comments to provide insightful answers based on your questions. I created this app to address the challenge of absorbing knowledge from lengthy Reddit threads. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers.",
+      "Unlock the knowledge buried in lengthy Reddit threads without the endless scroll. RedinAI acts as your personal AI analyst: give it a post link and a prompt, and it dives deep into the post and comments to surface key insights and answer your specific questions. I built this to tackle information overload, helping you stop drowning in discussion and start understanding complex topics faster.",
     tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI", "AI-Powered"],
     link: "https://github.com/yourusername/RedinAI",
     slug: "redinai",

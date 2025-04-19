@@ -67,6 +67,8 @@ const Experience = () => {
                 <p className="text-sm text-[#969696]">
                   I chose this program because I didn't just want to build software — I wanted to craft experiences that people actually connect with. The intersection of design, development, and digital storytelling fascinated me. I saw this as the perfect launchpad to sharpen both my technical toolkit and creative instincts, and to level up from developer to full-stack digital creator.
                   <br /><br />
+                  The curriculum covered a wide range of topics, including <span className="text-[#fefeff]">front-end and back-end web development (HTML, CSS, JavaScript, PHP), database management, UI/UX design principles, and project management</span>. I particularly enjoyed diving into the <span className="text-[#fefeff]">WordPress ecosystem, gaining hands-on experience developing custom themes and plugins from scratch</span>.
+                  <br /><br />
                   Throughout the program, I consistently pushed for academic and personal growth — earning a Cumulative <span className="text-[#fefeff]">GPA of 4.03/4.33</span>, a reflection of my commitment to mastering both design principles and development fundamentals. I was honored with the <span className="text-[#fefeff]">Leonard & Isabel Bryan Memorial Bursary Scholarship (2023)</span>, awarded for academic excellence and dedication. And in <span className="text-[#fefeff]">June 2024</span>, I was placed on the <span className="text-[#fefeff]">Dean's Honour Roll</span>, recognized for maintaining top-tier grades and a strong academic presence.
                 </p>
               </div>
@@ -84,12 +86,12 @@ const Experience = () => {
               <div className="mt-8 md:mt-16">
                 <div className="space-y-4 max-w-2xl">
                   <h2 className="font-mono text-sm text-[#969696]">Cognizant</h2>
-                  <h3 className="text-4xl font-medium text-[#fefeff]">Software Developer</h3>
+                  <h3 className="text-4xl font-medium text-[#fefeff]">Full Stack Developer</h3>
                   <p className="text-sm text-[#fefeff]">2020 - 2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coimbatore,&nbsp;India</p>
                   <p className="text-sm text-[#969696]">
-                   I entered the tech industry driven by one question: "How can I use code to solve real-world problems at scale?" Joining Cognizant was my first big leap into the professional world — and it was here I learned how large-scale systems are built, maintained, and optimized in the real world.
+                   I joined Cognizant initially in a QA role, but my passion for building solutions drove me to pursue development immediately. Driven by the question, "How can I use code to solve real-world problems at scale?", I immersed myself in development fundamentals. Cognizant provided a supportive environment, and through focused self-learning and seizing internal opportunities, I successfully transitioned into a <span className="text-[#fefeff]">Full Stack Developer</span> role within the first 3 months.
                    <br /><br />
-                   At Cognizant, I developed and maintained scalable web applications using modern frameworks like <span className="text-[#fefeff]">React, Next.js, Node.js, and Spring Boot</span>. I collaborated across cross-functional teams to deliver smooth, intuitive user experiences, implemented robust APIs, and fine-tuned backend logic and database performance. I also helped streamline development workflows through CI/CD pipelines, and actively contributed to team growth by mentoring junior developers.
+                   It was here I truly learned how large-scale systems are built, maintained, and optimized. As a developer at Cognizant, I developed and maintained scalable web applications using modern frameworks like <span className="text-[#fefeff]">React, Next.js, Node.js, and Spring Boot</span>. I collaborated across cross-functional teams to deliver smooth, intuitive user experiences, implemented robust APIs, and fine-tuned backend logic and database performance. I also helped streamline development workflows through CI/CD pipelines, and actively contributed to team growth by mentoring junior developers.
                   </p>
                 </div>
               </div>
