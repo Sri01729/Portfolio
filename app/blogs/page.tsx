@@ -3,69 +3,34 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"
 import Link from "next/link"
+import { Metadata } from "next";
+import { blogPosts } from "../lib/blogData"
+import Image from "next/image"
 
 
-// Sample blog data
-const blogPosts = [
-  {
-    id: "intui-cell-luna",
-    title: "A New Dawn for AI: IntuiCell Introduces a Paradigm Shift in Intelligence",
-    description: "Discover how IntuiCell is challenging the foundations of current Artificial Intelligence with a novel approach inspired by neuroscience, culminating in Luna, a robot that learns autonomously in real-time.",
-    date: "April 02, 2025",
-    readTime: "7 min read",
-    category: "AI",
-    tags: ["AI", "Machine Learning", "Neuroscience", "Robotics", "Autonomous Learning"],
-    thumbnail: "/intuicell.png",
-  },
-  {
-  id: "langchain-rag-ai-optimization",
-  title: "LangChain RAG: Enhancing AI Model Accuracy with Retrieval-Augmented Generation",
-  description: "Explore how LangChain's Retrieval-Augmented Generation (RAG) boosts language model accuracy by integrating real-time external data into the response generation process.",
-  date: "February 26, 2025",
-  readTime: "5 min read",
-  category: "AI",
-  tags: ["LangChain", "RAG", "LLM", "AI Tools", "Web Development"],
-  thumbnail: "/langchain.png"
-}
-,
-  {
-    id: "Building-Responsive-UIs-with-Tailwind-CSS",
-    title: "Building Responsive UIs with Tailwind CSS",
-    description: "Learn how to create beautiful, responsive user interfaces using Tailwind CSS. This guide covers the fundamentals and advanced techniques for building modern web applications.",
-    date: "October 15, 2024",
-    readTime: "8 min read",
-    category: "Frontend",
-    tags: ["Tailwind CSS", "Responsive Design", "Web Development"],
-    thumbnail: "/blog-thumbnails/tailwind-css.jpg",
-  },
-  {
-    id: "The-Power-of-AI-in-Modern-Web-Applications",
-    title: "The Power of AI in Modern Web Applications",
-    description: "Explore how artificial intelligence is transforming web development and user experiences. Discover practical applications and implementation strategies for integrating AI into your projects.",
-    date: "September 10, 2025",
-    readTime: "10 min read",
-    category: "AI",
-    tags: ["Artificial Intelligence", "Web Development", "Machine Learning"],
-    thumbnail: "/ai-web.png",
-  }
-]
+// Sort blog posts by date (most recent first) before using them
+const sortedBlogPosts = [...blogPosts].sort((a, b) => {
+  const dateA = new Date(a.date).getTime();
+  const dateB = new Date(b.date).getTime();
+  return dateB - dateA; // Sort descending
+});
 
 const categories = [
   "All Categories",
-  ...Array.from(new Set(blogPosts.map((post) => post.category))),
+  ...Array.from(new Set(sortedBlogPosts.map((post) => post.category))), // Use sorted posts for categories
 ]
 
 export default function BlogsPage() {
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("All Categories")
 
-  const filteredPosts = blogPosts.filter((post) => {
+  const filteredPosts = sortedBlogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(search.toLowerCase()) ||
       post.description.toLowerCase().includes(search.toLowerCase())
     const matchesCategory =
       category === "All Categories" || post.category === category
-    return matchesSearch && matchesCategory
+    return matchesSearch && matchesCategory;
   })
 
   return (

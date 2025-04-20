@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState, useRef, ReactNode } from 'react';
+import { blogPosts } from '../lib/blogData';
 
 interface TiltCardProps {
   children: ReactNode;
@@ -88,27 +89,10 @@ const TiltCard = ({ children, index }: TiltCardProps) => {
   );
 };
 
-// Define the featured blogs directly
-const featuredBlogs = [
-  {
-    id: "intui-cell-luna",
-    title: "A New Dawn for AI: IntuiCell Introduces a Paradigm Shift in Intelligence",
-    description: "Discover how IntuiCell is challenging the foundations of current Artificial Intelligence with a novel approach inspired by neuroscience, culminating in Luna, a robot that learns autonomously in real-time.",
-    date: "April 02, 2025",
-    readTime: "7 min read",
-    category: "AI",
-    tags: ["AI", "Machine Learning", "Neuroscience", "Robotics", "Autonomous Learning"],
-  },
-  {
-    id: "The-Power-of-AI-in-Modern-Web-Applications",
-    title: "The Power of AI in Modern Web Applications",
-    description: "Explore how artificial intelligence is transforming web development and user experiences. Discover practical applications and implementation strategies for integrating AI into your projects.",
-    date: "September 10, 2025", // Keeping original date
-    readTime: "10 min read",
-    category: "AI",
-    tags: ["Artificial Intelligence", "Web Development", "Machine Learning"],
-  }
-];
+// Get the top 2 most recent blog posts
+const featuredBlogs = [...blogPosts]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 2);
 
 const Blogs = () => {
   return (
@@ -134,7 +118,7 @@ const Blogs = () => {
 
           <div className="md:col-span-2">
             <div className="grid grid-cols-1 gap-8 mt-0 md:mt-48 md:pt-4">
-              {/* Map over the statically defined featuredBlogs array */}
+              {/* Map over the SORTED featuredBlogs array */}
               {featuredBlogs.map((blog, index) => (
                 <TiltCard key={index} index={index}>
                   <div className="p-6">

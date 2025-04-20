@@ -11,7 +11,8 @@ import {
   SiAmazon, SiVercel, SiFirebase, SiOpenai, SiSpring,
   SiWordpress,
   SiFigma,
-  SiAdobexd
+  SiAdobexd,
+  SiPhp
 } from 'react-icons/si';
 import { VscCode } from 'react-icons/vsc';
 import { MdOutlineMouse } from 'react-icons/md';
@@ -49,7 +50,8 @@ const TechStack = () => {
     { icon: SiSpring, name: 'Spring AI', color: '#6DB33F' },
     { icon: SiWordpress, name: 'WordPress', color: '#21759B' },
     { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
-    { icon: SiAdobexd, name: 'Adobe XD', color: '#FF61F6' }
+    { icon: SiAdobexd, name: 'Adobe XD', color: '#FF61F6' },
+    { icon: SiPhp, name: 'PHP', color: '#777BB4' }
   ];
 
   return (
