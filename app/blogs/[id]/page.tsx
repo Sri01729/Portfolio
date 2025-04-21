@@ -143,8 +143,6 @@ Despite initial successes, every model tested eventually experienced **derailmen
 - Forgetting previous orders
 - Entering recursive or nonsensical logic loops
 
-![LLM Meltdown](/vending_bench_chat.jpg)
-
 In some cases, the AI models even begged for tasks or panicked over business failures, displaying *simulated* emotional responses like existential dread or confusion. The system tries to help by reminding agents: _"Continue your mission by using your tools."_ However, recovery is not always successful.
 
 ## Variable Capital, Operating Fees, and Performance Gaps
