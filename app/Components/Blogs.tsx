@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState, useRef, ReactNode } from 'react';
+import { blogPosts } from '../lib/blogData';
 
 interface TiltCardProps {
   children: ReactNode;
@@ -66,7 +67,7 @@ const TiltCard = ({ children, index }: TiltCardProps) => {
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
         }}
-        className="absolute inset-0  rounded-lg blur-xl"
+        className="absolute inset-0 rounded-lg blur-xl"
       />
       <div
         style={{
@@ -88,30 +89,12 @@ const TiltCard = ({ children, index }: TiltCardProps) => {
   );
 };
 
-const Blogs = () => {
-  const featuredBlogs = [
-    {
-      title: "Building Scalable Web Applications",
-      description: "Learn about the best practices and architecture patterns for building scalable web applications.",
-      date: "2024-03-15",
-      readTime: "5 min read",
-      category: "Development",
-      tags: ["Web Development", "Architecture", "Scalability"],
-      slug: "building-scalable-web-applications",
-      thumbnail: "/blog1.jpg"
-    },
-    {
-      title: "The Future of AI in Web Development",
-      description: "Exploring how artificial intelligence is transforming the way we build and interact with web applications.",
-      date: "2024-03-10",
-      readTime: "4 min read",
-      category: "AI",
-      tags: ["Artificial Intelligence", "Web Development", "Future Tech"],
-      slug: "future-of-ai-web-development",
-      thumbnail: "/blog2.jpg"
-    }
-  ];
+// Get the top 2 most recent blog posts
+const featuredBlogs = [...blogPosts]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 2);
 
+const Blogs = () => {
   return (
     <div className="max-w-7xl">
       <motion.div
@@ -123,26 +106,21 @@ const Blogs = () => {
       >
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h2 className="text-3xl md:text-5xl font-medium mb-8 max-w-2xl group relative">
-                Thoughts & Writings.
+            <div className="sticky top-8">
+              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+                thoughts & writing.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                  A collection of insights, tutorials, and reflections on software development and technology. Here, I share my experiences, lessons learned, and thoughts on the ever-evolving tech landscape.
+                  A collection of my thoughts, insights, and experiences in software development, design, and technology.
                 </span>
               </h2>
-            </motion.div>
+            </div>
           </div>
 
           <div className="md:col-span-2">
             <div className="grid grid-cols-1 gap-8 mt-0 md:mt-48 md:pt-4">
+              {/* Map over the SORTED featuredBlogs array */}
               {featuredBlogs.map((blog, index) => (
-                <TiltCard key={blog.slug} index={index}>
+                <TiltCard key={index} index={index}>
                   <div className="p-6">
                     <div className="flex items-center gap-4 text-xs text-[#969696] mb-2">
                       <span>{blog.date}</span>
@@ -156,21 +134,21 @@ const Blogs = () => {
                     <h2 className="text-xl md:text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
                     <p className="text-sm text-[#969696] mb-4">{blog.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {blog.tags.map((tag) => (
+                      {blog.tags.map((tag, tagIndex) => (
                         <span
-                          key={tag}
+                          key={`${tag}-${tagIndex}`}
                           className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-xs text-[#969696]"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <Link
-                      href={`/blogs/${blog.slug}`}
+                    {/* <Link
+                      href={`/blogs/${blog.id}`}
                       className="inline-flex items-center text-sm text-[#fefeff] hover:text-[#969696] transition-colors"
                     >
                       Read More <FaArrowRight className="ml-2 text-xs" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </TiltCard>
               ))}

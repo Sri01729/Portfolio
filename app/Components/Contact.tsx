@@ -109,20 +109,14 @@ const Contact = () => {
       >
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h2 className="text-3xl md:text-5xl font-medium mb-8 max-w-2xl group relative">
-                Contact.
+            <div className="sticky top-8">
+              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+                contact.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                   Let's connect and explore potential collaborations. Whether you have a project in mind, a question about my work, or just want to say hello, I'm always open to new conversations and opportunities.
                 </span>
               </h2>
-            </motion.div>
+            </div>
           </div>
 
           <div className="md:col-span-2">
@@ -145,7 +139,7 @@ const Contact = () => {
                   <div className="flex flex-col md:flex-row items-center gap-6">
                     <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-full overflow-hidden border-2 border-white/10">
                       <Image
-                        src="/srinivas_alahari.png"
+                        src="/srinivas_ghibli.png"
                         alt="Sai Srinivas Alahari"
                         fill
                         className="object-cover"

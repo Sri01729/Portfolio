@@ -2,16 +2,16 @@ import { NextResponse } from 'next/server';
 import emailjs from '@emailjs/nodejs';
 
 // EmailJS configuration
-const EMAILJS_PUBLIC_KEY = 'gwtVlxJ6xemuxk19i';
+const EMAILJS_PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY || '';
 const EMAILJS_PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY || '';
-const EMAILJS_SERVICE_ID = 'service_8i10mcu';
-const EMAILJS_TEMPLATE_ID = 'template_gq0x5rm';
+const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID || '';
+const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID || '';
 
 export async function POST(request: Request) {
   try {
-    // Check if private key is available
-    if (!EMAILJS_PRIVATE_KEY) {
-      console.error('EmailJS private key is missing');
+    // Check if required keys are available
+    if (!EMAILJS_PRIVATE_KEY || !EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      console.error('One or more EmailJS configuration values are missing');
       return NextResponse.json(
         { success: false, error: 'Email service configuration error' },
         { status: 500 }
