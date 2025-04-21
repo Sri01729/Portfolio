@@ -35,7 +35,7 @@ const SplineModel = () => {
           setIsLoaded(true);
 
           // If mobile, adjust the camera or scale
-          if (isMobile && spline.spline) {
+          if (isMobile) {
             // Set a smaller scale or adjust camera distance for mobile
             setTimeout(() => {
               try {
