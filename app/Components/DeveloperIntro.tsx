@@ -5,7 +5,7 @@ const DeveloperIntro = () => {
     <TypeAnimation
       sequence={[
         'Developer',
-        3000,
+        300,
         () => {
           console.log('Sequence completed');
         },

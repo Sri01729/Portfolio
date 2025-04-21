@@ -10,88 +10,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
-export const projects = [
+const projects = [
     {
     "title": "QuizScraper",
-    "description": "QuizScraper is a Chrome extension that dynamically generates quizzes from any webpage content. It transforms articles, documentation, and PDFs into interactive learning experiences with multiple question types including code snippets, conceptual questions, and visual diagram challenges. I built this to solve the problem of passive reading by creating instant knowledge tests tailored to the content users are actively engaging with.",
-    "tags": ["Chrome Extension", "JavaScript", "nodejs","Quiz Generation", "Mermaid.js", "AI-Powered"],
+    "description": "QuizScraper transforms articles, documentation, and any webpage content into interactive quizzes using the power of OpenAI's LLM, GPT-4.1-nano. Specially designed for students and learners, it helps turn passive reading into active learning by dynamically generating multiple question types, including code snippets, conceptual challenges, and visual diagrams, tailored directly to the content you're engaging with.",
+    "tags": ["Chrome Extension", "JavaScript", "nodejs","Quiz Generation", "Mermaid.js", "AI-Powered", "GPT-4.1-nano"],
     "link": "https://github.com/yourusername/QuizScraper",
     "slug": "quizscraper",
     "platforms": [
       { "icon": FaChrome, "color": "#4285F4" },
       { "icon": FaJsSquare, "color": "#F7DF1E" },
       { "icon": SiMermaid, "color": "#FF6B6B" },
-      { "icon": PiOpenAiLogo, "color": "#00A4EF" }
+        { "icon": PiOpenAiLogo, "color": "#00A4EF" },
+      { icon: FaNodeJs, color: "#68A063" },
     ],
     "video": "/QuizScraper-demo.mp4",
-    "details": {
-      "overview": "QuizScraper is a Chrome extension that dynamically generates quizzes from any webpage content. It transforms articles, documentation, and PDFs into interactive learning experiences with multiple question types including code snippets, conceptual questions, and visual diagram challenges.\n\nTo solve the problem of passive reading by creating instant knowledge tests tailored to the content users are actively engaging with.",
-      "role": "Full Stack Developer",
-      "responsibilities": [
-        "Designed and implemented the Chrome extension architecture",
-        "Developed the quiz generation algorithm using OpenAI's API",
-        "Created the user interface for quiz display and interaction",
-        "Implemented Mermaid.js integration for diagram-based questions",
-        "Built the backend API for processing webpage content"
-      ],
-      "technologies": {
-        "frontend": ["JavaScript", "React", "Chrome Extension API", "Mermaid.js"],
-        "backend": ["Node.js", "Express", "OpenAI API"],
-        "database": ["MongoDB"],
-        "tools": ["Git", "VS Code", "Chrome DevTools"]
-      },
-      "process": [
-        "Agile Development with 2-week sprints",
-        "Requirements gathering and planning",
-        "Prototype development",
-        "Core functionality implementation",
-        "Testing and refinement",
-        "Deployment and monitoring"
-      ],
-      "challenges": [
-        {
-          "challenge": "Processing complex webpage content",
-          "solution": "Implemented a robust HTML parser with custom filtering for different content types"
-        },
-        {
-          "challenge": "Generating relevant questions",
-          "solution": "Created a sophisticated prompt engineering system for OpenAI API"
-        },
-        {
-          "challenge": "Performance optimization",
-          "solution": "Implemented caching and lazy loading for better extension performance"
-        }
-      ],
-      "outcomes": {
-        "metrics": [
-          "Successfully deployed to Chrome Web Store",
-          "Achieved 4.5/5 user rating",
-          "Processed over 10,000 webpages",
-          "Generated 50,000+ questions"
-        ],
-        "feedback": [
-          "Users reported improved learning retention",
-          "Positive feedback on question quality",
-          "Appreciation for the intuitive interface"
-        ]
-      },
-      "learnings": [
-        "Deep understanding of Chrome Extension development",
-        "Advanced prompt engineering techniques",
-        "Performance optimization for browser extensions",
-        "User experience design for educational tools"
-      ],
-      "links": {
-        "github": "https://github.com/yourusername/QuizScraper",
-        "demo": "https://chrome.google.com/webstore/detail/quizscraper"
-      }
-    }
 },
   {
     title: "RedinAI",
     description:
-      "RedinAI is an AI assistant where you can input a Reddit post link and a prompt, and the AI analyzes the post and comments to provide insightful answers based on your questions. I created this app to address the challenge of absorbing knowledge from lengthy Reddit threads. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers.",
-    tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI"],
+      "Unlock the knowledge buried in lengthy Reddit threads without the endless scroll. RedinAI acts as your personal AI analyst: give it a post link and a prompt, and it dives deep into the post and comments to surface key insights and answer your specific questions. I built this to tackle information overload, helping you stop drowning in discussion and start understanding complex topics faster.",
+    tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI", "AI-Powered"],
     link: "https://github.com/yourusername/RedinAI",
     slug: "redinai",
     platforms: [
@@ -101,69 +40,22 @@ export const projects = [
       { icon: BiLogoPostgresql, color: "#336791" },
     ],
     video: "/RedinAI.mp4",
-    details: {
-      overview: "RedinAI is an AI assistant that analyzes Reddit posts and comments to provide insightful answers based on user questions. It helps users easily digest and understand complex discussions by summarizing key points and offering relevant answers.\n\nTo address the challenge of absorbing knowledge from lengthy Reddit threads by providing AI-powered analysis and insights.",
-      role: "Full Stack Developer",
-      responsibilities: [
-        "Architected the full-stack application",
-        "Developed the frontend using Next.js",
-        "Built the backend with Spring Boot",
-        "Integrated OpenAI API for content analysis",
-        "Implemented PostgreSQL database design"
-      ],
-      technologies: {
-        frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-        backend: ["Spring Boot", "Java", "OpenAI API"],
-        database: ["PostgreSQL"],
-        tools: ["Git", "IntelliJ IDEA", "VS Code"]
-      },
-      process: [
-        "Scrum with weekly sprints",
-        "System architecture design",
-        "Database schema development",
-        "API implementation",
-        "Frontend development",
-        "Integration and testing",
-        "Deployment and monitoring"
-      ],
-      challenges: [
-        {
-          challenge: "Handling Reddit API rate limits",
-          solution: "Implemented efficient caching and request queuing"
-        },
-        {
-          challenge: "Processing large Reddit threads",
-          solution: "Developed a smart content summarization algorithm"
-        },
-        {
-          challenge: "Real-time response generation",
-          solution: "Optimized OpenAI API calls with streaming responses"
-        }
-      ],
-      outcomes: {
-        metrics: [
-          "Processed over 5,000 Reddit threads",
-          "Generated 20,000+ AI responses",
-          "Achieved 90% user satisfaction rate"
-        ],
-        feedback: [
-          "Users found the AI responses highly relevant",
-          "Positive feedback on response time",
-          "Appreciation for the intuitive interface"
-        ]
-      },
-      learnings: [
-        "Advanced Spring Boot application development",
-        "Next.js and React best practices",
-        "Database optimization techniques",
-        "AI integration patterns"
-      ],
-      links: {
-        github: "https://github.com/yourusername/RedinAI",
-        demo: "https://redinai-demo.com"
-      }
-    }
-  },
+    },
+  {
+  "title": "SketchVision",
+  "description": "SketchVision is an innovative web application that transforms simple sketches and text annotations into stunning AI-generated artwork. With an intuitive drawing interface and powerful AI integration, users can quickly bring their visual ideas to life without advanced artistic skills. Perfect for designers, content creators, and anyone looking to visualize concepts rapidly.",
+  "tags": ["React", "TypeScript", "Nodejs", "OpenAI", "Canvas API", "DALL-E 3", "AI-Powered"],
+  "link": "https://sketchvision.app",
+  "slug": "sketchvision",
+  "platforms": [
+     { icon: PiOpenAiLogo, color: "#00A4EF" },
+      { icon: RiNextjsFill, color: "#ffffff" },
+      { icon: FaReact, color: "#61DAFB" },
+      { icon: FaNodeJs, color: "#68A063" },
+      { icon: TbBrandVite, color: "#b45ee3" },
+  ],
+  "video": "/SketchVision.mp4"
+},
   {
     title: "Browzio",
     description:
@@ -173,72 +65,12 @@ export const projects = [
     slug: "browzio",
     platforms: [{ icon: FaFirefox, color: "#FF7139" }],
     video: "/Browzio.mp4",
-    details: {
-      overview: "Browzio is a powerful and fun browser extension designed to help users track and analyze their online activity effortlessly. Whether you're a developer, student, or professional, Browzio provides you with insightful metrics about your browsing habits.\n\nTo help users understand and optimize their browsing habits through data-driven insights.",
-      role: "Solo Developer",
-      responsibilities: [
-        "Designed and implemented the Firefox extension",
-        "Developed the activity tracking system",
-        "Created the analytics dashboard",
-        "Implemented data visualization features",
-        "Built the settings and configuration system"
-      ],
-      technologies: {
-        frontend: ["JavaScript", "Firefox Web Extension API", "Chart.js"],
-        storage: ["Local Storage", "IndexedDB"],
-        tools: ["Git", "VS Code", "Firefox Developer Tools"]
-      },
-      process: [
-        "Iterative Development",
-        "Extension architecture design",
-        "Core functionality implementation",
-        "UI/UX development",
-        "Testing and refinement",
-        "Firefox Add-ons submission"
-      ],
-      challenges: [
-        {
-          challenge: "Accurate activity tracking",
-          solution: "Implemented robust event listeners and data validation"
-        },
-        {
-          challenge: "Data privacy concerns",
-          solution: "Developed local-only storage with encryption"
-        },
-        {
-          challenge: "Performance impact",
-          solution: "Optimized tracking algorithms and storage patterns"
-        }
-      ],
-      outcomes: {
-        metrics: [
-          "Successfully published on Firefox Add-ons",
-          "Achieved 4.3/5 user rating",
-          "Processed over 1 million browsing events"
-        ],
-        feedback: [
-          "Users appreciated the privacy-focused approach",
-          "Positive feedback on the intuitive interface",
-          "Valuable insights into browsing patterns"
-        ]
-      },
-      learnings: [
-        "Firefox Web Extension development",
-        "Data visualization techniques",
-        "Privacy-focused development practices",
-        "Performance optimization for browser extensions"
-      ],
-      links: {
-        github: "https://github.com/yourusername/Browzio",
-        demo: "https://addons.mozilla.org/en-US/firefox/addon/browzio/"
-      }
-    }
   },
   {
     title: "Apple Website Replica",
     description:
       "A responsive replica of the Apple website homepage, built with modern web technologies to create a seamless and interactive user experience. The project showcases advanced animations, 3D visual effects, and smooth transitions. This project highlights the ability to combine 3D animations and interactive elements, providing an immersive experience similar to that of a high-quality tech website like Apple's.",
-    tags: ["Three.js", "React Three Fiber", "React Three Drei", "GSAP", "Vite"],
+    tags: ["Three.js", "React","GSAP", "Vite"],
     link: "https://github.com/sri01729/apple-website-homepage-mimic",
     slug: "apple-website-replica",
     platforms: [
@@ -247,66 +79,6 @@ export const projects = [
       { icon: TbBrandVite, color: "#b45ee3" },
     ],
     video: "/apple.mp4",
-    details: {
-      overview: "A responsive replica of the Apple website homepage, built with modern web technologies to create a seamless and interactive user experience. The project showcases advanced animations, 3D visual effects, and smooth transitions.\n\nTo demonstrate proficiency in creating high-end, interactive web experiences with modern web technologies.",
-      role: "Frontend Developer",
-      responsibilities: [
-        "Implemented 3D animations and effects",
-        "Developed responsive layouts",
-        "Created interactive components",
-        "Optimized performance",
-        "Implemented smooth transitions"
-      ],
-      technologies: {
-        frontend: ["React", "Three.js", "React Three Fiber", "React Three Drei", "GSAP"],
-        build: ["Vite"],
-        tools: ["Git", "VS Code", "Chrome DevTools"]
-      },
-      process: [
-        "Component-Driven Development",
-        "UI/UX analysis",
-        "Component architecture",
-        "3D implementation",
-        "Animation development",
-        "Performance optimization"
-      ],
-      challenges: [
-        {
-          challenge: "Complex 3D animations",
-          solution: "Leveraged React Three Fiber for efficient 3D rendering"
-        },
-        {
-          challenge: "Performance optimization",
-          solution: "Implemented code splitting and lazy loading"
-        },
-        {
-          challenge: "Responsive design",
-          solution: "Created adaptive layouts with CSS Grid and Flexbox"
-        }
-      ],
-      outcomes: {
-        metrics: [
-          "Achieved 95% Lighthouse performance score",
-          "Successfully replicated key Apple website features",
-          "Received positive feedback on animations"
-        ],
-        feedback: [
-          "Users were impressed by the smooth animations",
-          "Positive feedback on the responsive design",
-          "Appreciation for attention to detail"
-        ]
-      },
-      learnings: [
-        "Advanced 3D web development",
-        "Performance optimization techniques",
-        "Animation best practices",
-        "Responsive design patterns"
-      ],
-      links: {
-        github: "https://github.com/sri01729/apple-website-homepage-mimic",
-        demo: "https://apple-website-replica-demo.com"
-      }
-    }
   },
 ]
 
@@ -402,21 +174,19 @@ export default function StickyScrollRevealProjects() {
                                 y: -20
                             }}
                             transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30,
-                                delay: 0.1
+                                type: "tween",
+                                duration: 0.3,
                             }}
                             className="space-y-4 px-4"
                         >
-                            <h3 className="text-2xl font-medium text-slate-100">{currentProject.title}</h3>
-                            <p className="text-slate-300">{currentProject.description}</p>
+                            <h3 className="text-2xl font-medium text-[#fefeff]">{currentProject.title}</h3>
+                            <p className="text-sm text-[#969696]">{currentProject.description}</p>
 
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {currentProject.tags.map((tag, index) => (
                                     <span
                                         key={index}
-                                        className="bg-black/40 text-white text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
+                                        className="bg-black/40 text-[#969696] text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
                                     >
                                         {tag}
                                     </span>
@@ -426,7 +196,7 @@ export default function StickyScrollRevealProjects() {
                             <div className="flex items-center gap-4 mt-4">
                                 <Link
                                     href={`/projects/${currentProject.slug}`}
-                                    className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
+                                    className="text-[#fefeff] hover:text-[#969696] transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
                                 >
                                     View Details
                                 </Link>
@@ -483,83 +253,92 @@ export default function StickyScrollRevealProjects() {
 
             {/* Desktop View - Sticky Scroll */}
             <div className="hidden md:block w-full py-8 bg-transparent overflow-hidden">
-      <StickyScroll
-        content={projects.map((project) => ({
-          title: project.title,
-          description: (
-            <div className="space-y-4">
-              <p className="text-slate-300">{project.description}</p>
+                <div className="relative">
+                    <div className="absolute top-2 left-2 z-10 bg-black/60 text-[#969696] text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                        <span>Scroll to explore</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 19V5"></path>
+                            <path d="m5 12 7-7 7 7"></path>
+                        </svg>
+                    </div>
+                    <StickyScroll
+                        content={projects.map((project) => ({
+                            title: project.title,
+                            description: (
+                                <div className="space-y-4">
+                                    <p className="text-sm text-[#969696]">{project.description}</p>
 
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="bg-slate-800/70 text-slate-200 text-xs font-medium px-2.5 py-1 rounded-full border border-slate-700/50"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                                    <div className="flex flex-wrap gap-2 mt-4">
+                                        {project.tags.map((tag, index) => (
+                                            <span
+                                                key={index}
+                                                className="bg-black/40 text-[#969696] text-xs font-medium px-2.5 py-1 rounded-full border border-white/10"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
 
-              <div className="flex items-center gap-4 mt-4">
-                                    <Link
-                                        href={`/projects/${project.slug}`}
-                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1.5 text-sm font-medium"
-                >
-                                        View Details
-                                    </Link>
-                <div className="flex items-center gap-3 ml-2">
-                  {project.platforms.map((Platform, index) => (
-                    <Platform.icon
-                      key={index}
-                      className="text-xl"
-                      style={{ color: Platform.color }}
-                      title={project.tags[index]}
+                                    <div className="flex items-center gap-4 mt-4">
+                                        <Link
+                                            href={`/projects/${project.slug}`}
+                                            className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
+                                        >
+                                            View Details
+                                        </Link>
+                                        <div className="flex items-center gap-3 ml-2">
+                                            {project.platforms.map((Platform, index) => (
+                                                <Platform.icon
+                                                    key={index}
+                                                    className="text-xl"
+                                                    style={{ color: Platform.color }}
+                                                    title={project.tags[index]}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ),
+                            content: (
+                                <div className="w-full h-full overflow-hidden rounded-lg">
+                                    {project.video && (
+                                        <video
+                                            key={project.video}
+                                            width="100%"
+                                            height="100%"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            controls
+                                            playsInline
+                                            className="object-cover w-full h-full"
+                                        >
+                                            <source src={project.video} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    )}
+                                </div>
+                            ),
+                        }))}
+                        contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
                     />
-                  ))}
                 </div>
-              </div>
-            </div>
-          ),
-          content: (
-            <div className="w-full h-full overflow-hidden rounded-lg">
-              {project.video && (
-                <video
-                  key={project.video}
-                  width="100%"
-                  height="100%"
-                  autoPlay
-                  loop
-                  muted
-                  controls
-                  playsInline
-                  className="object-cover w-full h-full"
-                >
-                  <source src={project.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              )}
-            </div>
-          ),
-        }))}
-        contentClassName="w-[450px] h-[300px] rounded-xl overflow-hidden shadow-xl"
-                />
             </div>
 
-                <div className="flex justify-center">
-                 <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto ">
-                find more on my{" "}
-                <a
-                  href="https://github.com/Sri01729"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-sky-500"
-                  style={{ display: "inline-flex", alignItems: "center" }}
-                >
-                  GitHub &#x2197;
-                </a>
-              </p>
-              </div>
+            <div className="flex justify-center">
+                <p className="text-xl md:text-xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto">
+                    find more on my{" "}
+                    <a
+                        href="https://github.com/Sri01729"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-[#969696]"
+                        style={{ display: "inline-flex", alignItems: "center" }}
+                    >
+                        GitHub &#x2197;
+                    </a>
+                </p>
+            </div>
         </motion.div>
-  )
+    )
 }
