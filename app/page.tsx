@@ -364,8 +364,8 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className=" px-4 md:px-24 py-12 md:pb-32 md:ml-16">
-                <div className="grid md:grid-cols-3 gap-8 ">
+              <section id="intro" className="px-4 md:px-24 py-12 md:pb-32 md:ml-16">
+                <div className="grid md:grid-cols-3 gap-8">
                   <div className="md:col-span-1">
                     <div className="md:pt-48">
                       <h2 className="text-4xl md:text-7xl font-medium mb-4 max-w-2xl group relative">
@@ -425,15 +425,16 @@ export default function Home() {
                   </div>
 
                   <div className="md:col-span-2">
-                    <div className="h-full flex items-center justify-center ">
-                      <SplineModel />
+                    <div className="h-full pt-4 md:pt-0">
+                        <SplineModel />
+                        <div className=" relative left-3/4 bottom-14 bg-black h-10 w-1/4" />
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* Work Section */}
-              <section id="work" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="work" className="min-h-screen px-4 py-12 md:px-24 md:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
