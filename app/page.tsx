@@ -155,8 +155,13 @@ export default function Home() {
     const container = scrollContainerRef.current;
     if (container) {
       container.addEventListener('scroll', handleHorizontalScroll);
-      return () => container.removeEventListener('scroll', handleHorizontalScroll);
+      return () => {
+        if (container) {
+          container.removeEventListener('scroll', handleHorizontalScroll);
+        }
+      };
     }
+    return undefined;
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -359,19 +364,19 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="px-4 md:px-24 py-12">
-                <div className="grid md:grid-cols-3 gap-8">
+              <section id="intro" className=" px-4 md:px-24 py-12 md:pb-32 md:ml-16">
+                <div className="grid md:grid-cols-3 gap-8 ">
                   <div className="md:col-span-1">
-                    <div className="sticky top-8">
-                      <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
-                        Sai<span className="text-[#969696]">.</span>
+                    <div className="md:pt-48">
+                      <h2 className="text-4xl md:text-7xl font-medium mb-4 max-w-2xl group relative">
+                        Sai Srinivas Alahari<span className="text-[#969696]">.</span>
                         <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                           Full Stack Developer with a passion for building impactful digital solutions
                         </span>
                       </h2>
 
                       {/* Audience Selector */}
-                      <div className="flex flex-wrap gap-3 mb-4">
+                      {/* <div className="flex flex-wrap gap-3 mb-4">
                         {Object.entries(audienceContent).map(([key, { title }]) => (
                           <button
                             key={key}
@@ -384,18 +389,15 @@ export default function Home() {
                             {title}
                           </button>
                         ))}
-                      </div>
-                    </div>
-                  </div>
+                      </div> */}
 
-                  <div className="md:col-span-2">
-                    <div className="space-y-4 max-w-2xl mt-0 md:mt-16 md:pt-4">
                       <motion.div
                         key={selectedAudience}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
+                        className="mt-8 pr-4"
                       >
                         <p className="text-[#969696] mb-8">
                           {audienceContent[selectedAudience].description}
@@ -419,10 +421,12 @@ export default function Home() {
                           </motion.div>
                         )}
                       </motion.div>
+                    </div>
+                  </div>
 
-                      <div className="mt-12">
-                        <SplineModel />
-                      </div>
+                  <div className="md:col-span-2">
+                    <div className="h-full flex items-center justify-center ">
+                      <SplineModel />
                     </div>
                   </div>
                 </div>

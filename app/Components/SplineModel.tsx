@@ -71,7 +71,7 @@ const SplineModel = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-[350px] md:h-[500px] relative overflow-hidden"
+      className="w-full h-[500px] md:h-[80vh] relative overflow-hidden mt-0 md:mt-16"
     >
       <style jsx global>{`
         /* Hide Spline watermark */
