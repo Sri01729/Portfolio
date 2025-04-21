@@ -14,7 +14,7 @@ const SkillsIntro = () => {
         2000,
         'Spring Boot',
         2000,
-        'Python',
+        'Python(Django)',
         2000,
         'Wordpress',
         2000,
