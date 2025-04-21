@@ -14,6 +14,7 @@ import Blogs from "./Components/Blogs";
 import VisitCounter from "./Components/VisitCounter";
 import TechStack from "./Components/TechStack";
 import Link from "next/link";
+import SplineModel from "./Components/SplineModel";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -359,34 +360,71 @@ export default function Home() {
             {/* Main Content */}
             <main className="flex-grow">
               <section id="intro" className="px-4 md:px-24 py-12">
-                <div className="pt-32 pb-12 mb-12 md:ml-8">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="max-w-7xl mx-auto px-4 md:px-0"
-                  >
-                    <AnimatePresence mode="wait">
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="md:col-span-1">
+                    <div className="sticky top-8">
+                      <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+                        Sai<span className="text-[#969696]">.</span>
+                        <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                          Full Stack Developer with a passion for building impactful digital solutions
+                        </span>
+                      </h2>
+
+                      {/* Audience Selector */}
+                      <div className="flex flex-wrap gap-3 mb-4">
+                        {Object.entries(audienceContent).map(([key, { title }]) => (
+                          <button
+                            key={key}
+                            onClick={() => setSelectedAudience(key as AudienceType)}
+                            className={`px-3 py-1 text-sm rounded-full transition-all ${selectedAudience === key
+                              ? "bg-white/10 text-[#fefeff]"
+                              : "bg-transparent text-[#969696] hover:text-[#fefeff]"
+                              }`}
+                          >
+                            {title}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <div className="space-y-4 max-w-2xl mt-0 md:mt-16 md:pt-4">
                       <motion.div
                         key={selectedAudience}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <p className="text-3xl md:text-5xl text-[#fefeff] leading-tight mb-12 max-w-3xl mx-auto text-center">
+                        <p className="text-[#969696] mb-8">
                           {audienceContent[selectedAudience].description}
                         </p>
-                        <div className="flex gap-4 flex-wrap justify-center">
-                          {audienceContent[selectedAudience].skills.map((skill, index) => (
-                            <span key={index} className="text-sm text-[#969696]">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+
+                        {audienceContent[selectedAudience].skills.length > 0 && (
+                          <motion.div
+                            className="flex flex-wrap gap-4 mt-6"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                          >
+                            {audienceContent[selectedAudience].skills.map((skill, index) => (
+                              <div
+                                key={index}
+                                className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm hover:bg-white/10 transition-colors"
+                              >
+                                {skill}
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
                       </motion.div>
-                    </AnimatePresence>
-                  </motion.div>
+
+                      <div className="mt-12">
+                        <SplineModel />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </section>
 
