@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 import dynamic from "next/dynamic";
+import ThemeToggle from "./Components/ThemeToggle";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
@@ -280,6 +281,9 @@ export default function Home() {
                 </AnimatePresence>
               </div>
             </motion.div>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <button

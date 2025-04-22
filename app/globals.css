@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Common variables */
+  --animation-duration: 0.3s;
+
+  /* Light theme (default) */
+  --background-color: #ffffff;
+  --text-color: #171717;
+  --text-secondary: #646464;
+  --accent-color: #6a5acd;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --card-bg: #f8f9fa;
+  --hover-color: rgba(106, 90, 205, 0.1);
+}
+
+/* Dark theme */
+html.dark {
+  --background-color: #0a0a0a;
+  --text-color: #fefeff;
+  --text-secondary: #969696;
+  --accent-color: #8a7dff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: #171717;
+  --hover-color: rgba(138, 125, 255, 0.2);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,6 +35,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color var(--animation-duration), color var(--animation-duration);
 }
 
 @layer utilities {
