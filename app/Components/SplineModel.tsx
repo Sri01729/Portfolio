@@ -176,7 +176,7 @@ const SplineModel = ({ liteMode = false }) => {
       ) : shouldShowStaticImage ? (
         // Static image for mobile or lite mode
         <div className="w-full h-full relative hardware-accelerated flex items-center justify-center md:justify-end">
-          <div className="relative w-[130%] h-[130%] mx-auto md:-right-[10%] -top-[40px] md:-top-[80px]">
+          <div className="relative w-[130%] h-[130%] mx-auto md:-right-[15%] -top-[40px] md:-top-[60px]">
             <Image
               src="/spline-robot.png"
               alt="AI Robot"
@@ -184,9 +184,9 @@ const SplineModel = ({ liteMode = false }) => {
               style={{
                 objectFit: 'contain',
                 objectPosition: 'center',
-                transform: 'scale(1.8)'
+                transform: 'scale(0.7)'
               }}
-              className="md:[object-position:80%_center]"
+              className="md:[object-position:70%_center]"
               priority
               loading="eager"
             />
