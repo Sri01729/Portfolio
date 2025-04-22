@@ -41,10 +41,10 @@ const SplineModel = ({ liteMode = false }) => {
   }, []);
 
   useEffect(() => {
-    // Check if we're on mobile or tablet (for optimization settings only)
+    // Check if we're on mobile or tablet or if it's a lite mode view
     const checkMobile = () => {
       const isMobileDevice = window.innerWidth < 1280 ||
-                          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       setIsMobile(isMobileDevice);
     };
 
@@ -61,13 +61,8 @@ const SplineModel = ({ liteMode = false }) => {
     if (!canvasRef.current || !isVisible || liteMode) return;
 
     try {
-      if (isMobile) {
-        // More aggressive mobile positioning
-        canvasRef.current.style.transform = 'translate(-30%, -15%) scale(0.65) !important';
-      } else {
-        // Desktop positioning
-        canvasRef.current.style.transform = 'translateX(15%) scale(1.2) !important';
-      }
+      // Desktop positioning only - we now only use the 3D model on desktop
+      canvasRef.current.style.transform = 'translateX(15%) scale(1.2) !important';
     } catch (error) {
       console.error("Error positioning model:", error);
     }
@@ -75,7 +70,7 @@ const SplineModel = ({ liteMode = false }) => {
 
   // Add scroll event listener to handle positioning issues when scrolling
   useEffect(() => {
-    if (!isVisible || liteMode) return;
+    if (!isVisible || liteMode || isMobile) return;
 
     const handleScroll = () => {
       if (document.documentElement.scrollTop < 500) {
@@ -88,37 +83,22 @@ const SplineModel = ({ liteMode = false }) => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // For mobile, also listen to touch events
-    const handleTouch = () => {
-      // After touch ends, check if we need to reposition
-      setTimeout(() => {
-        if (document.documentElement.scrollTop < 500) {
-          setShouldReposition(true);
-        }
-      }, 100);
-    };
-
-    document.addEventListener('touchend', handleTouch);
-    document.addEventListener('touchcancel', handleTouch);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('touchend', handleTouch);
-      document.removeEventListener('touchcancel', handleTouch);
     };
   }, [isVisible, liteMode, isMobile, isLoaded]);
 
   // Apply positioning when needed
   useEffect(() => {
-    if (shouldReposition) {
+    if (shouldReposition && !isMobile && !liteMode) {
       positionModel();
       setShouldReposition(false);
     }
-  }, [shouldReposition, isMobile]);
+  }, [shouldReposition, isMobile, liteMode]);
 
   useEffect(() => {
-    // Only load Spline when visible and not in lite mode
-    if (!isVisible || liteMode) return;
+    // Only load Spline when visible, not in lite mode, and not on mobile
+    if (!isVisible || liteMode || isMobile) return;
 
     // We'll load the Spline runtime dynamically in the browser
     const loadSpline = async () => {
@@ -132,10 +112,8 @@ const SplineModel = ({ liteMode = false }) => {
 
           // Try to adjust quality for better performance
           try {
-            // Set quality based on device type
-            const qualitySettings = isMobile
-              ? { quality: 'low', environmentIntensity: 0.3 }
-              : { quality: 'medium', environmentIntensity: 0.5 };
+            // Desktop quality settings
+            const qualitySettings = { quality: 'medium', environmentIntensity: 0.5 };
 
             // Load with appropriate quality configuration
             await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode', qualitySettings);
@@ -144,14 +122,6 @@ const SplineModel = ({ liteMode = false }) => {
             setTimeout(() => {
               positionModel();
               setIsLoaded(true);
-
-              // For mobile devices, set another delayed positioning
-              // to ensure it's properly placed after fully loaded
-              if (isMobile) {
-                setTimeout(() => {
-                  positionModel();
-                }, 500);
-              }
             }, 100);
 
           } catch (e) {
@@ -199,7 +169,7 @@ const SplineModel = ({ liteMode = false }) => {
 
   // Handle responsive resizing for canvas
   useEffect(() => {
-    if (!isVisible || liteMode) return;
+    if (!isVisible || liteMode || isMobile) return;
 
     const handleResize = () => {
       if (canvasRef.current && containerRef.current) {
@@ -218,6 +188,9 @@ const SplineModel = ({ liteMode = false }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [isVisible, liteMode, isMobile]);
+
+  // Determine if we should show static image (mobile or lite mode)
+  const shouldShowStaticImage = isMobile || liteMode;
 
   return (
     <>
@@ -265,8 +238,8 @@ const SplineModel = ({ liteMode = false }) => {
           <div className="w-full h-full flex items-center justify-center bg-black/5">
             <div className="text-white/50">Loading...</div>
           </div>
-        ) : liteMode ? (
-          // Static image for lite mode only
+        ) : shouldShowStaticImage ? (
+          // Static image for mobile/tablet or lite mode
           <div className="w-full h-full relative hardware-accelerated flex items-center justify-center xl:justify-end">
             <div className="relative w-[130%] h-[130%] mx-auto xl:-right-[15%] -top-[40px] xl:-top-[70px]">
               <Image
@@ -285,7 +258,7 @@ const SplineModel = ({ liteMode = false }) => {
             </div>
           </div>
         ) : (
-          // 3D model for all devices when not in lite mode
+          // 3D model for desktop only
           <>
             <canvas
               ref={canvasRef}
