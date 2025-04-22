@@ -62,7 +62,8 @@ const SplineModel = ({ liteMode = false }) => {
 
     try {
       // Desktop positioning only - we now only use the 3D model on desktop
-      canvasRef.current.style.transform = 'translateX(15%) scale(1.2) !important';
+      // Adjusted translateX and scale for better overlap with static image position
+      canvasRef.current.style.transform = 'translateX(5%) scale(1.1) !important';
     } catch (error) {
       console.error("Error positioning model:", error);
     }
@@ -241,7 +242,7 @@ const SplineModel = ({ liteMode = false }) => {
         ) : shouldShowStaticImage ? (
           // Static image for mobile/tablet or lite mode
           <div className="w-full h-full relative hardware-accelerated flex items-center justify-center xl:justify-end">
-            <div className="relative w-[130%] h-[130%] mx-auto xl:-right-[15%] -top-[40px] xl:-top-[70px]">
+            <div className="relative w-[130%] h-[130%] mx-auto xl:-right-[15%] -top-[40px] xl:-top-[60px]">
               <Image
                 src="/spline-robot.png"
                 alt="AI Robot"

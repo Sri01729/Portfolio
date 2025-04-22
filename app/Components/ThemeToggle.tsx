@@ -21,13 +21,15 @@ export default function ThemeToggle() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
       onClick={toggleTheme}
-      className="fixed top-8 right-24 z-50 bg-[var(--card-bg)] border border-[var(--border-color)] rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-105"
+      className="fixed top-8 right-20 xl:right-8 z-50 bg-[var(--card-bg)] border border-[var(--border-color)] rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl theme-toggle-btn"
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {theme === 'dark' ? (
         // Sun icon for dark mode
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
           <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -40,7 +42,7 @@ export default function ThemeToggle() {
         </svg>
       ) : (
         // Moon icon for light mode
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       )}

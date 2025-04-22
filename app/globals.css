@@ -291,3 +291,21 @@ code[class*="language-"] {
   border-radius: 0.25rem !important;
   font-size: 0.875rem !important;
 }
+
+/* Theme toggle button styles */
+.theme-toggle-btn {
+  box-shadow: 0 0 10px 2px var(--accent-color);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px 2px var(--accent-color);
+  }
+  50% {
+    box-shadow: 0 0 15px 4px var(--accent-color);
+  }
+  100% {
+    box-shadow: 0 0 10px 2px var(--accent-color);
+  }
+}
