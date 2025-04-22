@@ -10,6 +10,7 @@ const SplineModel = ({ liteMode = false }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const splineInstance = useRef<any>(null);
+  const [shouldReposition, setShouldReposition] = useState(false);
 
   // Check if component is in viewport using IntersectionObserver
   useEffect(() => {
@@ -17,6 +18,7 @@ const SplineModel = ({ liteMode = false }) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          setShouldReposition(true);
           // Disconnect once visible to prevent re-triggering
           observer.disconnect();
         }
@@ -34,7 +36,9 @@ const SplineModel = ({ liteMode = false }) => {
   useEffect(() => {
     // Check if we're on mobile or tablet (for optimization settings only)
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1280);
+      const isMobileDevice = window.innerWidth < 1280 ||
+                          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
     };
 
     // Initial check
@@ -45,29 +49,65 @@ const SplineModel = ({ liteMode = false }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Properly position the model
+  const positionModel = () => {
+    if (!canvasRef.current || !isVisible || liteMode) return;
+
+    try {
+      if (isMobile) {
+        // More aggressive mobile positioning
+        canvasRef.current.style.transform = 'translate(-30%, -15%) scale(0.65) !important';
+      } else {
+        // Desktop positioning
+        canvasRef.current.style.transform = 'translateX(15%) scale(1.2) !important';
+      }
+    } catch (error) {
+      console.error("Error positioning model:", error);
+    }
+  };
+
   // Add scroll event listener to handle positioning issues when scrolling
   useEffect(() => {
     if (!isVisible || liteMode) return;
 
     const handleScroll = () => {
-      if (splineInstance.current && canvasRef.current) {
-        // Reset camera position or apply custom transformations when user scrolls back to this section
-        try {
-          if (document.documentElement.scrollTop < 500) {
-            // Only apply fixes when user is close to the top section
-            canvasRef.current.style.transform = isMobile
-              ? 'translateX(0) scale(0.9) translateY(10%) !important'
-              : 'translateX(15%) scale(1.2) !important';
-          }
-        } catch (error) {
-          console.error("Error adjusting model position on scroll:", error);
-        }
+      if (document.documentElement.scrollTop < 500) {
+        setShouldReposition(true);
       }
     };
 
+    // Apply positioning immediately and on scroll
+    positionModel();
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // For mobile, also listen to touch events
+    const handleTouch = () => {
+      // After touch ends, check if we need to reposition
+      setTimeout(() => {
+        if (document.documentElement.scrollTop < 500) {
+          setShouldReposition(true);
+        }
+      }, 100);
+    };
+
+    document.addEventListener('touchend', handleTouch);
+    document.addEventListener('touchcancel', handleTouch);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('touchend', handleTouch);
+      document.removeEventListener('touchcancel', handleTouch);
+    };
   }, [isVisible, liteMode, isMobile, isLoaded]);
+
+  // Apply positioning when needed
+  useEffect(() => {
+    if (shouldReposition) {
+      positionModel();
+      setShouldReposition(false);
+    }
+  }, [shouldReposition, isMobile]);
 
   useEffect(() => {
     // Only load Spline when visible and not in lite mode
@@ -95,17 +135,22 @@ const SplineModel = ({ liteMode = false }) => {
 
             // Set initial camera and position
             setTimeout(() => {
-              if (canvasRef.current) {
-                canvasRef.current.style.transform = isMobile
-                  ? 'translateX(0) scale(0.9) translateY(10%) !important'
-                  : 'translateX(15%) scale(1.2) !important';
-              }
+              positionModel();
               setIsLoaded(true);
+
+              // For mobile devices, set another delayed positioning
+              // to ensure it's properly placed after fully loaded
+              if (isMobile) {
+                setTimeout(() => {
+                  positionModel();
+                }, 500);
+              }
             }, 100);
 
           } catch (e) {
             // Fallback to normal loading
             await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode');
+            positionModel();
             setIsLoaded(true);
           }
 
@@ -155,10 +200,8 @@ const SplineModel = ({ liteMode = false }) => {
         canvasRef.current.width = containerRef.current.clientWidth;
         canvasRef.current.height = containerRef.current.clientHeight;
 
-        // Apply the proper transform based on screen size
-        canvasRef.current.style.transform = isMobile
-          ? 'translateX(0) scale(0.9) translateY(10%) !important'
-          : 'translateX(15%) scale(1.2) !important';
+        // Apply positioning after resize
+        setTimeout(positionModel, 100);
       }
     };
 
@@ -234,7 +277,11 @@ const SplineModel = ({ liteMode = false }) => {
       ) : (
         // 3D model for all devices when not in lite mode
         <>
-          <canvas ref={canvasRef} id="spline-canvas" className="w-full h-full hardware-accelerated"></canvas>
+          <canvas
+            ref={canvasRef}
+            id="spline-canvas"
+            className="w-full h-full hardware-accelerated"
+          />
           {!isLoaded && isVisible && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/20">
               <div className="text-white">Loading 3D model...</div>
