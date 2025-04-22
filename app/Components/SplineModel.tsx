@@ -63,7 +63,7 @@ const SplineModel = ({ liteMode = false }) => {
     try {
       // Desktop positioning only - we now only use the 3D model on desktop
       // Adjusted translateX and scale for better overlap with static image position
-      canvasRef.current.style.transform = 'translateX(5%) scale(1.1) !important';
+      canvasRef.current.style.transform = 'translateX(28%) translateY(-12%) scale(1.2) !important';
     } catch (error) {
       console.error("Error positioning model:", error);
     }
@@ -199,7 +199,7 @@ const SplineModel = ({ liteMode = false }) => {
       <div id="spline-scroll-anchor" />
       <div
         ref={containerRef}
-        className="w-full h-[350px] xl:h-[80vh] relative overflow-hidden mt-0 xl:mt-16 hardware-accelerated"
+        className="w-full h-[350px] xl:h-[80vh] relative overflow-visible mt-0 xl:mt-16 hardware-accelerated"
       >
         {/* Global styles - consolidated into one style tag */}
         <style jsx global>{`
@@ -226,11 +226,15 @@ const SplineModel = ({ liteMode = false }) => {
 
           /* Base canvas styling without transform (will be applied via JS) */
           #spline-canvas {
-            width: 100% !important;
-            height: 100% !important;
+            width: 130% !important;
+            height: 130% !important;
             touch-action: pan-y;
             outline: none;
             transform-origin: center center;
+            position: absolute;
+            top: -22%;
+            left: 2%;
+            z-index: 10;
           }
         `}</style>
 
@@ -250,7 +254,7 @@ const SplineModel = ({ liteMode = false }) => {
                 style={{
                   objectFit: 'contain',
                   objectPosition: 'center',
-                  transform: 'scale(0.7)'
+                  transform: 'scale(0.8)'
                 }}
                 className="xl:[object-position:70%_center]"
                 priority
@@ -271,8 +275,6 @@ const SplineModel = ({ liteMode = false }) => {
                 <div className="text-white">Loading 3D model...</div>
               </div>
             )}
-            {/* Black div to cover watermark */}
-            <div className="absolute left-3/4 bottom-14 bg-black h-10 w-1/4 z-10" />
           </>
         )}
       </div>

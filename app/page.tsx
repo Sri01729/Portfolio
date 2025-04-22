@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 import dynamic from "next/dynamic";
-import ThemeToggle from "./Components/ThemeToggle";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
@@ -282,9 +281,6 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Theme Toggle */}
-            <ThemeToggle />
-
             {/* Mobile Menu Button */}
             <button
               className="absolute xl:fixed top-8 right-8 z-50 xl:hidden"
@@ -458,9 +454,8 @@ export default function Home() {
                   </div>
 
                   <div className="xl:col-span-2">
-                    <div className="h-full pt-4 xl:pt-0">
+                    <div className="h-full pt-4 xl:pt-0 relative">
                         <SplineModel liteMode={liteMode} />
-                        <div className=" relative left-3/4 bottom-14 bg-black h-10 w-1/4" />
                     </div>
                   </div>
                 </div>
