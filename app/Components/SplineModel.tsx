@@ -9,6 +9,7 @@ const SplineModel = ({ liteMode = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const splineInstance = useRef<any>(null);
 
   // Check if component is in viewport using IntersectionObserver
   useEffect(() => {
@@ -44,6 +45,30 @@ const SplineModel = ({ liteMode = false }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Add scroll event listener to handle positioning issues when scrolling
+  useEffect(() => {
+    if (!isVisible || liteMode) return;
+
+    const handleScroll = () => {
+      if (splineInstance.current && canvasRef.current) {
+        // Reset camera position or apply custom transformations when user scrolls back to this section
+        try {
+          if (document.documentElement.scrollTop < 500) {
+            // Only apply fixes when user is close to the top section
+            canvasRef.current.style.transform = isMobile
+              ? 'translateX(0) scale(0.9) translateY(10%) !important'
+              : 'translateX(15%) scale(1.2) !important';
+          }
+        } catch (error) {
+          console.error("Error adjusting model position on scroll:", error);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isVisible, liteMode, isMobile, isLoaded]);
+
   useEffect(() => {
     // Only load Spline when visible and not in lite mode
     if (!isVisible || liteMode) return;
@@ -56,6 +81,7 @@ const SplineModel = ({ liteMode = false }) => {
         if (canvasRef.current) {
           // Load the scene
           const spline = new runtime.Application(canvasRef.current);
+          splineInstance.current = spline;
 
           // Try to adjust quality for better performance
           try {
@@ -66,7 +92,17 @@ const SplineModel = ({ liteMode = false }) => {
 
             // Load with appropriate quality configuration
             await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode', qualitySettings);
-            setIsLoaded(true);
+
+            // Set initial camera and position
+            setTimeout(() => {
+              if (canvasRef.current) {
+                canvasRef.current.style.transform = isMobile
+                  ? 'translateX(0) scale(0.9) translateY(10%) !important'
+                  : 'translateX(15%) scale(1.2) !important';
+              }
+              setIsLoaded(true);
+            }, 100);
+
           } catch (e) {
             // Fallback to normal loading
             await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode');
@@ -115,14 +151,23 @@ const SplineModel = ({ liteMode = false }) => {
 
     const handleResize = () => {
       if (canvasRef.current && containerRef.current) {
+        // Ensure canvas dimensions match container
         canvasRef.current.width = containerRef.current.clientWidth;
         canvasRef.current.height = containerRef.current.clientHeight;
+
+        // Apply the proper transform based on screen size
+        canvasRef.current.style.transform = isMobile
+          ? 'translateX(0) scale(0.9) translateY(10%) !important'
+          : 'translateX(15%) scale(1.2) !important';
       }
     };
 
+    // Initial resize
+    handleResize();
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isVisible, liteMode]);
+  }, [isVisible, liteMode, isMobile]);
 
   return (
     <div
@@ -152,20 +197,13 @@ const SplineModel = ({ liteMode = false }) => {
           z-index: -9999 !important;
         }
 
-        /* Ensure canvas is responsive */
+        /* Base canvas styling without transform (will be applied via JS) */
         #spline-canvas {
           width: 100% !important;
           height: 100% !important;
           touch-action: pan-y;
           outline: none;
-          transform: translateX(15%) scale(1.2) !important; /* Shift and scale the 3D model */
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 1279px) {
-          #spline-canvas {
-            transform: translateX(0) scale(0.8) !important;
-          }
+          transform-origin: center center;
         }
       `}</style>
 
