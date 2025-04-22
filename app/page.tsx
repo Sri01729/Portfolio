@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
+import dynamic from "next/dynamic";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
@@ -14,8 +15,16 @@ import Blogs from "./Components/Blogs";
 import VisitCounter from "./Components/VisitCounter";
 import TechStack from "./Components/TechStack";
 import Link from "next/link";
-import SplineModel from "./Components/SplineModel";
 
+// Dynamically import SplineModel for better performance
+const SplineModel = dynamic(() => import("./Components/SplineModel"), {
+  loading: () => (
+    <div className="w-full h-[350px] md:h-[80vh] flex items-center justify-center">
+      <div className="text-white/50">Loading 3D experience...</div>
+    </div>
+  ),
+  ssr: false
+});
 
 const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
@@ -117,6 +126,7 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [liteMode, setLiteMode] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -185,6 +195,22 @@ export default function Home() {
   return (
     <div className={`${spaceGrotesk.className} text-[#fefeff] flex flex-col min-h-screen relative`}>
       <StarField />
+      <button
+        onClick={() => setLiteMode(!liteMode)}
+        className="fixed bottom-4 right-4 z-50 bg-black/60 border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-1.5 hover:bg-black/80 transition-colors hidden md:flex"
+      >
+        {liteMode ? (
+          <>
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+            Lite Mode
+          </>
+        ) : (
+          <>
+            <span className="w-2 h-2 bg-white/50 rounded-full"></span>
+            High Performance
+          </>
+        )}
+      </button>
       <AnimatePresence mode="wait">
         {loading ? (
           <motion.div
@@ -364,7 +390,7 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="px-4 md:px-24 py-12 md:pb-32 md:ml-16">
+              <section id="intro" className="px-4 md:px-24 md:pb-32 md:ml-16">
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="md:col-span-1">
                     <div className="md:pt-48">
@@ -426,7 +452,7 @@ export default function Home() {
 
                   <div className="md:col-span-2">
                     <div className="h-full pt-4 md:pt-0">
-                        <SplineModel />
+                        <SplineModel liteMode={liteMode} />
                         <div className=" relative left-3/4 bottom-14 bg-black h-10 w-1/4" />
                     </div>
                   </div>
