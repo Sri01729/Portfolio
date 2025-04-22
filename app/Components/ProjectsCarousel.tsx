@@ -105,7 +105,7 @@ export default function StickyScrollRevealProjects() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="max-w-7xl">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+            <h2 className="text-4xl xl:text-7xl font-medium mb-8 max-w-2xl group relative">
                 projects.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                     A showcase of my creative endeavors and technical solutions. Each project represents a unique challenge tackled with innovation and attention to detail, demonstrating my passion for building impactful applications.
@@ -113,8 +113,8 @@ export default function StickyScrollRevealProjects() {
             </h2>
 
             {/* Mobile View - Normal Carousel */}
-            <div className="md:hidden w-full py-8 bg-transparent overflow-hidden">
-                <div className="space-y-6">
+            <div className="xl:hidden w-full py-8 bg-transparent overflow-hidden">
+                <div className="space-y-6 px-0 md:px-6 lg:px-24">
                     <div className="w-full overflow-hidden rounded-lg relative">
                         <AnimatePresence mode="wait" initial={false}>
                             <motion.div
@@ -252,7 +252,7 @@ export default function StickyScrollRevealProjects() {
             </div>
 
             {/* Desktop View - Sticky Scroll */}
-            <div className="hidden md:block w-full py-8 bg-transparent overflow-hidden">
+            <div className="hidden xl:block w-full py-8 bg-transparent overflow-hidden">
                 <div className="relative">
                     <div className="absolute top-2 left-2 z-10 bg-black/60 text-[#969696] text-xs px-2 py-1 rounded-full flex items-center gap-1">
                         <span>Scroll to explore</span>

@@ -63,8 +63,8 @@ const TechStack = () => {
         viewport={{ once: true }}
         className="max-w-7xl"
       >
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
+        <div className="grid xl:grid-cols-3 gap-8">
+          <div className="xl:col-span-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ const TechStack = () => {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="text-3xl md:text-5xl font-medium mb-8 max-w-2xl group relative">
+              <h2 className="text-3xl xl:text-5xl font-medium mb-8 max-w-2xl group relative">
                 tech stack.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                   A collection of technologies I work with to bring ideas to life. From front-end frameworks to back-end solutions, these tools form the foundation of my development process.
@@ -81,13 +81,13 @@ const TechStack = () => {
             </motion.div>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="xl:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mt-0 md:mt-48 md:pt-4"
+              className="mt-0 xl:mt-48 xl:pt-4 px-0 md:px-6 lg:px-24 xl:px-0"
             >
               <p className="text-sm text-white/70 mb-8 max-w-2xl">
                 These technologies form the foundation of my development toolkit. I leverage them to build scalable, performant, and user-friendly applications. Each tool has been carefully chosen for its strengths in solving specific challenges.

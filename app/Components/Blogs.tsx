@@ -104,10 +104,10 @@ const Blogs = () => {
         viewport={{ once: true }}
         className="max-w-7xl"
       >
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
+        <div className="grid xl:grid-cols-3 gap-8">
+          <div className="xl:col-span-1">
             <div className="sticky top-8">
-              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+              <h2 className="text-4xl xl:text-7xl font-medium mb-8 max-w-2xl group relative">
                 thoughts & writing.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                   A collection of my thoughts, insights, and experiences in software development, design, and technology.
@@ -116,8 +116,8 @@ const Blogs = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2">
-            <div className="grid grid-cols-1 gap-8 mt-0 md:mt-48 md:pt-4">
+          <div className="xl:col-span-2">
+            <div className="grid grid-cols-1 gap-8 mt-0 xl:mt-48 xl:pt-4 px-0 md:px-6 lg:px-24 xl:px-0">
               {/* Map over the SORTED featuredBlogs array */}
               {featuredBlogs.map((blog, index) => (
                 <TiltCard key={index} index={index}>
@@ -131,7 +131,7 @@ const Blogs = () => {
                         {blog.category}
                       </span>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
+                    <h2 className="text-xl xl:text-2xl font-medium text-[#fefeff] mb-3">{blog.title}</h2>
                     <p className="text-sm text-[#969696] mb-4">{blog.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {blog.tags.map((tag, tagIndex) => (

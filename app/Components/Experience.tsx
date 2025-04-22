@@ -13,10 +13,10 @@ const Experience = () => {
         viewport={{ once: true }}
         className="max-w-7xl"
       >
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
+        <div className="grid xl:grid-cols-3 gap-8">
+          <div className="xl:col-span-1">
             <div className="sticky top-8">
-              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+              <h2 className="text-4xl xl:text-7xl font-medium mb-8 max-w-2xl group relative">
                 Journey.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                   A timeline of my professional journey, showcasing key roles and achievements in software development.
@@ -25,15 +25,15 @@ const Experience = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="xl:col-span-2">
             <motion.div
               initial={{ y: 100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="max-w-5xl"
+              className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="space-y-4 max-w-2xl mt-0 md:mt-16 md:pt-4">
+              <div className="space-y-4 max-w-2xl mt-0 xl:mt-16 xl:pt-4">
                 <p className="font-mono text-sm text-[#969696]">Current</p>
                 <h3 className="text-4xl font-medium text-[#fefeff]">Everywhere, All at Once</h3>
                 <p className="text-sm text-[#fefeff]">2024 — Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AI realm + Dev trenches</p>
@@ -60,9 +60,9 @@ const Experience = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="max-w-5xl"
+              className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="space-y-4 max-w-2xl mt-0 md:mt-16 md:pt-4">
+              <div className="space-y-4 max-w-2xl mt-0 xl:mt-16 xl:pt-4">
                 <p className="font-mono text-sm text-[#969696]">North Island College</p>
                 <h3 className="text-4xl font-medium text-[#fefeff]">P.G Diploma in Digital Design and Development</h3>
                 <p className="text-sm text-[#fefeff]">2022 - 2024 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Courtenay,&nbsp;British Columbia</p>
@@ -83,9 +83,9 @@ const Experience = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="max-w-5xl"
+              className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="mt-8 md:mt-16">
+              <div className="mt-8 xl:mt-16">
                 <div className="space-y-4 max-w-2xl">
                   <h2 className="font-mono text-sm text-[#969696]">Cognizant</h2>
                   <h3 className="text-4xl font-medium text-[#fefeff]">Full Stack Developer</h3>

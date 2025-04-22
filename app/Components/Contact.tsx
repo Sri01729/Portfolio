@@ -107,10 +107,10 @@ const Contact = () => {
         viewport={{ once: true }}
         className="max-w-7xl"
       >
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1">
+        <div className="grid xl:grid-cols-3 gap-8">
+          <div className="xl:col-span-1">
             <div className="sticky top-8">
-              <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl group relative">
+              <h2 className="text-4xl xl:text-7xl font-medium mb-8 max-w-2xl group relative">
                 contact.
                 <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                   Let's connect and explore potential collaborations. Whether you have a project in mind, a question about my work, or just want to say hello, I'm always open to new conversations and opportunities.
@@ -119,13 +119,13 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2">
+          <div className="xl:col-span-2">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8 mt-0 md:mt-48 md:pt-4"
+              className="space-y-8 mt-0 xl:mt-48 xl:pt-4 px-0 md:px-6 lg:px-24 xl:px-0"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -136,8 +136,8 @@ const Contact = () => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-white/5 to-white/10 rounded-xl blur opacity-20"></div>
                 <div className="relative bg-transparent border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors">
-                  <div className="flex flex-col md:flex-row items-center gap-6">
-                    <div className="w-32 h-32 md:w-40 md:h-40 relative rounded-full overflow-hidden border-2 border-white/10">
+                  <div className="flex flex-col xl:flex-row items-center gap-6">
+                    <div className="w-32 h-32 xl:w-40 xl:h-40 relative rounded-full overflow-hidden border-2 border-white/10">
                       <Image
                         src="/srinivas_ghibli.png"
                         alt="Sai Srinivas Alahari"
@@ -145,10 +145,10 @@ const Contact = () => {
                         className="object-cover"
                       />
                     </div>
-                    <div className="text-center md:text-left">
+                    <div className="text-center xl:text-left">
                       <h3 className="text-2xl font-medium text-[#fefeff] mb-2">Sai Srinivas Alahari</h3>
                       <p className="text-[#969696] mb-4">Software Developer</p>
-                      <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                      <div className="flex items-center gap-2 justify-center xl:justify-start mb-2">
                         <div className="relative">
                           <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse"></div>
                           <div className="absolute top-0 left-0 w-2 h-2 bg-white/50 rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
@@ -157,7 +157,7 @@ const Contact = () => {
                       </div>
                       <a
                         href="mailto:saialahariedu@gmail.com"
-                        className="text-[#fefeff] hover:text-[#969696] transition-colors text-sm flex items-center gap-1 justify-center md:justify-start"
+                        className="text-[#fefeff] hover:text-[#969696] transition-colors text-sm flex items-center gap-1 justify-center xl:justify-start"
                       >
                         <Mail size={16} /> saialahariedu@gmail.com
                       </a>
@@ -238,7 +238,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-wrap gap-4 justify-center md:justify-start"
+                className="flex flex-wrap gap-4 justify-center xl:justify-start"
               >
                 <a
                   href="https://www.linkedin.com/in/sai-srinivas-alahari-924303252/"
