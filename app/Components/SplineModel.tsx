@@ -31,9 +31,9 @@ const SplineModel = ({ liteMode = false }) => {
   }, []);
 
   useEffect(() => {
-    // Check if we're on mobile
+    // Check if we're on mobile or tablet (for optimization settings only)
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1280);
     };
 
     // Initial check
@@ -45,8 +45,8 @@ const SplineModel = ({ liteMode = false }) => {
   }, []);
 
   useEffect(() => {
-    // Only load Spline on desktop, when visible, and not in lite mode
-    if (isMobile || !isVisible || liteMode) return;
+    // Only load Spline when visible and not in lite mode
+    if (!isVisible || liteMode) return;
 
     // We'll load the Spline runtime dynamically in the browser
     const loadSpline = async () => {
@@ -59,18 +59,14 @@ const SplineModel = ({ liteMode = false }) => {
 
           // Try to adjust quality for better performance
           try {
-            // Access spline configuration if available
-            if (spline.load) {
-              // Load with lower quality configuration if possible
-              await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode', {
-                quality: 'low',
-                environmentIntensity: 0.5,
-              });
-              setIsLoaded(true);
-            } else {
-              await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode');
-              setIsLoaded(true);
-            }
+            // Set quality based on device type
+            const qualitySettings = isMobile
+              ? { quality: 'low', environmentIntensity: 0.3 }
+              : { quality: 'medium', environmentIntensity: 0.5 };
+
+            // Load with appropriate quality configuration
+            await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode', qualitySettings);
+            setIsLoaded(true);
           } catch (e) {
             // Fallback to normal loading
             await spline.load('https://prod.spline.design/QOd9c9MBmZdqaJKm/scene.splinecode');
@@ -111,11 +107,11 @@ const SplineModel = ({ liteMode = false }) => {
     };
 
     loadSpline();
-  }, [isMobile, isVisible, liteMode]);
+  }, [isVisible, liteMode, isMobile]);
 
   // Handle responsive resizing for canvas
   useEffect(() => {
-    if (isMobile || !isVisible || liteMode) return; // Skip for mobile or lite mode
+    if (!isVisible || liteMode) return;
 
     const handleResize = () => {
       if (canvasRef.current && containerRef.current) {
@@ -126,14 +122,12 @@ const SplineModel = ({ liteMode = false }) => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isMobile, isVisible, liteMode]);
-
-  const shouldShowStaticImage = isMobile || liteMode;
+  }, [isVisible, liteMode]);
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-[350px] md:h-[80vh] relative overflow-hidden mt-0 md:mt-16 hardware-accelerated"
+      className="w-full h-[350px] xl:h-[80vh] relative overflow-hidden mt-0 xl:mt-16 hardware-accelerated"
     >
       {/* Global styles - consolidated into one style tag */}
       <style jsx global>{`
@@ -166,6 +160,13 @@ const SplineModel = ({ liteMode = false }) => {
           outline: none;
           transform: translateX(15%) scale(1.2) !important; /* Shift and scale the 3D model */
         }
+
+        /* Mobile optimizations */
+        @media (max-width: 1279px) {
+          #spline-canvas {
+            transform: translateX(0) scale(0.8) !important;
+          }
+        }
       `}</style>
 
       {!isVisible ? (
@@ -173,10 +174,10 @@ const SplineModel = ({ liteMode = false }) => {
         <div className="w-full h-full flex items-center justify-center bg-black/5">
           <div className="text-white/50">Loading...</div>
         </div>
-      ) : shouldShowStaticImage ? (
-        // Static image for mobile or lite mode
-        <div className="w-full h-full relative hardware-accelerated flex items-center justify-center md:justify-end">
-          <div className="relative w-[130%] h-[130%] mx-auto md:-right-[15%] -top-[40px] md:-top-[60px]">
+      ) : liteMode ? (
+        // Static image for lite mode only
+        <div className="w-full h-full relative hardware-accelerated flex items-center justify-center xl:justify-end">
+          <div className="relative w-[130%] h-[130%] mx-auto xl:-right-[15%] -top-[40px] xl:-top-[70px]">
             <Image
               src="/spline-robot.png"
               alt="AI Robot"
@@ -186,14 +187,14 @@ const SplineModel = ({ liteMode = false }) => {
                 objectPosition: 'center',
                 transform: 'scale(0.7)'
               }}
-              className="md:[object-position:70%_center]"
+              className="xl:[object-position:70%_center]"
               priority
               loading="eager"
             />
           </div>
         </div>
       ) : (
-        // 3D model for desktop
+        // 3D model for all devices when not in lite mode
         <>
           <canvas ref={canvasRef} id="spline-canvas" className="w-full h-full hardware-accelerated"></canvas>
           {!isLoaded && isVisible && (
@@ -201,7 +202,7 @@ const SplineModel = ({ liteMode = false }) => {
               <div className="text-white">Loading 3D model...</div>
             </div>
           )}
-          {/* Black div to cover watermark - shown on desktop */}
+          {/* Black div to cover watermark */}
           <div className="absolute left-3/4 bottom-14 bg-black h-10 w-1/4 z-10" />
         </>
       )}

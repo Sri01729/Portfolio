@@ -19,7 +19,7 @@ import Link from "next/link";
 // Dynamically import SplineModel for better performance
 const SplineModel = dynamic(() => import("./Components/SplineModel"), {
   loading: () => (
-    <div className="w-full h-[350px] md:h-[80vh] flex items-center justify-center">
+    <div className="w-full h-[350px] xl:h-[80vh] flex items-center justify-center">
       <div className="text-white/50">Loading 3D experience...</div>
     </div>
   ),
@@ -197,7 +197,7 @@ export default function Home() {
       <StarField />
       <button
         onClick={() => setLiteMode(!liteMode)}
-        className="fixed bottom-4 right-4 z-50 bg-black/60 border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-1.5 hover:bg-black/80 transition-colors hidden md:flex"
+        className="fixed bottom-4 right-4 z-50 bg-black/60 border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-1.5 hover:bg-black/80 transition-colors group"
       >
         {liteMode ? (
           <>
@@ -210,6 +210,9 @@ export default function Home() {
             High Performance
           </>
         )}
+        <div className="absolute bottom-full right-0 mb-2 w-48 p-2 bg-black/90 border border-white/10 rounded text-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          {liteMode ? "Using static image for lower CPU usage" : "Using full 3D model (higher CPU usage)"}
+        </div>
       </button>
       <AnimatePresence mode="wait">
         {loading ? (
@@ -225,7 +228,7 @@ export default function Home() {
               className="text-center"
             >
               <motion.h1
-                className="text-[12vw] md:text-[8vw] font-medium leading-none"
+                className="text-[12vw] lg:text-[8vw] font-medium leading-none"
                 animate={{
                   opacity: [1, 0],
                   y: [0, -20],
@@ -246,7 +249,7 @@ export default function Home() {
           >
             {/* Logo */}
             <motion.div
-              className="absolute md:fixed top-8 left-8 md:left-8 z-50 cursor-pointer"
+              className="absolute lg:fixed top-8 left-8 lg:left-8 z-50 cursor-pointer"
               onHoverStart={() => setIsNameExpanded(true)}
               onHoverEnd={() => setIsNameExpanded(false)}
               onClick={handleLogoClick}
@@ -280,7 +283,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button
-              className="absolute md:fixed top-8 right-8 z-50 md:hidden"
+              className="absolute xl:fixed top-8 right-8 z-50 xl:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <div className="space-y-2">
@@ -298,7 +301,7 @@ export default function Home() {
                   animate={{ x: 0 }}
                   exit={{ x: "100%" }}
                   transition={{ type: "tween", duration: 0.3 }}
-                  className="fixed inset-0 bg-black z-40 md:hidden pt-24 px-8"
+                  className="fixed inset-0 bg-black z-40 xl:hidden pt-24 px-8"
                 >
                   {sections.map(({ id, title }) => (
                     <div key={id} className="mb-6">
@@ -323,8 +326,8 @@ export default function Home() {
             </AnimatePresence>
 
             {/* Header */}
-            <header className="p-4 md:p-8 pt-24 md:pt-8 bg-black">
-              <div className="relative md:static mb-8">
+            <header className="p-4 xl:p-8 pt-24 xl:pt-8 bg-black">
+              <div className="relative xl:static mb-8">
                 <div
                   className="absolute left-0 z-10 w-12 h-full bg-gradient-to-r from-black to-transparent pointer-events-none"
                   style={{
@@ -335,7 +338,7 @@ export default function Home() {
                 <div className="absolute right-0 z-10 w-12 h-full bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
                 <div
                   ref={scrollContainerRef}
-                  className="flex gap-4 md:gap-8 justify-start md:justify-center text-sm overflow-x-auto scrollbar-hide"
+                  className="flex gap-4 xl:gap-8 justify-center text-sm overflow-x-auto scrollbar-hide w-full"
                   style={{
                     scrollbarWidth: 'none',
                     msOverflowStyle: 'none',
@@ -348,7 +351,7 @@ export default function Home() {
                     <button
                       key={audience}
                       onClick={() => setSelectedAudience(audience)}
-                      className={`transition-colors whitespace-nowrap flex-shrink-0 ${selectedAudience === audience
+                      className={`transition-colors whitespace-nowrap flex-shrink-0 md:px-3 lg:px-5 ${selectedAudience === audience
                         ? 'text-[#fefeff] font-medium'
                         : 'text-[#969696] hover:text-[#fefeff]'
                         }`}
@@ -361,7 +364,7 @@ export default function Home() {
             </header>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
+            <nav className="hidden xl:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
               {sections.map(({ id, title }) => (
                 <div key={id} className="mb-4 text-left">
                   <Link
@@ -390,11 +393,11 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="px-4 md:px-24 md:pb-32 md:ml-16">
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="md:col-span-1">
-                    <div className="md:pt-48">
-                      <h2 className="text-4xl md:text-7xl font-medium mb-4 max-w-2xl group relative">
+              <section id="intro" className="px-4 xl:px-24 xl:pb-32 xl:ml-16">
+                <div className="grid xl:grid-cols-3 gap-8">
+                  <div className="xl:col-span-1 px-0 md:px-6 lg:px-24 xl:px-0">
+                    <div className="xl:pt-48">
+                      <h2 className="text-4xl xl:text-7xl font-medium mb-4 max-w-2xl group relative">
                         Sai Srinivas Alahari<span className="text-[#969696]">.</span>
                         <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
                           Full Stack Developer with a passion for building impactful digital solutions
@@ -450,8 +453,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="md:col-span-2">
-                    <div className="h-full pt-4 md:pt-0">
+                  <div className="xl:col-span-2">
+                    <div className="h-full pt-4 xl:pt-0">
                         <SplineModel liteMode={liteMode} />
                         <div className=" relative left-3/4 bottom-14 bg-black h-10 w-1/4" />
                     </div>
@@ -460,7 +463,7 @@ export default function Home() {
               </section>
 
               {/* Work Section */}
-              <section id="work" className="min-h-screen px-4 py-12 md:px-24 md:ml-16">
+              <section id="work" className="min-h-screen px-4 py-12 xl:px-24 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -472,7 +475,7 @@ export default function Home() {
               </section>
 
               {/* Tech Stack Section */}
-              <section id="tech" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="tech" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -484,7 +487,7 @@ export default function Home() {
               </section>
 
               {/* Background Section */}
-              <section id="background" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="background" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -496,7 +499,7 @@ export default function Home() {
               </section>
 
               {/* Blogs Section */}
-              <section id="blogs" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="blogs" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -508,7 +511,7 @@ export default function Home() {
               </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="about" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -520,7 +523,7 @@ export default function Home() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen px-4 md:px-24 py-12 md:px-24 py-32 md:ml-16">
+              <section id="contact" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -533,9 +536,9 @@ export default function Home() {
             </main>
 
             {/* Footer */}
-            <footer className="px-4 md:px-24 py-8 text-[#969696] md:ml-16">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <span className="text-sm text-center md:text-left">© 2025 Sai Srinivas Alahari. All rights reserved.</span>
+            <footer className="px-4 xl:px-24 py-8 text-[#969696] xl:ml-16">
+              <div className="flex flex-col xl:flex-row justify-between items-center gap-4">
+                <span className="text-sm text-center xl:text-left">© 2025 Sai Srinivas Alahari. All rights reserved.</span>
                 <VisitCounter />
               </div>
             </footer>
