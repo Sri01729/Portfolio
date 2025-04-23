@@ -5,10 +5,7 @@ const DeveloperIntro = () => {
     <TypeAnimation
       sequence={[
         'Developer',
-        300,
-        () => {
-          // console.log('Sequence completed');
-        },
+        300
       ]}
       wrapper="span"
       cursor={true}
