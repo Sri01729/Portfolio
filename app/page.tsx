@@ -79,12 +79,12 @@ const audienceContent = {
         </a>
       </>
     ),
-    skills: [<a href="//Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
+    skills: [<a href="/Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
   },
   'product-managers': {
     title: "Product Managers",
     description: "I bring technical expertise to product development, bridging the gap between business objectives and technical execution.",
-    skills: [<a href="//Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
+    skills: [<a href="/Sai_Srinivas_Resume.pdf" download className="hover:text-[#fefeff] transition-colors">Download Resume</a>]
   }
 };
 
@@ -416,7 +416,7 @@ export default function Home() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
-                        className="mt-8 pr-4"
+                        className="mt-8 pr-4 relative z-10"
                       >
                         <p className="text-[#969696] mb-8">
                           {audienceContent[selectedAudience].description}
@@ -444,7 +444,7 @@ export default function Home() {
                   </div>
 
                   <div className="xl:col-span-2">
-                    <div className="h-full pt-4 xl:pt-0 relative">
+                    <div className="h-full pt-4 xl:pt-0 relative z-0">
                         <SplineModel liteMode={liteMode} />
                     </div>
                   </div>
