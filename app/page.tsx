@@ -19,8 +19,11 @@ import Link from "next/link";
 // Dynamically import SplineModel for better performance
 const SplineModel = dynamic(() => import("./Components/SplineModel"), {
   loading: () => (
-    <div className="w-full h-[350px] xl:h-[80vh] flex items-center justify-center">
-      <div className="text-white/50">Loading 3D experience...</div>
+    <div className="w-full h-[350px] xl:h-[80vh] flex items-center justify-center bg-black/40 border border-white/10 rounded-xl">
+      <div className="flex flex-col items-center gap-4">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+        <div className="text-white/50 text-sm">Loading 3D experience...</div>
+      </div>
     </div>
   ),
   ssr: false
