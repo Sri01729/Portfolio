@@ -55,7 +55,7 @@ const Contact = () => {
       });
 
       const data = await response.json();
-      console.log('API response:', data);
+      // console.log('API response:', data);
 
       if (data.success) {
         setSubmitStatus('success');
@@ -66,7 +66,7 @@ const Contact = () => {
         // If server-side API fails, try the client-side EmailJS as a fallback
         if (formRef.current) {
           try {
-            console.log('Trying client-side EmailJS as fallback');
+            // console.log('Trying client-side EmailJS as fallback');
             const result = await emailjs.sendForm(
               EMAILJS_SERVICE_ID,
               EMAILJS_TEMPLATE_ID,

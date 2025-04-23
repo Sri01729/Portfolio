@@ -7,7 +7,7 @@ const DeveloperIntro = () => {
         'Developer',
         300,
         () => {
-          console.log('Sequence completed');
+          // console.log('Sequence completed');
         },
       ]}
       wrapper="span"

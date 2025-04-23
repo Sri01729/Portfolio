@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       }
     );
 
-    console.log('EmailJS result:', result);
+    // console.log('EmailJS result:', result);
 
     if (result.status === 200) {
       return NextResponse.json({ success: true, message: 'Email sent successfully' });

@@ -19,7 +19,7 @@ const SkillsIntro = () => {
         'Wordpress',
         2000,
         () => {
-          console.log('Sequence completed');
+          // console.log('Sequence completed');
         },
       ]}
       wrapper="span"
