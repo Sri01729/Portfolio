@@ -332,7 +332,7 @@ export default function Home() {
             <header className="p-4 xl:p-8 pt-24 xl:pt-8 bg-black">
               <div className="relative xl:static mb-8">
                 <nav className="max-w-screen-xl mx-auto audience-nav">
-                  <ul className="flex items-center justify-center gap-1 p-1 text-sm bg-[var(--nav-bg)] border border-[var(--nav-border)] rounded-lg">
+                  <ul className="flex items-center justify-center gap-1 p-1 text-sm">
                     {(['anyone', 'recruiters', 'engineers', 'product-managers'] as AudienceType[]).map((audience) => (
                       <li key={audience} className="relative">
                         <button
@@ -340,8 +340,8 @@ export default function Home() {
                           data-active={selectedAudience === audience}
                           className={`px-4 py-2 rounded-md transition-all duration-200 ${
                             selectedAudience === audience
-                              ? 'bg-[var(--nav-active)] text-[#fefeff] shadow-sm'
-                              : 'text-[#969696] hover:text-[#fefeff] hover:bg-[var(--nav-hover)]'
+                              ? 'text-[#fefeff]'
+                              : 'text-[#969696] hover:text-[#fefeff]'
                           }`}
                         >
                           {audienceContent[audience].title}
