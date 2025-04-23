@@ -197,7 +197,7 @@ export default function Home() {
       <StarField />
       <button
         onClick={() => setLiteMode(!liteMode)}
-        className="fixed bottom-4 right-4 z-50 bg-black/60 border border-white/20 rounded-full px-3 py-1.5 text-xs flex items-center gap-1.5 hover:bg-black/80 transition-colors group"
+        className="fixed bottom-4 right-4 z-50 bg-black/60 border border-white/20 rounded-full px-3 py-1.5 text-xs hidden xl:flex items-center gap-1.5 hover:bg-black/80 transition-colors group"
       >
         {liteMode ? (
           <>
