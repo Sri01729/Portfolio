@@ -331,38 +331,25 @@ export default function Home() {
             {/* Header */}
             <header className="p-4 xl:p-8 pt-24 xl:pt-8 bg-black">
               <div className="relative xl:static mb-8">
-                <div
-                  className="absolute left-0 z-10 w-12 h-full bg-gradient-to-r from-black to-transparent pointer-events-none"
-                  style={{
-                    opacity: scrollPosition > 0 ? 1 : 0,
-                    transition: 'opacity 0.3s ease'
-                  }}
-                ></div>
-                <div className="absolute right-0 z-10 w-12 h-full bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
-                <div
-                  ref={scrollContainerRef}
-                  className="flex gap-4 xl:gap-8 justify-center text-sm overflow-x-auto scrollbar-hide w-full"
-                  style={{
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none',
-                    WebkitOverflowScrolling: 'touch',
-                    paddingLeft: '2rem',
-                    paddingRight: '2rem'
-                  }}
-                >
-                  {(['anyone', 'recruiters', 'engineers', 'product-managers'] as AudienceType[]).map((audience) => (
-                    <button
-                      key={audience}
-                      onClick={() => setSelectedAudience(audience)}
-                      className={`transition-colors whitespace-nowrap flex-shrink-0 md:px-3 lg:px-5 ${selectedAudience === audience
-                        ? 'text-[#fefeff] font-medium'
-                        : 'text-[#969696] hover:text-[#fefeff]'
-                        }`}
-                    >
-                      {audienceContent[audience].title}
-                    </button>
-                  ))}
-                </div>
+                <nav className="max-w-screen-xl mx-auto audience-nav">
+                  <ul className="flex items-center justify-center gap-1 p-1 text-sm bg-[var(--nav-bg)] border border-[var(--nav-border)] rounded-lg">
+                    {(['anyone', 'recruiters', 'engineers', 'product-managers'] as AudienceType[]).map((audience) => (
+                      <li key={audience} className="relative">
+                        <button
+                          onClick={() => setSelectedAudience(audience)}
+                          data-active={selectedAudience === audience}
+                          className={`px-4 py-2 rounded-md transition-all duration-200 ${
+                            selectedAudience === audience
+                              ? 'bg-[var(--nav-active)] text-[#fefeff] shadow-sm'
+                              : 'text-[#969696] hover:text-[#fefeff] hover:bg-[var(--nav-hover)]'
+                          }`}
+                        >
+                          {audienceContent[audience].title}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
               </div>
             </header>
 

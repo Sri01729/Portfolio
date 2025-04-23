@@ -309,3 +309,35 @@ code[class*="language-"] {
     box-shadow: 0 0 10px 2px var(--accent-color);
   }
 }
+
+/* Audience Navigation Styles */
+.audience-nav {
+  --nav-bg: rgba(0, 0, 0, 0.4);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-hover: rgba(255, 255, 255, 0.05);
+  --nav-active: rgba(255, 255, 255, 0.1);
+}
+
+.audience-nav button {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.audience-nav button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #fefeff;
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.audience-nav button:hover::after,
+.audience-nav button[data-active="true"]::after {
+  width: 100%;
+  opacity: 1;
+}
