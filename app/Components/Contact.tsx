@@ -150,8 +150,8 @@ const Contact = () => {
                       <p className="text-[#969696] mb-4">Software Developer</p>
                       <div className="flex items-center gap-2 justify-center xl:justify-start mb-2">
                         <div className="relative">
-                          <div className="w-2 h-2 bg-white/50 rounded-full animate-pulse"></div>
-                          <div className="absolute top-0 left-0 w-2 h-2 bg-white/50 rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
+                          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                          <div className="absolute top-0 left-0 w-2 h-2 bg-green-400 rounded-full animate-[ping_1.5s_ease-in-out_infinite] opacity-90"></div>
                         </div>
                         <p className="text-sm text-[#969696]">Looking for new opportunities</p>
                       </div>
