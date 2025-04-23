@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -82,8 +84,6 @@ body {
     background-repeat: no-repeat;
   }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
 
 .quote {
   font-family: 'Covered By Your Grace', cursive; /* Use cursive as a fallback */
