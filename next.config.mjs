@@ -3,7 +3,6 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    output: 'export',
 
     webpack: (config, { dev, isServer }) => {
         // Enable source maps in development
