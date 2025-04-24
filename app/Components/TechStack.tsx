@@ -6,7 +6,7 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss,
   SiRedux, SiVuedotjs, SiNodedotjs, SiExpress,
-  SiPython, SiDjango, SiFastapi, SiMongodb,
+  SiPython, SiSpring, SiSpringboot, SiMongodb,
   SiPostgresql, SiMysql, SiRedis, SiGit,
   SiDocker, SiAmazon,
   SiPostman, SiFigma, SiAdobexd, SiAdobephotoshop,
@@ -28,9 +28,9 @@ const TechStack = () => {
   const backendItems = [
     { title: "Node.js", icon: <SiNodedotjs className="h-full w-full" style={{ color: '#339933' }} />, href: "#backend" },
     { title: "Express", icon: <SiExpress className="h-full w-full text-white" />, href: "#backend" },
+    { title: "Spring Boot", icon: <SiSpringboot className="h-full w-full" style={{ color: '#6DB33F' }} />, href: "#backend" },
+    { title: "Spring", icon: <SiSpring className="h-full w-full" style={{ color: '#6DB33F' }} />, href: "#backend" },
     { title: "Python", icon: <SiPython className="h-full w-full" style={{ color: '#3776AB' }} />, href: "#backend" },
-    { title: "Django", icon: <SiDjango className="h-full w-full" style={{ color: '#092E20' }} />, href: "#backend" },
-    { title: "FastAPI", icon: <SiFastapi className="h-full w-full" style={{ color: '#009688' }} />, href: "#backend" },
   ];
 
   const databaseItems = [
@@ -60,11 +60,37 @@ const TechStack = () => {
       title: "Frontend",
       value: "frontend",
       content: (
-        <div className="w-full relative h-full p-10 overflow-visible">
+        <div className="w-full relative h-full p-10">
           <FloatingDock
             items={frontendItems}
             desktopClassName="bg-transparent"
           />
+          <div className="mt-8 space-y-6 p-8 rounded-xl bg-gradient-to-br from-[#1a1a1a]/80 via-black/50 to-[#1a1a1a]/80 border border-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-medium">Frontend Development</h3>
+            <p className="text-[#969696] leading-relaxed">
+              Specializing in modern frontend frameworks and libraries to create responsive,
+              performant, and beautiful user interfaces. Proficient in React ecosystem with
+              Next.js for SSR/SSG, TypeScript for type safety, and Tailwind CSS for rapid styling.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-sm text-[#969696]">
+              <div>
+                <strong className="text-white">Core:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• React & Next.js</li>
+                  <li>• TypeScript</li>
+                  <li>• Tailwind CSS</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-white">State & Performance:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Redux Toolkit</li>
+                  <li>• React Query</li>
+                  <li>• Performance Optimization</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       ),
     },
@@ -72,11 +98,38 @@ const TechStack = () => {
       title: "Backend",
       value: "backend",
       content: (
-        <div className="w-full relative h-full p-10 overflow-visible">
+        <div className="w-full relative h-full p-10">
           <FloatingDock
             items={backendItems}
             desktopClassName="bg-transparent"
           />
+          <div className="mt-8 space-y-6 p-8 rounded-xl bg-gradient-to-br from-[#1a1a1a]/80 via-black/50 to-[#1a1a1a]/80 border border-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-medium">Backend Development</h3>
+            <p className="text-[#969696] leading-relaxed">
+              Building robust and scalable server-side applications with modern technologies.
+              Experienced in both Node.js and Spring ecosystems, with a focus on RESTful APIs,
+              microservices, and serverless architectures.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-sm text-[#969696]">
+              <div>
+                <strong className="text-white">Node.js Stack:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Express.js</li>
+                  <li>• REST APIs</li>
+                  <li>• Authentication</li>
+                  <li>• Authorization</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-white">Spring Stack:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Spring Boot</li>
+                  <li>• Spring Security</li>
+                  <li>• Spring AI</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       ),
     },
@@ -84,11 +137,37 @@ const TechStack = () => {
       title: "Database",
       value: "database",
       content: (
-        <div className="w-full relative h-full p-10 overflow-visible">
+        <div className="w-full relative h-full p-10">
           <FloatingDock
             items={databaseItems}
             desktopClassName="bg-transparent"
           />
+          <div className="mt-8 space-y-6 p-8 rounded-xl bg-gradient-to-br from-[#1a1a1a]/80 via-black/50 to-[#1a1a1a]/80 border border-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-medium">Database Management</h3>
+            <p className="text-[#969696] leading-relaxed">
+              Experience with both SQL and NoSQL databases, focusing on data modeling,
+              optimization, and scalability. Proficient in designing efficient schemas
+              and writing optimized queries for various use cases.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-sm text-[#969696]">
+              <div>
+                <strong className="text-white">SQL:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• PostgreSQL</li>
+                  <li>• MySQL</li>
+                  <li>• Query Optimization</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-white">NoSQL:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• MongoDB</li>
+                  <li>• Redis Caching</li>
+                  <li>• Data Modeling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       ),
     },
@@ -96,11 +175,37 @@ const TechStack = () => {
       title: "Tools",
       value: "tools",
       content: (
-        <div className="w-full relative h-full p-10 overflow-visible">
+        <div className="w-full relative h-full p-10">
           <FloatingDock
             items={toolItems}
             desktopClassName="bg-transparent"
           />
+          <div className="mt-8 space-y-6 p-8 rounded-xl bg-gradient-to-br from-[#1a1a1a]/80 via-black/50 to-[#1a1a1a]/80 border border-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-medium">Development Tools</h3>
+            <p className="text-[#969696] leading-relaxed">
+              Utilizing modern development tools and practices for efficient workflow
+              and deployment. Experienced in version control, containerization, and
+              cloud services for seamless development and deployment.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-sm text-[#969696]">
+              <div>
+                <strong className="text-white">Version Control & CI/CD:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Git & GitHub</li>
+                  <li>• Docker</li>
+                  <li>• CI/CD Pipelines</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-white">Cloud & Testing:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• AWS Services</li>
+                  <li>• API Testing</li>
+                  <li>• Performance Monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       ),
     },
@@ -108,93 +213,75 @@ const TechStack = () => {
       title: "Design",
       value: "design",
       content: (
-        <div className="w-full relative h-full p-10 overflow-visible">
+        <div className="w-full relative h-full p-10">
           <FloatingDock
             items={designItems}
             desktopClassName="bg-transparent"
           />
+          <div className="mt-8 space-y-6 p-8 rounded-xl bg-gradient-to-br from-[#1a1a1a]/80 via-black/50 to-[#1a1a1a]/80 border border-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-medium">Design & UI/UX</h3>
+            <p className="text-[#969696] leading-relaxed">
+              Bridging the gap between design and development with proficiency in
+              modern design tools. Focused on creating intuitive user interfaces
+              and seamless user experiences.
+            </p>
+            <div className="grid grid-cols-2 gap-4 text-sm text-[#969696]">
+              <div>
+                <strong className="text-white">UI Design:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Figma</li>
+                  <li>• Adobe XD</li>
+                  <li>• Prototyping</li>
+                </ul>
+              </div>
+              <div>
+                <strong className="text-white">Graphics:</strong>
+                <ul className="mt-2 space-y-1">
+                  <li>• Photoshop</li>
+                  <li>• Illustrator</li>
+                  <li>• Asset Creation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       ),
     },
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="grid xl:grid-cols-2 gap-16">
-        {/* Left Column - Intro Text */}
-        <div className="space-y-8">
-          <div>
-            <motion.h2
-              className="text-4xl xl:text-5xl font-medium mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              Technical Proficiency<span className="text-[#969696]">.</span>
-            </motion.h2>
-            <motion.p
-              className="text-[#969696] text-lg leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              With a comprehensive tech stack spanning frontend, backend, and DevOps,
-              I bring full-stack expertise to every project. My toolkit enables me to
-              build scalable, modern applications with emphasis on performance and user experience.
-            </motion.p>
+    <div className="max-w-7xl">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="max-w-7xl"
+      >
+        <div className="grid xl:grid-cols-3 gap-8">
+          <div className="xl:col-span-1">
+            <div className="sticky top-8">
+              <h2 className="text-4xl xl:text-7xl font-medium mb-8 group relative">
+                Tech Stack<span className="text-[#969696]">.</span>
+                <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                  A collection of technologies I work with to bring ideas to life. From front-end frameworks to back-end solutions, these tools form the foundation of my development process.
+                </span>
+              </h2>
+            </div>
           </div>
 
-          <motion.div
-            className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-xl font-medium mb-4">Highlights</h3>
-            <ul className="space-y-3 text-[#969696]">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#61DAFB]"></span>
-                Modern Frontend Development with React & Next.js
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#339933]"></span>
-                Robust Backend Systems with Node.js & Python
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#47A248]"></span>
-                Database Design & Optimization
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2496ED]"></span>
-                DevOps & Cloud Infrastructure
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F24E1E]"></span>
-                UI/UX Design & Prototyping
-              </li>
-            </ul>
-          </motion.div>
+          <div className="xl:col-span-2">
+            <div className="h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-center overflow-visible">
+              <Tabs
+                tabs={tabs}
+                containerClassName="justify-center mb-4 mt-32"
+                tabClassName="text-sm font-medium text-[#969696] hover:text-white transition-colors"
+                activeTabClassName="text-white bg-white/10 border border-white/20 backdrop-blur-sm"
+              />
+            </div>
+          </div>
         </div>
-
-        {/* Right Column - Skills */}
-        <motion.div
-          className="h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-start overflow-visible"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <Tabs
-            tabs={tabs}
-            containerClassName="justify-start mb-8"
-            tabClassName="text-sm font-medium text-[#969696] hover:text-white transition-colors"
-            activeTabClassName="text-white bg-white/10 border border-white/20 backdrop-blur-sm"
-          />
-        </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };

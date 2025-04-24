@@ -25,7 +25,7 @@ const Experience = () => {
             </div>
           </div>
 
-          <div className="xl:col-span-2">
+          <div className="xl:col-span-2 mt-8">
             <motion.div
               initial={{ y: 100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -33,7 +33,7 @@ const Experience = () => {
               viewport={{ once: true }}
               className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="space-y-4 max-w-2xl mt-0 xl:mt-16 xl:pt-4">
+              <div className="space-y-4 max-w-5xl mt-0 xl:mt-16 xl:pt-4">
                 <p className="font-mono text-sm text-[#969696]">Current</p>
                 <h3 className="text-4xl font-medium text-[#fefeff]">Everywhere, All at Once</h3>
                 <p className="text-sm text-[#fefeff]">2024 — Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AI realm + Dev trenches</p>
@@ -62,7 +62,7 @@ const Experience = () => {
               viewport={{ once: true }}
               className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="space-y-4 max-w-2xl mt-0 xl:mt-16 xl:pt-4">
+              <div className="space-y-4 max-w-5xl mt-0 xl:mt-16 xl:pt-4">
                 <p className="font-mono text-sm text-[#969696]">North Island College</p>
                 <h3 className="text-4xl font-medium text-[#fefeff]">P.G Diploma in Digital Design and Development</h3>
                 <p className="text-sm text-[#fefeff]">2022 - 2024 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Courtenay,&nbsp;British Columbia</p>
@@ -85,8 +85,8 @@ const Experience = () => {
               viewport={{ once: true }}
               className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
-              <div className="mt-8 xl:mt-16">
-                <div className="space-y-4 max-w-2xl">
+
+                <div className="space-y-4 max-w-5xl mt-0 xl:mt-16 xl:pt-4">
                   <h2 className="font-mono text-sm text-[#969696]">Cognizant</h2>
                   <h3 className="text-4xl font-medium text-[#fefeff]">Full Stack Developer</h3>
                   <p className="text-sm text-[#fefeff]">2020 - 2022 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coimbatore,&nbsp;India</p>
@@ -96,7 +96,6 @@ const Experience = () => {
                    It was here I truly learned how large-scale systems are built, maintained, and optimized. As a developer at Cognizant, I developed and maintained scalable web applications using modern frameworks like <span className="text-[#fefeff]">React, Next.js, Node.js, and Spring Boot</span>. I collaborated across cross-functional teams to deliver smooth, intuitive user experiences, implemented robust APIs, and fine-tuned backend logic and database performance. I also helped streamline development workflows through CI/CD pipelines, and actively contributed to team growth by mentoring junior developers.
                   </p>
                 </div>
-              </div>
             </motion.div>
           </div>
         </div>
