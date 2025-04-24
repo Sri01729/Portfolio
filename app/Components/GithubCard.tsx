@@ -223,7 +223,7 @@ const GithubCard = () => {
 const StyledWrapper = styled.div`
   .card-container {
     position: relative;
-    width: 500px;
+    width: 450px;
     height: 400px;
     border-radius: 1em;
     margin: 0 2em;
