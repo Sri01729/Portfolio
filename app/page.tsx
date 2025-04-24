@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import StarField from "./Components/Starfield";
 import DeveloperIntro from "./Components/DeveloperIntro";
 import SkillsIntro from "./Components/SkillsIntro";
-import Projects from "./Components/Projects";
 import Experience from "./Components/Experience";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
@@ -15,19 +14,20 @@ import Blogs from "./Components/Blogs";
 import VisitCounter from "./Components/VisitCounter";
 import TechStack from "./Components/TechStack";
 import Link from "next/link";
+import GithubCard from "./Components/GithubCard";
 
 // Dynamically import SplineModel for better performance
-const SplineModel = dynamic(() => import("./Components/SplineModel"), {
-  loading: () => (
-    <div className="w-full h-[350px] xl:h-[80vh] flex items-center justify-center bg-black/40 border border-white/10 rounded-xl">
-      <div className="flex flex-col items-center gap-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
-        <div className="text-white/50 text-sm">Loading 3D experience...</div>
-      </div>
-    </div>
-  ),
-  ssr: false
-});
+// const SplineModel = dynamic(() => import("./Components/SplineModel"), {
+//   loading: () => (
+//     <div className="w-full h-[350px] xl:h-[80vh] flex items-center justify-center bg-black/40 border border-white/10 rounded-xl">
+//       <div className="flex flex-col items-center gap-4">
+//         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
+//         <div className="text-white/50 text-sm">Loading 3D experience...</div>
+//       </div>
+//     </div>
+//   ),
+//   ssr: false
+// });
 
 const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
@@ -383,69 +383,80 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="px-4 xl:px-24 xl:pb-32 xl:ml-16">
-                <div className="grid xl:grid-cols-3 gap-8">
-                  <div className="xl:col-span-1 px-0 md:px-6 lg:px-24 xl:px-0">
-                    <div className="xl:pt-48">
-                      <h2 className="text-4xl xl:text-7xl font-medium mb-4 max-w-2xl group relative">
-                        Sai Srinivas Alahari<span className="text-[#969696]">.</span>
-                        <span className="absolute left-0 top-full mt-2 w-64 p-2 bg-black/80 text-xs text-[#969696] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                          Full Stack Developer with a passion for building impactful digital solutions
-                        </span>
-                      </h2>
+              <section id="intro" className="min-h-screen flex items-center px-4 xl:px-24 xl:ml-16">
+                <div className="w-full max-w-7xl mx-auto">
+                  <div className="grid xl:grid-cols-2 gap-16">
+                    <div className="xl:col-span-1">
+                      <div className="space-y-6">
+                        <div className="space-y-2">
+                          <h1 className="text-sm text-[#969696] tracking-wider uppercase">Full Stack Developer</h1>
+                          <h2 className="text-4xl xl:text-7xl font-medium group relative">
+                            Sai Srinivas Alahari<span className="text-[#969696]">.</span>
+                          </h2>
+                        </div>
 
-                      {/* Audience Selector */}
-                      {/* <div className="flex flex-wrap gap-3 mb-4">
-                        {Object.entries(audienceContent).map(([key, { title }]) => (
-                          <button
-                            key={key}
-                            onClick={() => setSelectedAudience(key as AudienceType)}
-                            className={`px-3 py-1 text-sm rounded-full transition-all ${selectedAudience === key
-                              ? "bg-white/10 text-[#fefeff]"
-                              : "bg-transparent text-[#969696] hover:text-[#fefeff]"
-                              }`}
+                        <motion.div
+                          key={selectedAudience}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="relative z-10"
+                        >
+                          <p className="text-[#969696] text-lg">
+                            {audienceContent[selectedAudience].description}
+                          </p>
+
+                          {audienceContent[selectedAudience].skills.length > 0 && (
+                            <motion.div
+                              className="flex flex-wrap gap-4 mt-8"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.3 }}
+                            >
+                              {audienceContent[selectedAudience].skills.map((skill, index) => (
+                                <div
+                                  key={index}
+                                  className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm hover:bg-white/10 transition-colors"
+                                >
+                                  {skill}
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </motion.div>
+
+                        <div className="pt-8 flex gap-4">
+                          <a
+                            href="https://github.com/Sri01729"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-lg text-sm"
                           >
-                            {title}
-                          </button>
-                        ))}
-                      </div> */}
-
-                      <motion.div
-                        key={selectedAudience}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-8 pr-4 relative z-10"
-                      >
-                        <p className="text-[#969696] mb-8">
-                          {audienceContent[selectedAudience].description}
-                        </p>
-
-                        {audienceContent[selectedAudience].skills.length > 0 && (
-                          <motion.div
-                            className="flex flex-wrap gap-4 mt-6"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                          </a>
+                          <a
+                            href="https://www.linkedin.com/in/sai-srinivas-alahari/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-lg text-sm"
                           >
-                            {audienceContent[selectedAudience].skills.map((skill, index) => (
-                              <div
-                                key={index}
-                                className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm hover:bg-white/10 transition-colors"
-                              >
-                                {skill}
-                              </div>
-                            ))}
-                          </motion.div>
-                        )}
-                      </motion.div>
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            LinkedIn
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="xl:col-span-2">
-                    <div className="h-full pt-4 xl:pt-0 relative z-0">
-                        <SplineModel liteMode={liteMode} />
+                    <div className="xl:col-span-1">
+                      <div className="h-full flex items-center justify-center">
+                        <GithubCard />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -464,7 +475,7 @@ export default function Home() {
               </section>
 
               {/* Tech Stack Section */}
-              <section id="tech" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
+              <section id="tech" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -476,7 +487,7 @@ export default function Home() {
               </section>
 
               {/* Background Section */}
-              <section id="background" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
+              <section id="background" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -488,7 +499,7 @@ export default function Home() {
               </section>
 
               {/* Blogs Section */}
-              <section id="blogs" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
+              <section id="blogs" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -500,7 +511,7 @@ export default function Home() {
               </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
+              <section id="about" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -512,7 +523,7 @@ export default function Home() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen px-4 xl:px-24 py-12 xl:px-24 py-32 xl:ml-16">
+              <section id="contact" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
