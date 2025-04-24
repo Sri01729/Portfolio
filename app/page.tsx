@@ -407,7 +407,7 @@ export default function Home() {
                             GitHub
                           </a>
                           <a
-                            href="https://www.linkedin.com/in/sai-srinivas-alahari-b4744a137/"
+                            href="https://www.linkedin.com/in/sai-srinivas-alahari-924303252/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-6 py-3 bg-black/40 border border-white/10 rounded-lg text-sm text-[#fefeff] font-medium hover:border-white/20 hover:text-[#969696] transition-colors"
