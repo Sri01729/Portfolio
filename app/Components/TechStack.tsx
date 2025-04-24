@@ -278,7 +278,7 @@ const TechStack = () => {
                 tabClassName="text-sm font-medium text-[#969696] hover:text-white transition-colors"
                 activeTabClassName="text-white bg-white/10 border border-white/20 backdrop-blur-sm"
               />
-            </div>
+              </div>
           </div>
         </div>
       </motion.div>
