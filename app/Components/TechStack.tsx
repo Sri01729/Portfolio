@@ -274,7 +274,7 @@ const TechStack = () => {
             <div className="h-[40rem] [perspective:1000px] relative flex flex-col w-full items-start justify-center overflow-visible">
               <Tabs
                 tabs={tabs}
-                containerClassName="justify-center mb-4 mt-32"
+                containerClassName="justify-center mb-4 mt-0 xl:mt-32"
                 tabClassName="text-sm font-medium text-[#969696] hover:text-white transition-colors"
                 activeTabClassName="text-white bg-white/10 border border-white/20 backdrop-blur-sm"
               />
