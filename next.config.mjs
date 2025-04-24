@@ -2,8 +2,10 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // output: "export",  // <=== enables static exports
-    // reactStrictMode: true,
+    reactStrictMode: true,
+    experimental: {
+        appDir: true
+    },
 
     webpack: (config, { dev, isServer }) => {
         // Enable source maps in development
