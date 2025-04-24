@@ -351,14 +351,14 @@ export default function Home() {
 
             {/* Main Content */}
             <main className="flex-grow">
-              <section id="intro" className="min-h-screen flex items-center px-4 xl:px-24 xl:ml-16">
+              <section id="intro" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 xl:px-24 pt-16 sm:pt-20 xl:pt-0 xl:ml-16">
                 <div className="w-full max-w-7xl mx-auto">
-                  <div className="grid xl:grid-cols-2 gap-16">
-                    <div className="xl:col-span-1">
-                      <div className="space-y-6">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-8">
+                    <div className="w-full">
+                      <div className="space-y-6 max-w-2xl mx-auto xl:mx-0">
                         <div className="space-y-2">
                           <h1 className="text-sm text-[#969696] tracking-wider uppercase">Full Stack Developer</h1>
-                          <h2 className="text-4xl xl:text-7xl font-medium group relative">
+                          <h2 className="text-3xl sm:text-4xl xl:text-7xl font-medium group relative">
                             Sai Srinivas Alahari<span className="text-[#969696]">.</span>
                           </h2>
                         </div>
@@ -371,13 +371,13 @@ export default function Home() {
                           transition={{ duration: 0.3 }}
                           className="relative z-10"
                         >
-                          <p className="text-[#969696] text-lg">
+                          <p className="text-[#969696] text-base sm:text-lg">
                             {audienceContent[selectedAudience].description}
                           </p>
 
                           {audienceContent[selectedAudience].skills.length > 0 && (
                             <motion.div
-                              className="flex flex-wrap gap-4 mt-8"
+                              className="flex flex-wrap gap-2 sm:gap-4 mt-6 sm:mt-8"
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ delay: 0.3 }}
@@ -385,7 +385,7 @@ export default function Home() {
                               {audienceContent[selectedAudience].skills.map((skill, index) => (
                                 <div
                                   key={index}
-                                  className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm hover:bg-white/10 transition-colors"
+                                  className="bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm hover:bg-white/10 transition-colors"
                                 >
                                   {skill}
                                 </div>
@@ -394,7 +394,7 @@ export default function Home() {
                           )}
                         </motion.div>
 
-                        <div className="pt-8 flex gap-4">
+                        <div className="pt-6 sm:pt-8 flex flex-wrap gap-3 sm:gap-4">
                           <a
                             href="https://github.com/Sri01729"
                             target="_blank"
@@ -421,8 +421,8 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="xl:col-span-1">
-                      <div className="h-full flex items-center justify-center">
+                    <div className="w-full">
+                      <div className="flex items-center justify-center max-w-2xl mx-auto xl:mx-0">
                         <GithubCard />
                       </div>
                     </div>
@@ -443,7 +443,7 @@ export default function Home() {
               </section>
 
               {/* Tech Stack Section */}
-              <section id="tech" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
+              <section id="tech" className="min-h-screen px-4 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -455,7 +455,7 @@ export default function Home() {
               </section>
 
               {/* Background Section */}
-              <section id="background" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
+              <section id="background" className="min-h-screen px-4 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -467,7 +467,7 @@ export default function Home() {
               </section>
 
               {/* Blogs Section */}
-              <section id="blogs" className="min-h-screen px-4 xl:px-24  py-32 xl:ml-16">
+              <section id="blogs" className="min-h-screen px-4 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -479,7 +479,7 @@ export default function Home() {
               </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 xl:px-24  py-32 xl:ml-16">
+              <section id="about" className="min-h-screen px-4 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
