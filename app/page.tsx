@@ -479,7 +479,7 @@ export default function Home() {
               </section>
 
               {/* Blogs Section */}
-              <section id="blogs" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
+              <section id="blogs" className="min-h-screen px-4 xl:px-24  py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -491,7 +491,7 @@ export default function Home() {
               </section>
 
               {/* About Section */}
-              <section id="about" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
+              <section id="about" className="min-h-screen px-4 xl:px-24  py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -503,7 +503,7 @@ export default function Home() {
               </section>
 
               {/* Contact Section */}
-              <section id="contact" className="min-h-screen px-4 xl:px-24 py-12 py-32 xl:ml-16">
+              <section id="contact" className="min-h-screen px-4 xl:px-24 py-32 xl:ml-16">
                <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
