@@ -17,8 +17,13 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Srinivas Alahari — Developer",
-  description: "PortFolio",
+  title: "Sai Srinivas Alahari — Developer",
+  description: "Full-stack developer specializing in Full-stack development",
+  icons: [{
+    rel: 'icon',
+    url: '/favicon.ico',
+    sizes: 'any'
+  }]
 };
 
 export default function RootLayout({
@@ -30,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>

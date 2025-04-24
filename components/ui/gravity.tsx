@@ -26,6 +26,7 @@ import Matter, {
 import { cn } from "@/lib/utils"
 
 import SVGPathCommander from 'svg-path-commander';
+import decomp from 'poly-decomp';
 
 // Function to convert SVG path "d" to vertices
 function parsePathToVertices(path: string, sampleLength = 15) {
@@ -292,7 +293,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       const height = canvas.current.offsetHeight
       const width = canvas.current.offsetWidth
 
-      Common.setDecomp(require("poly-decomp"))
+      Common.setDecomp(decomp)
 
       engine.current.gravity.x = gravity.x
       engine.current.gravity.y = gravity.y

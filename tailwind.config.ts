@@ -59,8 +59,7 @@ const config: Config = {
   	}
   },
   plugins: [
-    require("tailwindcss-animate"), 
-    require("@assistant-ui/react/tailwindcss")
+    require("tailwindcss-animate")
   ],
 };
 export default config;

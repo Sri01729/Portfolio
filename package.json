@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^1.1.0",
-    "@assistant-ui/react": "^0.7.44",
     "@emailjs/browser": "^4.4.1",
     "@emailjs/nodejs": "^5.0.2",
     "@radix-ui/react-slot": "^1.1.2",
@@ -40,10 +38,8 @@
     "react-markdown": "^10.1.0",
     "react-responsive-3d-carousel": "^2.1.4",
     "react-scroll": "^1.9.0",
-    "react-simple-typewriter": "^5.0.1",
     "react-syntax-highlighter": "^15.6.1",
     "react-type-animation": "^3.2.0",
-    "react-typed": "^2.0.12",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "svg-path-commander": "^2.1.10",
@@ -51,6 +47,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.1",
     "@types/lodash": "^4.17.16",
     "@types/matter-js": "^0.19.8",
     "@types/node": "^20",
