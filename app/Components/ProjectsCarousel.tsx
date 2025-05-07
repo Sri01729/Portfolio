@@ -30,7 +30,7 @@ const projects = [
     title: "RedinAI",
     description:
       "Unlock the knowledge buried in lengthy Reddit threads without the endless scroll. RedinAI acts as your personal AI analyst: give it a post link and a prompt, and it dives deep into the post and comments to surface key insights and answer your specific questions. I built this to tackle information overload, helping you stop drowning in discussion and start understanding complex topics faster.",
-    tags: ["Next.js", "Spring Boot", "PostgreSQL", "OpenAI", "AI-Powered"],
+    tags: ["Next.js", "SpringBoot", "Spring Security", "Spring AI", "PostgreSql", "OpenAI"],
     link: "https://github.com/yourusername/RedinAI",
     slug: "redinai",
     platforms: [
