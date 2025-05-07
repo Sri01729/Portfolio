@@ -15,7 +15,7 @@ const projects = [
   "category": "AI-powered Chrome Extension",
   "technologies": {
     "frontend": ["HTML5", "CSS3", "JavaScript"],
-    "backend": ["Chrome Extension API"],
+    "backend": ["Chrome Extension API", "OAuth2"],
     "ai": ["OpenAI API"],
     "tools": ["Git", "Chrome Developer Tools"]
   },
@@ -89,7 +89,7 @@ const projects = [
   "category": "AI-powered Web Application",
   "technologies": {
     "frontend": ["React", "TypeScript", "Tailwind CSS", "Next.js", "Radix UI", "Framer Motion", "TailwindCSS Animate", "Embla Carousel"],
-    "backend": ["Spring Boot", "Spring Security", "Spring AI", "Java", "Spring Data JPA", "JWT Authentication", "JSoup"],
+    "backend": ["Spring Boot", "Spring Security", "Spring AI", "Java", "Spring Data JPA", "JWT Authentication", "Reddit API"],
     "database": ["PostgreSQL"],
     "ai_model": ["OpenAI GPT-4o-mini", "Spring AI OpenAI Integration"],
     "tools": ["Git", "Docker", "Maven"]
@@ -108,14 +108,14 @@ const projects = [
     "Designed the PostgreSQL database schema for posts and comments",
     "Created the Kanban board and comment tree structure features",
     "Implemented JWT authentication system for user management",
-    "Built the Reddit post scraping functionality using JSoup",
+    "Built the Reddit post scraping functionality using Reddit API",
     "Designed responsive UI components with Tailwind CSS and Radix UI"
   ],
   "process": [
     "Researched and selected OpenAI GPT-4o-mini for cost-effective AI analysis",
     "Developed the chat, comment, and input window interfaces with React components",
     "Built and integrated backend APIs for post and comment processing with Spring Boot",
-    "Created the Reddit post and comment fetching functionality using JSoup",
+    "Created the Reddit post and comment fetching functionality using Reddit API",
     "Designed the tree structure for hierarchical comment display",
     "Implemented the PostIdContext for state management across components",
     "Created the Kanban board for post organization and management",
@@ -146,7 +146,7 @@ const projects = [
     },
     {
       "problem": "Extracting structured data from Reddit",
-      "solution": "Built a custom scraping solution with JSoup to reliably parse Reddit content"
+      "solution": "Built a custom solution with Reddit API to reliably fetch Reddit content"
     }
   ],
   "outcomes": {
