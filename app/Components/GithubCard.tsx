@@ -102,7 +102,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Feature] Deployed "dark mode or die" mentality</div>
+                    <div className="pr-title"> [Feature] Designed + shipped features under tight deadlines without breaking a sweat</div>
                     <div className="pr-desc">#1338 opened 1 minute ago by sai</div>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Chore] Pushed 2 years of real-world dev experience</div>
+                    <div className="pr-title">[Chore] Refactored ego out of the codebase — embraced team feedback fully</div>
                     <div className="pr-desc">#5182 opened 4 minutes ago by sai</div>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Hotfix] Removed infinite feedback loop between me and GPT</div>
+                    <div className="pr-title">[UX] Championed the user journey from onboarding to "wow!" moments</div>
                     <div className="pr-desc">#4444 opened 6 minutes ago by sai</div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Bug] Fixed issue with too many tabs open (again)</div>
+                    <div className="pr-title"> [Experiment] Stepped way outside my comfort zone and loved the chaos</div>
                     <div className="pr-desc">#1123 opened 10 minutes ago by sai</div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Docs] Added notes on how to survive Vancouver rain & debug life</div>
+                    <div className="pr-title">[Design] Sketched wireframes on paper, napkins, and whiteboards — shipped them all</div>
                     <div className="pr-desc">#007 opened 2 days ago by sai</div>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Bug] Cannot stop building side projects at 3AM</div>
+                    <div className="pr-title">[Feature] Delivered MVP before the coffee cooled</div>
                     <div className="pr-desc">#999 opened 1 week ago by sai</div>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Feature] Enabled auto-deploy of new ideas while showering</div>
+                    <div className="pr-title">[Experiment] Tackled a domain I knew nothing about — deployed anyway</div>
                     <div className="pr-desc">#9999 opened 2 months ago by sai</div>
                   </div>
                 </div>
@@ -207,7 +207,7 @@ const GithubCard = () => {
                     </svg>
                   </div>
                   <div className="pr-text">
-                    <div className="pr-title">[Hotfix] Crashed after too much coffee — patched with gym</div>
+                    <div className="pr-title">[Docs] Added notes on how to survive Vancouver rain & debug life</div>
                     <div className="pr-desc">#707 opened 3 months ago by sai</div>
                   </div>
                 </div>
@@ -223,7 +223,7 @@ const GithubCard = () => {
 const StyledWrapper = styled.div`
   .card-container {
     position: relative;
-    width: 400px;
+    width: 450px;
     height: 400px;
     border-radius: 1em;
     margin: 0 2em;
