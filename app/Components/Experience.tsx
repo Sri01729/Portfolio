@@ -34,23 +34,20 @@ const Experience = () => {
               className="max-w-5xl px-0 md:px-6 lg:px-24 xl:px-0"
             >
               <div className="space-y-4 max-w-5xl mt-0 xl:mt-16 xl:pt-4">
-                <p className="font-mono text-sm text-[#969696]">Current</p>
-                <h3 className="text-4xl font-medium text-[#fefeff]">Everywhere, All at Once</h3>
-                <p className="text-sm text-[#fefeff]">2024 — Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AI realm + Dev trenches</p>
-                <p className="text-sm text-[#969696]">
-                  We're standing at the gates of the future — and it's powered by artificial intelligence. Imagine a high-speed train about to leave the station, and it's named AI. If we don't hop on now, we risk falling behind. In just the past six months, the acceleration in AI development has been unreal.
-                  <br /><br />
-                  Tools like <span className="text-[#fefeff]">RAG systems, Stable Diffusion, LangChain</span>, and more have gone from cool demos to essential productivity powerhouses. LLMs like <span className="text-[#fefeff]">GPT-4, Claude, Gemini, Mistral, and LLaMA</span> are reshaping how we build, write, think, and code. Companies like <span className="text-[#fefeff]">OpenAI, Anthropic, Google, Meta, and Microsoft</span> are racing toward the same future — and I'm keeping pace.
-                  <br /><br />
-                  I've been closely tracking this momentum, building personal projects that integrate these tools and models into real-world web applications. Currently, I'm focusing on <span className="text-[#fefeff]">developing autonomous AI agents</span> that can perform complex tasks, reason through multi-step problems, and interface with various tools and APIs. I'm fascinated by the potential of these systems to transform how we interact with software and information.
-                  <br /><br />
-                  I'm weaponizing myself with  AI tech, learning how to deploy it at scale, and figuring out how it fits into modern dev workflows.
-                  <br /><br />
-                  At the same time, I'm continuously leveling up my web development skills — exploring advanced <span className="text-[#fefeff]">React patterns, Next.js architecture, backend scalability, DevOps practices, and modern UI/UX design</span>. I believe the future isn't just about knowing AI — it's about knowing how to apply it in powerful, user-first applications.
-                  <br /><br />
-                  I'm not just preparing for what's next — I'm building it.
-                </p>
-              </div>
+  <p className="font-mono text-sm text-[#969696]">Current</p>
+  <h3 className="text-4xl font-medium text-[#fefeff]">Building, Freelancing, and Preparing for What's Next</h3>
+  <p className="text-sm text-[#fefeff]">2024 — Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Freelance + Skill Polishing + AI Exploration</p>
+  <p className="text-sm text-[#969696]">
+    Right now, I'm actively freelancing and sharpening my skills as I look for the perfect full-time role. I'm investing significant time into enhancing my abilities in frontend frameworks, modern web development, and backend architecture, ensuring I'm ready for the evolving tech landscape.
+    <br /><br />
+    Alongside my freelancing projects, I'm keeping a close eye on the rapid advancements in artificial intelligence. Tools and frameworks like <span className="text-[#fefeff]">RAG systems, LangChain, Stable Diffusion</span>, and models such as <span className="text-[#fefeff]">GPT-4, Claude, Gemini, Mistral, and LLaMA</span> are becoming increasingly essential, reshaping how we approach software development, design, and problem-solving.
+    <br /><br />
+    I've integrated these AI technologies into several personal and freelance projects, exploring their practical applications within real-world scenarios. Currently, I'm particularly interested in developing applications powered by autonomous AI agents—capable of handling complex tasks, making informed decisions, and interacting seamlessly with APIs.
+    <br /><br />
+    I'm committed to mastering both traditional software engineering and AI-driven methodologies, ensuring I can create impactful, user-centric applications. The goal isn't just to be ready for the future, but to actively contribute to building it.
+  </p>
+</div>
+
             </motion.div>
             <br />
             <br />

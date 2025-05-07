@@ -422,7 +422,7 @@ export default function Home() {
                     </div>
 
                     <div className="w-full">
-                      <div className="flex items-center justify-center max-w-2xl mx-auto xl:mx-0">
+                      <div className="flex items-center justify-center max-w-xl mx-auto xl:mx-0">
                         <GithubCard />
                       </div>
                     </div>
