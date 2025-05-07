@@ -355,7 +355,7 @@ export default function Home() {
                 <div className="w-full max-w-7xl mx-auto">
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-8">
                     <div className="w-full">
-                      <div className="space-y-6 max-w-2xl mx-auto xl:mx-0 xl:ml-16 text-center lg:text-left">
+                      <div className="space-y-6 max-w-2xl mx-auto xl:mx-0 xl:ml-16 text-center lg:text-left mb-8 xl:mb-0">
                         <div className="space-y-2">
                           <h1 className="text-sm text-[#969696] tracking-wider uppercase">Full Stack Developer</h1>
                           <h2 className="text-3xl sm:text-4xl xl:text-7xl font-medium group relative">
@@ -394,7 +394,7 @@ export default function Home() {
                           )}
                         </motion.div>
 
-                        <div className="pt-6 sm:pt-8 flex flex-wrap gap-3 sm:gap-4">
+                        <div className="pt-6 sm:pt-8 flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
                           <a
                             href="https://github.com/Sri01729"
                             target="_blank"
