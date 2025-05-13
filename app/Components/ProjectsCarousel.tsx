@@ -26,6 +26,21 @@ const projects = [
     ],
     "video": "/QuizScraper-demo.mp4",
 },
+{
+    title: "Dhvani",
+    description:
+      "Dhvani redefines music streaming by offering personalized playlists that adapt to your mood and surroundings in real time. By integrating weather and location APIs with intelligent recommendation algorithms, it crafts dynamic soundtracks tailored to any moment—whether you're unwinding on a rainy evening or powering through a morning workout. Designed for listeners who crave an immersive, context-aware experience, Dhvani turns passive listening into a personalized musical journey.",
+    tags: ["Node.js", "HTML", "CSS", "JS", "Weather API", "Location API"],
+    link: "#",
+    slug: "dhvani",
+    platforms: [
+      { icon: FaNodeJs, color: "#68A063" },
+      { icon: FaJsSquare, color: "#F7DF1E" },
+      // Add more icons for HTML, CSS, Weather API, Location API if you want
+    ],
+    image: "/sai_srinivas_alahari_multi_device_mockup_1 copy.png",
+    // No video for now
+},
   {
     title: "RedinAI",
     description:
@@ -138,7 +153,13 @@ export default function StickyScrollRevealProjects() {
                                 }}
                                 className="w-full"
                             >
-                                {currentProject.video && (
+                                {currentProject.image ? (
+                                    <img
+                                        src={currentProject.image}
+                                        alt={currentProject.title}
+                                        className="object-cover w-full"
+                                    />
+                                ) : currentProject.video && (
                                     <video
                                         key={currentProject.video}
                                         width="100%"
@@ -200,6 +221,16 @@ export default function StickyScrollRevealProjects() {
                                 >
                                     View Details
                                 </Link>
+                                {currentProject.slug === "dhvani" && (
+                                    <a
+                                        href="https://www.figma.com/design/gs8BcgFxfuPgvrfokv7gjz/Dhvani-Case-study"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[#fefeff] hover:text-[#969696] transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
+                                    >
+                                        Case Study
+                                    </a>
+                                )}
                                 <div className="flex items-center gap-3 ml-2">
                                     {currentProject.platforms.map((Platform, index) => (
                                         <Platform.icon
@@ -286,6 +317,16 @@ export default function StickyScrollRevealProjects() {
                                         >
                                             View Details
                                         </Link>
+                                        {project.slug === "dhvani" && (
+                                            <a
+                                                href="https://www.figma.com/design/gs8BcgFxfuPgvrfokv7gjz/Dhvani-Case-study"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-white hover:text-gray-300 transition-colors flex items-center gap-1.5 text-sm font-medium bg-black/40 px-3 py-1.5 rounded-lg border border-white/10"
+                                            >
+                                                Case Study
+                                            </a>
+                                        )}
                                         <div className="flex items-center gap-3 ml-2">
                                             {project.platforms.map((Platform, index) => (
                                                 <Platform.icon
@@ -301,7 +342,13 @@ export default function StickyScrollRevealProjects() {
                             ),
                             content: (
                                 <div className="w-full h-full overflow-hidden rounded-lg">
-                                    {project.video && (
+                                    {project.image ? (
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    ) : project.video && (
                                         <video
                                             key={project.video}
                                             width="100%"

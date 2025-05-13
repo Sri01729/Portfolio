@@ -342,8 +342,7 @@ const projects = [
     github: "https://github.com/Sri01729/Browzio",
     demo: "https://addons.mozilla.org/en-US/firefox/addon/browzio/"
   }
-}
-  ,
+},
   {
     id: "apple-website-replica",
     title: "Apple Website Clone",
@@ -408,6 +407,71 @@ const projects = [
     links: {
       github: "https://github.com/Sri01729/apple-website-homepage-mimic",
       demo: "https://apple-website-homepage-mimic-oc47tr4nw-sai-sriniva-alahari.vercel.app/"
+    }
+  },
+  {
+    id: "dhvani",
+    title: "Dhvani",
+    description: "Context-Aware Music Streaming Web App",
+    category: "Music Streaming",
+    technologies: {
+      frontend: ["HTML", "CSS", "JavaScript"],
+      backend: ["Node.js", "Express", "MySQL", "PHP"],
+      apis: ["OpenWeatherMap", "Geolocation API"],
+      tools: ["Git", "GitHub", "Postman"]
+    },
+    media: {
+      type: "image",
+      url: "/sai_srinivas_alahari_multi_device_mockup_1 copy.png",
+      thumbnail: "/sai_srinivas_alahari_multi_device_mockup_1 copy.png"
+    },
+    overview: `Dhvani is a next-generation music streaming service that crafts playlists based on both your personal taste and real-world context. By tapping into your location and real-time weather data, it delivers dynamic, instantly updated soundtracks—whether it's a rainy drive home or a sunny morning jog.`,
+    role: "Full Stack Developer (UI/UX, Backend, Recommendation Engine)",
+    responsibilities: [
+      "Crafted wireframes and high-fidelity prototypes in Figma, then implemented responsive layouts using HTML, CSS, and JavaScript",
+      "Built RESTful services in Node.js/Express to aggregate user preferences, weather data, and geolocation inputs",
+      "Developed hybrid collaborative/content-based filtering algorithms in JavaScript to generate personalized playlists using a local library of tracks created with Suno.ai",
+      "Connected to OpenWeatherMap for weather data and utilized browser Geolocation API for position tracking"
+    ],
+    process: [
+      "Interviewed 15 beta users to identify pain points with static playlists",
+      "Defined core flows—'Play by Mood' and 'Play by Weather/Location'—and sketched wireframes",
+      "Set up Node.js/Express server and data models in MySQL",
+      "Built JavaScript components for playlist display and controls",
+      "Tuned recommendation weights based on A/B test feedback",
+      "Original Tracks: Every song in Dhvani is created from scratch using Suno.ai"
+    ],
+    features: [
+      "Mood-Adaptive Playlists: Infers listening mood from past behavior and on-the-fly user input",
+      "Weather-Driven Selection: Pulls local weather (e.g., sunny, rainy, snowy) via OpenWeatherMap API to influence track choices",
+      "Location-Based Recommendations: Uses HTML5 Geolocation API to surface region-specific genres and local artists",
+      "Real-Time Updates: Seamlessly reshuffles tracks when weather or location changes"
+    ],
+    challenges: [
+      {
+        problem: "Playlists needed to update seamlessly when weather or location shifted mid-session",
+        solution: "Subscribed to browser geolocation and weather-webhook events to trigger lightweight recommendation refreshes"
+      },
+      {
+        problem: "New users had no listening history—recommendations felt generic",
+        solution: "Seeded the engine with mood presets and local top-charts data to provide meaningful first playlists"
+      },
+      {
+        problem: "Exceeding weather API quotas during spikes",
+        solution: "Bathed external calls and implemented in-memory caching to throttle and reuse recent responses"
+      }
+    ],
+    outcomes: {
+      metrics: [],
+      feedback: [
+        "I can't believe my playlist changes when it starts raining—so immersive!",
+        "Perfect for my soccer runs—sunny playlists that keep me pumped.",
+        "Love how my workouts sync with the weather—Dhvani nails the vibe every time."
+      ]
+    },
+    learnings: [],
+    links: {
+      github: "https://github.com/Sri01729/DHVANI"
     }
   }
 ]

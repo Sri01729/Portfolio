@@ -359,40 +359,40 @@ export default function Home() {
                         <div className="space-y-2">
                           <h1 className="text-sm text-[#969696] tracking-wider uppercase">Full Stack Developer</h1>
                           <h2 className="text-3xl sm:text-4xl xl:text-7xl font-medium group relative">
-                            Sai Srinivas Alahari<span className="text-[#969696]">.</span>
-                          </h2>
+                        Sai Srinivas Alahari<span className="text-[#969696]">.</span>
+                      </h2>
                         </div>
 
-                        <motion.div
-                          key={selectedAudience}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
+                      <motion.div
+                        key={selectedAudience}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
                           className="relative z-10"
-                        >
+                      >
                           <p className="text-[#969696] text-base sm:text-lg">
-                            {audienceContent[selectedAudience].description}
-                          </p>
+                          {audienceContent[selectedAudience].description}
+                        </p>
 
-                          {audienceContent[selectedAudience].skills.length > 0 && (
-                            <motion.div
+                        {audienceContent[selectedAudience].skills.length > 0 && (
+                          <motion.div
                               className="flex flex-wrap gap-2 sm:gap-4 mt-6 sm:mt-8"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.3 }}
-                            >
-                              {audienceContent[selectedAudience].skills.map((skill, index) => (
-                                <div
-                                  key={index}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.3 }}
+                          >
+                            {audienceContent[selectedAudience].skills.map((skill, index) => (
+                              <div
+                                key={index}
                                   className="bg-white/5 border border-white/10 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm hover:bg-white/10 transition-colors"
-                                >
-                                  {skill}
-                                </div>
-                              ))}
-                            </motion.div>
-                          )}
-                        </motion.div>
+                              >
+                                {skill}
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </motion.div>
 
                         <div className="pt-6 sm:pt-8 flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
                           <a
@@ -424,7 +424,7 @@ export default function Home() {
                     <div className="w-full">
                       <div className="flex items-center justify-center max-w-xl mx-auto xl:mx-0">
                         <GithubCard />
-                      </div>
+                  </div>
                     </div>
                   </div>
                 </div>
